@@ -23,7 +23,7 @@ function name(UnitEnum $enum): string
 
 function value(UnitEnum $enum): string
 {
-    return $enum->name;
+    return $enum->value;
 }
 
 function enumToArray(UnitEnum $enum): array

@@ -1,0 +1,37 @@
+{
+    "name": "makhnanov/telegram-81",
+    "description": "PHP 8.1 Telegram API library.",
+    "type": "library",
+    "license": "Apache 2",
+    "autoload": {
+        "psr-4": {
+            "Makhnanov\\Telegram81\\": "Src/"
+        },
+        "files": ["Src/Function.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Makhnanov\\Telegram81\\Test\\": "Test/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Romaxa",
+            "email": "bakirov.important@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "7.4.x-dev",
+        "yiisoft/arrays": "dev-master"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "6.0.x-dev",
+        "phpunit/phpunit": "^9",
+        "ezyang/htmlpurifier": "4.13"
+    },
+    "scripts": {
+        "test": "php vendor/bin/phpunit --colors=always --testdox Test"
+    }
+}

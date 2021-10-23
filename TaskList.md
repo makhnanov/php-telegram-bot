@@ -1,0 +1,1 @@
+- Switch by method and json default

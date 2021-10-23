@@ -13,14 +13,13 @@ use Makhnanov\Telegram81\Api\Type\UpdateCollection;
 use Makhnanov\Telegram81\Helper\Responsive;
 use Makhnanov\Telegram81\Helper\ResponsiveInterface;
 use Makhnanov\Telegram81\Helper\ViaArray;
-use phpDocumentor\Reflection\Types\Collection;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
 
 use function Makhnanov\Telegram81\decoded;
 
-trait GetUpdates
+trait GetUpdatesTrait
 {
     /**
      *
@@ -109,7 +108,7 @@ trait GetUpdates
         $autoOffset = $offset === Offset::Auto;
 
         if ($autoOffset) {
-            $offset = $this->lastUpdateId;
+            $offset = $this->getUpdatesOffset;
         }
 
         $collection = new class($this->getResponse(__FUNCTION__, compact(...$functionArguments)))
@@ -132,7 +131,7 @@ trait GetUpdates
 
         if ($autoOffset) {
             $lastReceivedUpdateId = $collection->getLastReceivedUpdateId();
-            $lastReceivedUpdateId and $this->lastUpdateId = $lastReceivedUpdateId + 1;
+            $lastReceivedUpdateId and $this->getUpdatesOffset = $lastReceivedUpdateId + 1;
         }
 
         return $collection;

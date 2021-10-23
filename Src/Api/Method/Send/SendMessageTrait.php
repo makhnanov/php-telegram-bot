@@ -12,8 +12,6 @@ use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\EntityCollection;
 use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Api\Type\ReplyMarkup;
-use Makhnanov\Telegram81\Helper\Responsive;
-use Makhnanov\Telegram81\Helper\ResponsiveInterface;
 use Makhnanov\Telegram81\Helper\ResponsiveResultative;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Makhnanov\Telegram81\Helper\ViaArray;

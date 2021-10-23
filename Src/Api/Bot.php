@@ -7,8 +7,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use JetBrains\PhpStorm\Immutable;
 use Makhnanov\Telegram81\Api\Enumeration\HttpMethod;
-use Makhnanov\Telegram81\Api\Method\Get\GetMe;
-use Makhnanov\Telegram81\Api\Method\Get\GetUpdates;
+use Makhnanov\Telegram81\Api\Method\Edit\EditMessageTextTrait;
+use Makhnanov\Telegram81\Api\Method\Get\GetMeTrait;
+use Makhnanov\Telegram81\Api\Method\Get\GetUpdatesTrait;
 use Makhnanov\Telegram81\Api\Method\Send\SendMessageTrait;
 use Stringable;
 
@@ -20,9 +21,10 @@ class Bot
 {
     public const STD_LONG_POOLING_TIMEOUT = 6;
 
-    use GetMe,
+    use GetMeTrait,
         SendMessageTrait,
-        GetUpdates;
+        GetUpdatesTrait,
+        EditMessageTextTrait;
 
     public bool $async = false;
 
@@ -30,7 +32,7 @@ class Bot
 
     protected Client $client;
 
-    private int $lastUpdateId = 0;
+    private int $getUpdatesOffset;
 
     public function __construct(
         private string|Stringable $token,
@@ -41,6 +43,12 @@ class Bot
             'base_uri' => "$this->baseUri/bot$this->token/",
             'timeout' => $this->timeout ?? self::STD_LONG_POOLING_TIMEOUT + 5
         ]);
+        $this->getUpdatesOffset = $this->getOffset();
+    }
+
+    public function getOffset(): int
+    {
+        return 0;
     }
 
     public function getClient(): Client

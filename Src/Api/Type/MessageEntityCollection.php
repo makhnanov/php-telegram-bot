@@ -2,7 +2,7 @@
 
 namespace Makhnanov\Telegram81\Api\Type;
 
-class InlineKeyboardMarkup extends ReplyMarkup
+class MessageEntityCollection extends SelfFilling
 {
 
 }

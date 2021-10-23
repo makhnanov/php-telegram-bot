@@ -17,7 +17,7 @@ use Makhnanov\Telegram81\Helper\Resultative;
 
 use function Makhnanov\Telegram81\decoded;
 
-trait GetMe
+trait GetMeTrait
 {
     /**
      * @link https://core.telegram.org/bots/api#getme

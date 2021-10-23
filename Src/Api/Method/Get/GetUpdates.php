@@ -104,7 +104,7 @@ trait GetUpdates
         unset($functionArguments['viaArray']);
 
         # ToDo: make logger
-        dump(date('[H:i:s] ') . "Get Updates $this->lastUpdateId.");
+        // dump(date('[H:i:s] ') . "Get Updates $this->lastUpdateId.");
 
         $autoOffset = $offset === Offset::Auto;
 

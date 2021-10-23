@@ -40,9 +40,9 @@ class Update extends SelfFilling
 //    public ChosenInlineResult $chosen_inline_result;
 //
     /**
-     * Optional. New incoming callback query
+     * @Optional. New incoming callback query
      */
-    public CallbackQuery $callback_query;
+    public ?CallbackQuery $callback_query;
 //
 //    /**
 //     * Optional. New incoming shipping query. Only for invoices with flexible price

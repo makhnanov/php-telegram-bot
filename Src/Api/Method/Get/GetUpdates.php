@@ -11,7 +11,7 @@ use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Exception\TypeError;
 use Makhnanov\Telegram81\Api\Type\UpdateCollection;
 use Makhnanov\Telegram81\Helper\Responsive;
-use Makhnanov\Telegram81\Helper\TelegramResponseInterface;
+use Makhnanov\Telegram81\Helper\ResponsiveInterface;
 use Makhnanov\Telegram81\Helper\ViaArray;
 use phpDocumentor\Reflection\Types\Collection;
 use ReflectionClass;
@@ -114,7 +114,7 @@ trait GetUpdates
 
         $collection = new class($this->getResponse(__FUNCTION__, compact(...$functionArguments)))
             extends UpdateCollection
-            implements TelegramResponseInterface
+            implements ResponsiveInterface
         {
             use Responsive;
 

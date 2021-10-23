@@ -13,7 +13,9 @@ use Makhnanov\Telegram81\Api\Type\EntityCollection;
 use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Api\Type\ReplyMarkup;
 use Makhnanov\Telegram81\Helper\Responsive;
-use Makhnanov\Telegram81\Helper\TelegramResponseInterface;
+use Makhnanov\Telegram81\Helper\ResponsiveInterface;
+use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Makhnanov\Telegram81\Helper\ViaArray;
 
 use ReflectionClass;
@@ -73,7 +75,7 @@ trait SendMessageTrait
         ?bool                       $allow_sending_without_reply = null,
         null|array|ReplyMarkup      $reply_markup = null,
         ?ViaArray                   $viaArray = null,
-    ): Message & TelegramResponseInterface {
+    ): Message & ResponsiveResultative {
         /** @noinspection PhpUnhandledExceptionInspection */
         $inputParameters = (new ReflectionClass($this))->getMethod(__FUNCTION__)->getParameters();
         $inputParameterNames = [];
@@ -137,9 +139,9 @@ trait SendMessageTrait
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return new class($this->getResponse(__FUNCTION__, compact(...$inputParameterNames)))
             extends Message
-            implements TelegramResponseInterface
+            implements ResponsiveResultative
         {
-            use Responsive;
+            use ResponsiveResultativeTrait;
 
             private array $result;
 

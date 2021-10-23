@@ -8,11 +8,7 @@ trait Responsive
 {
     function getResponse(): Response
     {
+        /** @noinspection PhpUndefinedFieldInspection */
         return $this->response;
-    }
-
-    function getResult(): array
-    {
-        return $this->result;
     }
 }

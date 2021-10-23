@@ -4,9 +4,7 @@ namespace Makhnanov\Telegram81\Helper;
 
 use GuzzleHttp\Psr7\Response;
 
-interface TelegramResponseInterface
+interface ResponsiveInterface
 {
     function getResponse(): Response;
-
-    function getResult(): array;
 }

@@ -2,6 +2,8 @@
 
 namespace Makhnanov\Telegram81\Api\Type;
 
+use Makhnanov\Telegram81\Api\Enumeration\ChatType;
+
 class Chat extends SelfFilling
 {
     /**
@@ -15,6 +17,7 @@ class Chat extends SelfFilling
 
     /**
      * @var String Type of chat, can be either “private”, “group”, “supergroup” or “channel”
+     * @see ChatType
      */
     public string $type;
 

@@ -2,16 +2,20 @@
 
 namespace Makhnanov\Telegram81\Api\Method\Edit;
 
+use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
+use Makhnanov\Telegram81\Api\Exception\UnchangedMessageException;
 use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
 use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Api\Type\MessageEntityCollection;
 use Makhnanov\Telegram81\Helper\Prepare;
 use Makhnanov\Telegram81\Helper\ResponsiveResultative;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
+
+use Yiisoft\Arrays\ArrayHelper;
 
 use function Makhnanov\Telegram81\decoded;
 
@@ -48,9 +52,9 @@ trait EditMessageTextTrait
      *
      * @param ?array $viaArray
      *
+     * @return Message & ResponsiveResultative
      * @throws \Makhnanov\Telegram81\Api\Exception\BadCodeException
      *
-     * @return Message & ResponsiveResultative
      */
     public function editMessageText(
         string                          $text,
@@ -62,15 +66,35 @@ trait EditMessageTextTrait
         ?bool                           $disable_web_page_preview = null,
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array                          $viaArray = null,
+        bool                            $ignoreExceptionIfUnchanged = false
     ): Message & ResponsiveResultative {
         list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
         }
+        ArrayHelper::removeValue($parameterNames, 'ignoreExceptionIfUnchanged');
 
-        isset($reply_markup) and $reply_markup = Prepare::replyMarkup($reply_markup);
+        isset($reply_markup) and
+        $reply_markup = Prepare::replyMarkup($reply_markup);
 
-        return new class($this->getResponse(__FUNCTION__, compact(...$parameterNames)))
+        try {
+            $response = $this->getResponse(__FUNCTION__, compact(...$parameterNames));
+
+
+        } catch (BadResponseException $e) {
+            $guzzleResponse = $e->getResponse();
+            $decoded = decoded($guzzleResponse);
+            if (
+                $guzzleResponse->getStatusCode() === 400
+                && $decoded['ok'] === false
+                && $decoded['error_code'] === 400
+                && $decoded['description'] === UnchangedMessageException::REASON
+            ) {
+                throw new UnchangedMessageException();
+            }
+        }
+
+        return new class()
             extends Message
             implements ResponsiveResultative
         {
@@ -80,10 +104,13 @@ trait EditMessageTextTrait
 
             private Response $response;
 
-            public function __construct(Promise|Response|array $data = [])
-            {
+            public function __construct(
+                Promise|Response|array $data = []
+            ) {
                 $this->response = $data;
-                $this->result = decoded($this->response)['result'] ?? throw new NoResultException();
+                $this->result = decoded($this->response)['result']
+                    ??
+                    throw new NoResultException();
                 parent::__construct($this->result);
             }
         };

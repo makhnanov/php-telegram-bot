@@ -22,4 +22,9 @@ class Snippet
             ]
         ];
     }
+
+//    public static function russianEnglishKeyboard()
+//    {
+//        return [callbackButton(LangEnum::RUSSIAN), callbackButton(LangEnum::ENGLISH)];
+//    }
 }

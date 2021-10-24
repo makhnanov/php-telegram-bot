@@ -8,16 +8,10 @@ use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Api\Enumeration\Offset;
 use Makhnanov\Telegram81\Api\Exception\BadCodeException;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
-use Makhnanov\Telegram81\Api\Exception\TypeError;
+use Makhnanov\Telegram81\Api\Type\Update;
 use Makhnanov\Telegram81\Api\Type\UpdateCollection;
-use Makhnanov\Telegram81\Helper\Responsive;
-use Makhnanov\Telegram81\Helper\ResponsiveInterface;
 use Makhnanov\Telegram81\Helper\ResponsiveResultative;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
-use Makhnanov\Telegram81\Helper\ViaArray;
-use ReflectionClass;
-use ReflectionNamedType;
-use ReflectionUnionType;
 
 use function Makhnanov\Telegram81\decoded;
 
@@ -49,16 +43,19 @@ trait GetUpdatesTrait
      *                                                  before the call to the getUpdates, so unwanted updates may be received for
      *                                                  a short period of time.
      *
-     * @property ?ViaArray $viaArray
+     * @throws BadCodeException
+     * @property ?array $viaArray
      *
      * @noinspection PhpUnusedLocalVariableInspection
+     *
+     * @see Update for get response @examples
      */
     public function getUpdates(
         int|Offset $offset = Offset::Auto,
         int        $limit = null,
         int        $timeout = Bot::STD_LONG_POOLING_TIMEOUT,
         array      $allowed_updates = null,
-        ?ViaArray  $viaArray = null,
+        ?array  $viaArray = null,
     ): UpdateCollection & ResponsiveResultative {
         list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {

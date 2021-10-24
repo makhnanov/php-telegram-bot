@@ -2,7 +2,7 @@
 
 namespace Makhnanov\Telegram81\Helper\Smile;
 
-class JoystickSmile
+class SmileJoystick
 {
     public const UP_LEFT = '↖️';
     public const UP = '⬆️';

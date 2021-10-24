@@ -2,6 +2,119 @@
 
 namespace Makhnanov\Telegram81\Api\Type;
 
+/**
+ * @example Click by inline button in channel [
+ *     "update_id" => 494785812,
+ *     "callback_query" => [
+ *         "id" => "1679078867284838012",
+ *         "from" => [
+ *             "id" => 390941013,
+ *             "is_bot" => false,
+ *             "first_name" => "Роман",
+ *             "last_name" => "Бакиров",
+ *             "username" => "BakirovRoman",
+ *             "language_code" => "en",
+ *         ],
+ *         "message" => [
+ *             "message_id" => 265,
+ *             "sender_chat" => [
+ *                 "id" => -1001286401059,
+ *                 "title" => "ProgMemes",
+ *                 "username" => "program_mem",
+ *                 "type" => "channel",
+ *             ],
+ *             "chat" => [
+ *                 "id" => -1001286401059,
+ *                 "title" => "ProgMemes",
+ *                 "username" => "program_mem",
+ *                 "type" => "channel",
+ *             ],
+ *             "date" => 1634983108,
+ *             "text" => "
+ *         🇺🇸 Welcome to Sea Battle! 🛳 🚢 \n
+ *         Please, select language.\n
+ *         \n
+ *         🇷🇺 Добро пожаловать в Морской Бой!\n
+ *         Пожалуйста, выберите язык.
+ *         ",
+ *             "reply_markup" => [
+ *                 "inline_keyboard" => [
+ *                     [
+ *                         [
+ *                             "text" => "Русский 🇷🇺",
+ *                             "callback_data" => "RUSSIAN",
+ *                         ],
+ *                         [
+ *                             "text" => "English 🇺🇸",
+ *                             "callback_data" => "ENGLISH",
+ *                         ],
+ *                     ],
+ *                 ],
+ *             ],
+ *         ],
+ *         "chat_instance" => "8388286833059514659",
+ *         "data" => "RUSSIAN",
+ *     ],
+ * ];
+ *
+ * @example Click by inline button in private chat with bot [
+ *     "update_id" => 494785814,
+ *     "callback_query" => [
+ *         "id" => "1679078865787713631",
+ *         "from" => [
+ *             "id" => 390941013,
+ *             "is_bot" => false,
+ *             "first_name" => "Роман",
+ *             "last_name" => "Бакиров",
+ *             "username" => "BakirovRoman",
+ *             "language_code" => "en",
+ *         ],
+ *         "message" => [
+ *             "message_id" => 173,
+ *             "from" => [
+ *                 "id" => 2039116336,
+ *                 "is_bot" => true,
+ *                 "first_name" => "TestPhp81BotApi",
+ *                 "username" => "TestPhp81BotApiBot",
+ *             ],
+ *             "chat" => [
+ *                 "id" => 390941013,
+ *                 "first_name" => "Роман",
+ *                 "last_name" => "Бакиров",
+ *                 "username" => "BakirovRoman",
+ *                 "type" => "private",
+ *             ],
+ *             "date" => 1635079737,
+ *             "text" => "
+ *         🇺🇸 Welcome to Sea Battle! 🛳 🚢 \n
+ *         Please, select language.\n
+ *         \n
+ *         🇷🇺 Добро пожаловать в Морской Бой!\n
+ *         Пожалуйста, выберите язык.
+ *         ",
+ *             "reply_markup" => [
+ *                 "inline_keyboard" => [
+ *                     [
+ *                         [
+ *                             "text" => "Русский 🇷🇺",
+ *                             "callback_data" => "RUSSIAN",
+ *                         ],
+ *                         [
+ *                             "text" => "English 🇺🇸",
+ *                             "callback_data" => "ENGLISH",
+ *                         ],
+ *                     ],
+ *                 ],
+ *             ],
+ *         ],
+ *         "chat_instance" => "3209964680490799795",
+ *         "data" => "RUSSIAN",
+ *     ],
+ * ];
+ *
+ * @example
+ *
+ */
 class Update extends SelfFilling
 {
     /**

@@ -6,6 +6,8 @@ use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
 
 /**
  * @url https://core.telegram.org/bots/api#message
+ *
+ * @example
  */
 class Message extends SelfFilling
 {

@@ -1,8 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Test\GetMe;
-
-use Makhnanov\Telegram81\Test\ParentTestCase;
+namespace Makhnanov\Telegram81\Test;
 
 class GetMeTest extends ParentTestCase
 {
@@ -20,9 +18,9 @@ class GetMeTest extends ParentTestCase
         ]);
         $this->assertGreaterThan(0, $r->id);
         $this->assertTrue($r->is_bot);
-        $this->assertNotEmptyString($r->first_name);
+        $this->trueString($r->first_name);
         $this->assertNull($r->last_name);
-        $this->assertNotEmptyString($r->username);
+        $this->trueString($r->username);
         $this->assertNull($r->language_code);
         $this->assertIsBool($r->can_join_groups);
         $this->assertIsBool($r->can_read_all_group_messages);

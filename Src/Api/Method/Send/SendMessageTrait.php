@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Makhnanov\Telegram81\Api\Method\Send;
@@ -7,7 +6,6 @@ namespace Makhnanov\Telegram81\Api\Method\Send;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
-use Makhnanov\Telegram81\Api\Exception\BadCodeException;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\EntityCollection;
 use Makhnanov\Telegram81\Api\Type\Message;
@@ -15,15 +13,6 @@ use Makhnanov\Telegram81\Api\Type\ReplyMarkup;
 use Makhnanov\Telegram81\Helper\Prepare;
 use Makhnanov\Telegram81\Helper\ResponsiveResultative;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
-use Makhnanov\Telegram81\Helper\ViaArray;
-
-use ReflectionClass;
-
-use ReflectionNamedType;
-use ReflectionUnionType;
-
-use TypeError;
-
 use Yiisoft\Arrays\ArrayHelper;
 
 use function Makhnanov\Telegram81\decoded;
@@ -58,7 +47,7 @@ trait SendMessageTrait
      *                                                  A JSON-serialized object for an inline keyboard, custom reply keyboard,
      *                                                  instructions to remove reply keyboard or to force a reply from the user.
      *
-     * @property ?ViaArray $viaArray
+     * @property ?array $viaArray
      *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpUnusedLocalVariableInspection

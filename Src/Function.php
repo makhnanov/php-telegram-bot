@@ -5,7 +5,8 @@ namespace Makhnanov\Telegram81;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Utils;
 use JetBrains\PhpStorm\ArrayShape;
-use Makhnanov\TelegramSeaBattle\ButtonText;
+use JetBrains\PhpStorm\Pure;
+use Makhnanov\Telegram81\Api\Type\Chat;
 use StringBackedEnum;
 use UnitEnum;
 
@@ -29,11 +30,19 @@ function value(UnitEnum $enum): string
     return $enum->value;
 }
 
-function enumAsKeyValueArray(UnitEnum $enum): array
+#[Pure]
+function enumToKeyVal(UnitEnum $enum): array
 {
     return [name($enum) => value($enum)];
 }
 
+/**
+ * @param string|array|StringBackedEnum $text
+ * Be care if you give Enum.
+ * Enum->name will be callback_data and Enum->value will be text.
+ *
+ * @param ?string $data
+ */
 #[ArrayShape([
     'text' => "string",
     'callback_data' => "string"
@@ -45,9 +54,25 @@ function callbackButton(string|array|StringBackedEnum $text, string $data = null
     } elseif (is_array($text)) {
         isset($data[0]) and is_string($data[0]) and $text = $data[0];
         isset($data[0]) and is_string($data[1]) and $data = $data[1];
-    } else {
-        $text = $text->value;
+    } elseif ($text instanceof StringBackedEnum) {
+        $text = $text->value ?? $text->name;
+        /** @noinspection PhpUndefinedFieldInspection */
         $data = $text->name;
     }
     return ['text' => $text, 'callback_data' => $data];
+}
+
+#[Pure] function isPrivate(string|Chat $mixed): bool
+{
+    return getChatType($mixed) === 'private';
+}
+
+#[Pure] function isChannel(string|Chat $mixed): bool
+{
+    return getChatType($mixed) === 'channel';
+}
+
+function getChatType(string|Chat $mixed): string
+{
+    return $mixed instanceof Chat ? $mixed->type : $mixed;
 }

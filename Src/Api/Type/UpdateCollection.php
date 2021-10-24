@@ -8,6 +8,9 @@ use Iterator;
 use Makhnanov\Telegram81\Helper\Resultative;
 use Makhnanov\Telegram81\Helper\ResultativeInterface;
 
+/**
+ * @template Update &
+ */
 class UpdateCollection implements Iterator
 {
     private int $position = 0;

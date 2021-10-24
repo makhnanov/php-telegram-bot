@@ -5,7 +5,6 @@ namespace Makhnanov\Telegram81\Test;
 use Makhnanov\Telegram81\Api\Method\Send\SendMessage;
 use Makhnanov\Telegram81\Api\Type\Chat;
 use Makhnanov\Telegram81\Api\Type\User;
-use Makhnanov\Telegram81\Helper\ViaArray;
 
 class SendMessageTest extends ParentTestCase
 {
@@ -41,7 +40,7 @@ class SendMessageTest extends ParentTestCase
         $r = $this->bot->sendMessage(
             $this->getTestChannelId(),
             'Test message to channel.',
-            viaArray: ViaArray::array($parameters)
+            viaArray: $parameters
         );
         $result = $r->getResult();
         $savedKeys = [
@@ -67,24 +66,24 @@ class SendMessageTest extends ParentTestCase
         ];
 //        dd($result);
         $this->assertResultKeys($result, $savedKeys);
-        $this->assertIsIntAboveZero($r->message_id);
+        $this->aboveZero($r->message_id);
         $this->assertClassWithFields($r->sender_chat, Chat::class, function (Chat $arr) {
             $this->assertIsIntBelowZero($arr->id);
-            $this->assertNotEmptyString($arr->title);
-            $this->assertNotEmptyString($arr->username);
-            $this->assertNotEmptyString($arr->type);
+            $this->trueString($arr->title);
+            $this->trueString($arr->username);
+            $this->trueString($arr->type);
             $this->assertSame('channel', $arr->type);
         });
         $this->assertClassWithFields($r->chat, Chat::class, function (Chat $arr) {
             $this->assertIsIntBelowZero($arr->id);
-            $this->assertNotEmptyString($arr->title);
-            $this->assertNotEmptyString($arr->username);
-            $this->assertNotEmptyString($arr->type);
+            $this->trueString($arr->title);
+            $this->trueString($arr->username);
+            $this->trueString($arr->type);
             $this->assertSame('channel', $arr->type);
         });
         $this->assertSame($r->chat->getFullInfo(), [...$r->sender_chat->getFullInfo()]);
-        $this->assertIsIntAboveZero($r->date);
-        $this->assertNotEmptyString($r->text);
+        $this->aboveZero($r->date);
+        $this->trueString($r->text);
 
         $this->assertApproveManual();
     }
@@ -152,22 +151,22 @@ class SendMessageTest extends ParentTestCase
         ];
 //        dd($result);
         $this->assertResultKeys($result, $savedKeys);
-        $this->assertIsIntAboveZero($r->message_id);
+        $this->aboveZero($r->message_id);
         $this->assertClassWithFields($r->from, User::class, function (User $arr) {
-            $this->assertIsIntAboveZero($arr->id);
+            $this->aboveZero($arr->id);
             $this->assertTrue($arr->is_bot);
-            $this->assertNotEmptyString($arr->first_name);
-            is_null($arr->username) or $this->assertNotEmptyString($arr->username);
+            $this->trueString($arr->first_name);
+            is_null($arr->username) or $this->trueString($arr->username);
         });
         $this->assertClassWithFields($r->chat, Chat::class, function (Chat $arr) {
-            $this->assertIsIntAboveZero($arr->id);
+            $this->aboveZero($arr->id);
             $this->assertSame('private', $arr->type);
-            is_null($arr->first_name) or $this->assertNotEmptyString($arr->first_name);
-            is_null($arr->last_name) or $this->assertNotEmptyString($arr->last_name);
-            is_null($arr->username) or $this->assertNotEmptyString($arr->username);
+            is_null($arr->first_name) or $this->trueString($arr->first_name);
+            is_null($arr->last_name) or $this->trueString($arr->last_name);
+            is_null($arr->username) or $this->trueString($arr->username);
         });
-        $this->assertIsIntAboveZero($r->date);
-        $this->assertNotEmptyString($r->text);
+        $this->aboveZero($r->date);
+        $this->trueString($r->text);
 
         $this->assertApproveManual();
     }

@@ -12,12 +12,8 @@ use Makhnanov\Telegram81\Api\Type\MessageEntityCollection;
 use Makhnanov\Telegram81\Helper\Prepare;
 use Makhnanov\Telegram81\Helper\ResponsiveResultative;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
-use Makhnanov\Telegram81\Helper\ViaArray;
-
-use ReflectionClass;
 
 use function Makhnanov\Telegram81\decoded;
-use function Makhnanov\Telegram81\is_set;
 
 /**
  * @see EditMessageText
@@ -48,11 +44,13 @@ trait EditMessageTextTrait
      *
      * @param ?Boolean $disable_web_page_preview @Optional. Disables link previews for links in this message
      *
-     * @param ?InlineKeyboardMarkup $reply_markup @Optional. A JSON-serialized object for an inline keyboard.
+     * @param null|array|InlineKeyboardMarkup $reply_markup @Optional. A JSON-serialized object for an inline keyboard.
      *
-     * @param null|array|ViaArray $viaArray
+     * @param ?array $viaArray
      *
+     * @throws \Makhnanov\Telegram81\Api\Exception\BadCodeException
      *
+     * @return Message & ResponsiveResultative
      */
     public function editMessageText(
         string                          $text,
@@ -64,7 +62,7 @@ trait EditMessageTextTrait
         ?bool                           $disable_web_page_preview = null,
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array                          $viaArray = null,
-    ) {
+    ): Message & ResponsiveResultative {
         list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;

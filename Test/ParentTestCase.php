@@ -3,8 +3,10 @@
 namespace Makhnanov\Telegram81\Test;
 
 use Closure;
+use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\B;
 use Makhnanov\Telegram81\Api\Bot;
+use Makhnanov\Telegram81\Helper\ResponsiveInterface;
 use PHPUnit\Framework\Constraint\IsEqual;
 use PHPUnit\Framework\Constraint\IsType;
 use PHPUnit\Framework\Constraint\LogicalNot;
@@ -37,7 +39,7 @@ abstract class ParentTestCase extends TestCase
         parent::__construct($name, $data, $dataName);
     }
 
-    public static function assertNotEmptyString($actual): void
+    public static function trueString($actual): void
     {
         parent::assertIsString($actual, 'It is not string!');
         $constraint = new LogicalNot(new IsEqual(''));
@@ -52,7 +54,7 @@ abstract class ParentTestCase extends TestCase
         parent::assertSame($result, $savedKeys);
     }
 
-    public static function assertIsIntAboveZero($actual, $message = ''): void
+    public static function aboveZero($actual, $message = ''): void
     {
         static::assertThat($actual, new IsType(IsType::TYPE_INT), $message);
         static::assertThat($actual, static::greaterThan(0), $message);
@@ -69,6 +71,11 @@ abstract class ParentTestCase extends TestCase
         static::assertSame(0, $actual, $message);
     }
 
+    public function assertGuzzleClient(ResponsiveInterface $client)
+    {
+        $this->assertTrue($client->getResponse() instanceof Response);
+    }
+
     public function assertClassWithFields(mixed $actual, string $expectedClassName, Closure $callback)
     {
         self::assertInstanceOf($expectedClassName, $actual);
@@ -78,6 +85,7 @@ abstract class ParentTestCase extends TestCase
     public function assertApproveManual()
     {
         if ($this->manualVerify) {
+            /** @noinspection PhpComposerExtensionStubsInspection */
             $this->assertTrue(readline('[ENTER] for Approve or [ANY STRING] for Disapprove test: ') === '');
         }
     }
@@ -85,6 +93,7 @@ abstract class ParentTestCase extends TestCase
     public function makeSureThat(string $description)
     {
         if ($this->manualVerify) {
+            /** @noinspection PhpComposerExtensionStubsInspection */
             readline("Make sure that $description. [ENTER] ... ");
         }
     }

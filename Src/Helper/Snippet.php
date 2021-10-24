@@ -3,7 +3,7 @@
 namespace Makhnanov\Telegram81\Helper;
 
 use JetBrains\PhpStorm\ArrayShape;
-use Makhnanov\Telegram81\Helper\Smile\JoystickSmile as J;
+use Makhnanov\Telegram81\Helper\Smile\SmileJoystick as J;
 
 use function Makhnanov\Telegram81\callbackButton;
 

@@ -2,7 +2,7 @@
 
 namespace Makhnanov\Telegram81\Helper\Smile;
 
-class SmileInfo
+class SmileInfo extends SmileJoystick
 {
     public const ABC = '🔤';
     public const NEW = '🆕';

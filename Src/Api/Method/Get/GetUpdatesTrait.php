@@ -12,6 +12,8 @@ use Makhnanov\Telegram81\Api\Exception\TypeError;
 use Makhnanov\Telegram81\Api\Type\UpdateCollection;
 use Makhnanov\Telegram81\Helper\Responsive;
 use Makhnanov\Telegram81\Helper\ResponsiveInterface;
+use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Makhnanov\Telegram81\Helper\ViaArray;
 use ReflectionClass;
 use ReflectionNamedType;
@@ -57,7 +59,7 @@ trait GetUpdatesTrait
         int        $timeout = Bot::STD_LONG_POOLING_TIMEOUT,
         array      $allowed_updates = null,
         ?ViaArray  $viaArray = null,
-    ) {
+    ): UpdateCollection & ResponsiveResultative {
         list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
@@ -74,9 +76,9 @@ trait GetUpdatesTrait
 
         $collection = new class($this->getResponse(__FUNCTION__, compact(...$parameterNames)))
             extends UpdateCollection
-            implements ResponsiveInterface
+            implements ResponsiveResultative
         {
-            use Responsive;
+            use ResponsiveResultativeTrait;
 
             private array $result;
 

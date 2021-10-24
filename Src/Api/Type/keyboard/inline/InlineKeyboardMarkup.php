@@ -10,10 +10,6 @@ class InlineKeyboardMarkup extends SelfFilling
     #[ArrayShape(['inline_keyboard' => "array[]"])]
     public static function new(array ...$row): array
     {
-        return [
-            'inline_keyboard' => [
-                func_get_args()
-            ]
-        ];
+        return ['inline_keyboard' => func_get_args()];
     }
 }

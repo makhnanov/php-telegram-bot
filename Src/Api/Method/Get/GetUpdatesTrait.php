@@ -58,49 +58,10 @@ trait GetUpdatesTrait
         array      $allowed_updates = null,
         ?ViaArray  $viaArray = null,
     ) {
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $inputParameters = (new ReflectionClass($this))->getMethod(__FUNCTION__)->getParameters();
-        $functionArguments = [];
-        foreach ($inputParameters as $oneParameter) {
-            $parameterName = $oneParameter->getName();
-            $functionArguments[] = $parameterName;
-            if (!$oneParameter->hasType()) {
-                /** @noinspection PhpUnhandledExceptionInspection */
-                throw new BadCodeException();
-            }
-            if (isset($viaArray->$parameterName)) {
-                $declarationParameterType = $oneParameter->getType();
-                if ($declarationParameterType instanceof ReflectionNamedType) {
-                    $typeOrClass = $declarationParameterType->getName();
-                    if (
-                        !(class_exists($typeOrClass) && is_a($viaArray->$parameterName, $typeOrClass))
-                        && $typeOrClass !== gettype($viaArray->$parameterName)
-                        && !( // fix
-                            $typeOrClass === 'bool'
-                            && gettype($viaArray->$parameterName) === 'boolean'
-                        )
-                    ) {
-                        throw new TypeError();
-                    }
-                    $$parameterName = $viaArray->$parameterName;
-                } elseif ($declarationParameterType instanceof ReflectionUnionType) {
-                    $throw = true;
-                    foreach ($declarationParameterType->getTypes() as $type) {
-                        $typeOrClass = $type->getName();
-                        if (
-                            (class_exists($typeOrClass) && is_a($viaArray->$parameterName, $typeOrClass))
-                            || $typeOrClass === gettype($viaArray->$parameterName)
-                        ) {
-                            $throw = false;
-                            break;
-                        }
-                    }
-                    $throw and throw new TypeError();
-                    $$parameterName = $viaArray->$parameterName;
-                }
-            }
+        list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
+        foreach ($parameterValues as $name => $value) {
+            $$name = $value;
         }
-        unset($functionArguments['viaArray']);
 
         # ToDo: make logger
         // dump(date('[H:i:s] ') . "Get Updates $this->lastUpdateId.");
@@ -111,7 +72,7 @@ trait GetUpdatesTrait
             $offset = $this->getUpdatesOffset;
         }
 
-        $collection = new class($this->getResponse(__FUNCTION__, compact(...$functionArguments)))
+        $collection = new class($this->getResponse(__FUNCTION__, compact(...$parameterNames)))
             extends UpdateCollection
             implements ResponsiveInterface
         {

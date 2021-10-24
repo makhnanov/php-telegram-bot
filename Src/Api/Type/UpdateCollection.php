@@ -14,7 +14,7 @@ class UpdateCollection implements Iterator
 
     private array $updates = [];
 
-    private int $lastUpdateId = 0;
+    private int $lastUpdateId;
 
     public function __construct(array $updatesArray = [])
     {

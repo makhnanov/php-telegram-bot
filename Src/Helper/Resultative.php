@@ -9,4 +9,10 @@ trait Resultative
         /** @noinspection PhpUndefinedFieldInspection */
         return $this->result;
     }
+
+    function toArray(): array
+    {
+        /** @noinspection PhpUndefinedFieldInspection */
+        return $this->result;
+    }
 }

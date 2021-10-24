@@ -5,6 +5,7 @@ namespace Makhnanov\Telegram81;
 use BackedEnum;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Utils;
+use InvalidArgumentException;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
 use Makhnanov\Telegram81\Api\Type\Chat;
@@ -50,19 +51,31 @@ function enumToKeyVal(UnitEnum $enum): array
 ])]
 function callbackButton(string|array|BackedEnum $text, string|BackedEnum $data = null): array
 {
-    if (is_string($text) && is_null($data)) {
-        $data = $text;
-    } elseif (is_array($text)) {
-        isset($data[0]) and is_string($data[0]) and $text = $data[0];
-        isset($data[0]) and is_string($data[1]) and $data = $data[1];
+    if (!$data) {
+        if (is_string($text)) {
+            return formatCallbackButton($text, $text);
+        } elseif (is_array($text)) {
+            return formatCallbackButton($text[0], $text[1]);
+        } else {
+            return formatCallbackButton($text->value, $text->name);
+        }
+    }
+
+    if (is_array($text)) {
+        throw new InvalidArgumentException();
     } elseif ($text instanceof BackedEnum) {
-        $text = $text->value ?? $text->name;
-        /** @noinspection PhpUndefinedFieldInspection */
-        $data = $text->name;
+        $text = $text->name;
     }
+
     if ($data instanceof BackedEnum) {
-        $data = $data->value ?? $data->name;
+        $data = $data->name;
     }
+
+    return formatCallbackButton($text, $data);
+}
+
+function formatCallbackButton(string $text, string $data): array
+{
     return ['text' => $text, 'callback_data' => $data];
 }
 

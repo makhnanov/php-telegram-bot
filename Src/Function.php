@@ -47,7 +47,7 @@ function enumToKeyVal(UnitEnum $enum): array
     'text' => "string",
     'callback_data' => "string"
 ])]
-function callbackButton(string|array|StringBackedEnum $text, string $data = null): array
+function callbackButton(string|array|StringBackedEnum $text, string|StringBackedEnum $data = null): array
 {
     if (is_string($text) && is_null($data)) {
         $data = $text;
@@ -58,6 +58,9 @@ function callbackButton(string|array|StringBackedEnum $text, string $data = null
         $text = $text->value ?? $text->name;
         /** @noinspection PhpUndefinedFieldInspection */
         $data = $text->name;
+    }
+    if ($data instanceof StringBackedEnum) {
+        $data = $data->value ?? $data->name;
     }
     return ['text' => $text, 'callback_data' => $data];
 }

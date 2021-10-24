@@ -2,10 +2,22 @@
 
 namespace Makhnanov\Telegram81\Api\Method\Edit;
 
+use GuzzleHttp\Promise\Promise;
+use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
+use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
+use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Api\Type\MessageEntityCollection;
+use Makhnanov\Telegram81\Helper\Prepare;
+use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Makhnanov\Telegram81\Helper\ViaArray;
+
+use ReflectionClass;
+
+use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\Telegram81\is_set;
 
 /**
  * @see EditMessageText
@@ -43,16 +55,39 @@ trait EditMessageTextTrait
      *
      */
     public function editMessageText(
-        string                   $text,
-        null|int|string          $chat_id,
-        ?int                     $message_id,
-        ?string                  $inline_message_id,
-        ?ParseMode               $parse_mode,
-        ?MessageEntityCollection $entities,
-        ?bool                    $disable_web_page_preview,
-        ?InlineKeyboardMarkup    $reply_markup,
-        null|array|ViaArray      $viaArray
+        string                          $text,
+        null|int|string                 $chat_id = null,
+        ?int                            $message_id = null,
+        ?string                         $inline_message_id = null,
+        ?ParseMode                      $parse_mode = null,
+        ?MessageEntityCollection        $entities = null,
+        ?bool                           $disable_web_page_preview = null,
+        null|array|InlineKeyboardMarkup $reply_markup = null,
+        ?array                          $viaArray = null,
     ) {
+        list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
+        foreach ($parameterValues as $name => $value) {
+            $$name = $value;
+        }
 
+        isset($reply_markup) and $reply_markup = Prepare::replyMarkup($reply_markup);
+
+        return new class($this->getResponse(__FUNCTION__, compact(...$parameterNames)))
+            extends Message
+            implements ResponsiveResultative
+        {
+            use ResponsiveResultativeTrait;
+
+            private array $result;
+
+            private Response $response;
+
+            public function __construct(Promise|Response|array $data = [])
+            {
+                $this->response = $data;
+                $this->result = decoded($this->response)['result'] ?? throw new NoResultException();
+                parent::__construct($this->result);
+            }
+        };
     }
 }

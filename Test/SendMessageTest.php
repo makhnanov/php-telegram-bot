@@ -125,7 +125,7 @@ class SendMessageTest extends ParentTestCase
     {
         $this->makeSureThat('you receive message in bot with sound notification');
         $r = $this->bot->sendMessage(
-            $this->getTestUserId(),
+            $this->getPrivateTestUserId(),
             'Test personal message to bot.'
         );
         $result = $r->getResult();

@@ -2,6 +2,8 @@
 
 namespace Makhnanov\Telegram81\Api\Type;
 
+use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
+
 /**
  * @url https://core.telegram.org/bots/api#message
  */
@@ -75,5 +77,9 @@ class Message extends SelfFilling
 //    public ?Voicechatstarted voice_chat_started;                             # @Optional. Service message: voice chat started
 //    public ?Voicechatended voice_chat_ended;                                 # @Optional. Service message: voice chat ended
 //    public ?Voicechatparticipantsinvited voice_chat_participants_invited;    # @Optional. Service message: new participants invited to a voice chat
-//    public ?Inlinekeyboardmarkup reply_markup;                               # @Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
+    /**
+     * @Optional. Inline keyboard attached to the message.
+     * login_url buttons are represented as ordinary url buttons.
+     */
+    public ?array $reply_markup; // |InlineKeyboardMarkup
 }

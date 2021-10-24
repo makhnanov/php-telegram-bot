@@ -131,7 +131,7 @@ trait GetUpdatesTrait
 
         if ($autoOffset) {
             $lastReceivedUpdateId = $collection->getLastReceivedUpdateId();
-            $lastReceivedUpdateId and $this->getUpdatesOffset = $lastReceivedUpdateId + 1;
+            $lastReceivedUpdateId and $this->getUpdatesOffset = (int)($lastReceivedUpdateId + 1);
         }
 
         return $collection;

@@ -20,6 +20,9 @@ abstract class SelfFilling
         if (is_array($data)) {
             foreach ((new ReflectionClass($this))->getProperties(ReflectionProperty::IS_PUBLIC) as $property) {
                 $propName = $property->getName();
+                /**
+                 * todo handle union
+                 */
                 $propType = $property->getType()->getName();
                 $property->setValue(
                     $this,

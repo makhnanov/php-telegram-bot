@@ -11,6 +11,7 @@ use Makhnanov\Telegram81\Api\Method\Edit\EditMessageTextTrait;
 use Makhnanov\Telegram81\Api\Method\Get\GetMeTrait;
 use Makhnanov\Telegram81\Api\Method\Get\GetUpdatesTrait;
 use Makhnanov\Telegram81\Api\Method\Send\SendMessageTrait;
+use Makhnanov\Telegram81\Helper\Reflection;
 use Stringable;
 
 /**
@@ -21,7 +22,8 @@ class Bot
 {
     public const STD_LONG_POOLING_TIMEOUT = 6;
 
-    use GetMeTrait,
+    use Reflection,
+        GetMeTrait,
         SendMessageTrait,
         GetUpdatesTrait,
         EditMessageTextTrait;

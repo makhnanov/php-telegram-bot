@@ -94,7 +94,7 @@ abstract class ParentTestCase extends TestCase
         return '@program_mem';
     }
 
-    public function getTestUserId(): string|int
+    public function getPrivateTestUserId(): string|int
     {
         return 390941013;
     }

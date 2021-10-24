@@ -5,8 +5,6 @@ namespace Makhnanov\Telegram81\Api\Type;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use Iterator;
-use Makhnanov\Telegram81\Api\Type\Update;
-use Makhnanov\Telegram81\Helper\ResponsiveInterface;
 use Makhnanov\Telegram81\Helper\Resultative;
 use Makhnanov\Telegram81\Helper\ResultativeInterface;
 
@@ -36,7 +34,7 @@ class UpdateCollection implements Iterator
                 }
             };
         }
-        $this->lastUpdateId = $this->updates[count($this->updates) - 1]->update_id ?? 0;
+        $this->lastUpdateId = $this->updates[count($this->updates) - 1]?->update_id ?? 0;
     }
 
     public function current(): Update & ResultativeInterface

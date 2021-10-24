@@ -12,6 +12,7 @@ use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\EntityCollection;
 use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Api\Type\ReplyMarkup;
+use Makhnanov\Telegram81\Helper\Prepare;
 use Makhnanov\Telegram81\Helper\ResponsiveResultative;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Makhnanov\Telegram81\Helper\ViaArray;
@@ -72,70 +73,24 @@ trait SendMessageTrait
         ?int                        $reply_to_message_id = null,
         ?bool                       $allow_sending_without_reply = null,
         null|array|ReplyMarkup      $reply_markup = null,
-        ?ViaArray                   $viaArray = null,
+        ?array                      $viaArray = null,
     ): Message & ResponsiveResultative {
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $inputParameters = (new ReflectionClass($this))->getMethod(__FUNCTION__)->getParameters();
-        $inputParameterNames = [];
-        foreach ($inputParameters as $oneParameter) {
-            $parameterName = $oneParameter->getName();
-            $inputParameterNames[] = $parameterName;
-            if (!$oneParameter->hasType()) {
-                /** @noinspection PhpUnhandledExceptionInspection */
-                throw new BadCodeException();
-            }
-            if (isset($viaArray->$parameterName)) {
-                $declarationParameterType = $oneParameter->getType();
-                if ($declarationParameterType instanceof ReflectionNamedType) {
-                    $typeOrClass = $declarationParameterType->getName();
-                    if (
-                        !(class_exists($typeOrClass) && is_a($viaArray->$parameterName, $typeOrClass))
-                        && $typeOrClass !== gettype($viaArray->$parameterName)
-                        && !( // fix
-                            $typeOrClass === 'bool'
-                            && gettype($viaArray->$parameterName) === 'boolean'
-                        )
-                    ) {
-                        throw new TypeError();
-                    }
-                    $$parameterName = $viaArray->$parameterName;
-                } elseif ($declarationParameterType instanceof ReflectionUnionType) {
-                    $throw = true;
-                    foreach ($declarationParameterType->getTypes() as $type) {
-                        $typeOrClass = $type->getName();
-                        if (
-                            (class_exists($typeOrClass) && is_a($viaArray->$parameterName, $typeOrClass))
-                            || $typeOrClass === gettype($viaArray->$parameterName)
-                        ) {
-                            $throw = false;
-                            break;
-                        }
-                    }
-                    $throw and throw new TypeError();
-                    $$parameterName = $viaArray->$parameterName;
-                }
-            }
+        list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
+        foreach ($parameterValues as $name => $value) {
+            $$name = $value;
         }
-        unset($inputParameterNames['viaArray']);
 
         if ($parse_mode) {
             if ($parse_mode === ParseMode::MarkdownV2) {
                 $text = str_replace('.', '\.', $text);
             }
             $parse_mode = $parse_mode->name;
-            ArrayHelper::removeValue($inputParameterNames, 'entities');
+            ArrayHelper::removeValue($parameterNames, 'entities');
         }
 
-        if ($reply_markup) {
-            if (is_array($reply_markup)) {
-                $reply_markup = json_encode($reply_markup);
-            } /** @noinspection PhpStatementHasEmptyBodyInspection */ elseif ($reply_markup instanceof ReplyMarkup) {
-                # todo
-            }
-        }
+        isset($reply_markup) and $reply_markup = Prepare::replyMarkup($reply_markup);
 
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return new class($this->getResponse(__FUNCTION__, compact(...$inputParameterNames)))
+        return new class($this->getResponse(__FUNCTION__, compact(...$parameterNames)))
             extends Message
             implements ResponsiveResultative
         {

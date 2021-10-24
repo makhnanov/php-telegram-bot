@@ -8,11 +8,11 @@ use Makhnanov\Telegram81\Api\Type\SelfFilling;
 class InlineKeyboardMarkup extends SelfFilling
 {
     #[ArrayShape(['inline_keyboard' => "array[]"])]
-    public static function new(array $rows): array
+    public static function new(array ...$row): array
     {
         return [
             'inline_keyboard' => [
-                $rows
+                func_get_args()
             ]
         ];
     }

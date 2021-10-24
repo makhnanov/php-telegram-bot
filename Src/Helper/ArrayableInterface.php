@@ -2,7 +2,7 @@
 
 namespace Makhnanov\Telegram81\Helper;
 
-interface ResultativeInterface extends ArrayableInterface
+interface ArrayableInterface
 {
-    function getResult(): array;
+    public function toArray(): array;
 }

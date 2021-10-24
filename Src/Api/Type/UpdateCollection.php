@@ -9,7 +9,7 @@ use Makhnanov\Telegram81\Helper\Resultative;
 use Makhnanov\Telegram81\Helper\ResultativeInterface;
 
 /**
- * @template Update &
+ * @template Update
  */
 class UpdateCollection implements Iterator
 {

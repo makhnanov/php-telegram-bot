@@ -2,6 +2,7 @@
 
 namespace Makhnanov\Telegram81;
 
+use BackedEnum;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Utils;
 use JetBrains\PhpStorm\ArrayShape;
@@ -47,7 +48,7 @@ function enumToKeyVal(UnitEnum $enum): array
     'text' => "string",
     'callback_data' => "string"
 ])]
-function callbackButton(string|array|StringBackedEnum $text, string|StringBackedEnum $data = null): array
+function callbackButton(string|array|BackedEnum $text, string|BackedEnum $data = null): array
 {
     if (is_string($text) && is_null($data)) {
         $data = $text;

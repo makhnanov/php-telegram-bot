@@ -55,12 +55,12 @@ function callbackButton(string|array|BackedEnum $text, string|BackedEnum $data =
     } elseif (is_array($text)) {
         isset($data[0]) and is_string($data[0]) and $text = $data[0];
         isset($data[0]) and is_string($data[1]) and $data = $data[1];
-    } elseif ($text instanceof StringBackedEnum) {
+    } elseif ($text instanceof BackedEnum) {
         $text = $text->value ?? $text->name;
         /** @noinspection PhpUndefinedFieldInspection */
         $data = $text->name;
     }
-    if ($data instanceof StringBackedEnum) {
+    if ($data instanceof BackedEnum) {
         $data = $data->value ?? $data->name;
     }
     return ['text' => $text, 'callback_data' => $data];

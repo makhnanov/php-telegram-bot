@@ -2,9 +2,9 @@
 
 namespace Makhnanov\Telegram81\Helper\Smile;
 
-class SmileInfo extends SmileJoystick
+enum SmileInfo: string
 {
-    public const ABC = '🔤';
-    public const NEW = '🆕';
-    public const FREE = '🆓';
+    case ABC = '🔤';
+    case NEW = '🆕';
+    case FREE = '🆓';
 }

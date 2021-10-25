@@ -15,9 +15,9 @@ class Snippet
         return [
             'inline_keyboard' => [
                 ...$prepend,
-                [callbackButton(J::UP_LEFT), callbackButton(J::UP), callbackButton(J::UP_RIGHT)],
-                [callbackButton(J::LEFT), callbackButton(J::CENTER), callbackButton(J::RIGHT)],
-                [callbackButton(J::DOWN_LEFT), callbackButton(J::DOWN), callbackButton(J::DOWN_RIGHT)],
+                [callbackButton(J::upLeft), callbackButton(J::up), callbackButton(J::upRight)],
+                [callbackButton(J::left), callbackButton(J::center), callbackButton(J::right)],
+                [callbackButton(J::downLeft), callbackButton(J::down), callbackButton(J::downRight)],
                 ...$append
             ]
         ];

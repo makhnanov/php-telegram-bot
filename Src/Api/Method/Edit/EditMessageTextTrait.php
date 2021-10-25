@@ -74,13 +74,10 @@ trait EditMessageTextTrait
         }
         ArrayHelper::removeValue($parameterNames, 'ignoreExceptionIfUnchanged');
 
-        isset($reply_markup) and
-        $reply_markup = Prepare::replyMarkup($reply_markup);
+        isset($reply_markup) and $reply_markup = Prepare::replyMarkup($reply_markup);
 
         try {
             $response = $this->getResponse(__FUNCTION__, compact(...$parameterNames));
-
-
         } catch (BadResponseException $e) {
             $guzzleResponse = $e->getResponse();
             $decoded = decoded($guzzleResponse);
@@ -92,11 +89,10 @@ trait EditMessageTextTrait
             ) {
                 throw new UnchangedMessageException();
             }
+            throw $e;
         }
 
-        return new class()
-            extends Message
-            implements ResponsiveResultative
+        return new class($response) extends Message implements ResponsiveResultative
         {
             use ResponsiveResultativeTrait;
 

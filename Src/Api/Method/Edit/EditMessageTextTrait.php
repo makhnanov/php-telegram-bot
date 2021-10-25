@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpReturnDocTypeMismatchInspection */
 
 namespace Makhnanov\Telegram81\Api\Method\Edit;
 
@@ -6,6 +7,7 @@ use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
+use Makhnanov\Telegram81\Api\Exception\BadCodeException;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Exception\UnchangedMessageException;
 use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
@@ -14,8 +16,6 @@ use Makhnanov\Telegram81\Api\Type\MessageEntityCollection;
 use Makhnanov\Telegram81\Helper\Prepare;
 use Makhnanov\Telegram81\Helper\ResponsiveResultative;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
-
-use Yiisoft\Arrays\ArrayHelper;
 
 use function Makhnanov\Telegram81\decoded;
 
@@ -33,7 +33,7 @@ trait EditMessageTextTrait
      * @param string $text New text of the message, 1-4096 characters after entities parsing
      *
      * @param ?int|string $chat_id @Optional. Required if inline_message_id is not specified. Unique identifier for
-     *                             the target chat or username of the target channel (in the format @channelusername)
+     *                             the target chat or username of the target channel in the format @channelusername
      *
      * @param ?int $message_id @Optional. Required if inline_message_id is not specified. Identifier of the message to edit
      *
@@ -52,9 +52,15 @@ trait EditMessageTextTrait
      *
      * @param ?array $viaArray
      *
-     * @return Message & ResponsiveResultative
-     * @throws \Makhnanov\Telegram81\Api\Exception\BadCodeException
+     * @param ?bool $ignoreExceptionIfUnchanged
      *
+     * @return Message&ResponsiveResultative
+     *
+     * @throws BadCodeException
+     * @throws UnchangedMessageException
+     *
+     * @noinspection PhpUnusedParameterInspection
+     * @noinspection PhpIncompatibleReturnTypeInspection
      */
     public function editMessageText(
         string                          $text,
@@ -66,28 +72,33 @@ trait EditMessageTextTrait
         ?bool                           $disable_web_page_preview = null,
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array                          $viaArray = null,
-        bool                            $ignoreExceptionIfUnchanged = false
+        ?bool                           $ignoreExceptionIfUnchanged = false
     ): Message & ResponsiveResultative {
-        list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
+        list($usefulNames, $parameterValues) = $this->viaArray(
+            __FUNCTION__,
+            $viaArray,
+            ['ignoreExceptionIfUnchanged']
+        );
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
         }
-        ArrayHelper::removeValue($parameterNames, 'ignoreExceptionIfUnchanged');
 
+        /** @noinspection PhpUnusedLocalVariableInspection */
         isset($reply_markup) and $reply_markup = Prepare::replyMarkup($reply_markup);
 
         try {
-            $response = $this->getResponse(__FUNCTION__, compact(...$parameterNames));
+            $response = $this->getResponse(__FUNCTION__, compact(...$usefulNames));
         } catch (BadResponseException $e) {
             $guzzleResponse = $e->getResponse();
             $decoded = decoded($guzzleResponse);
             if (
-                $guzzleResponse->getStatusCode() === 400
+                isset($decoded['ok'], $decoded['error_code'], $decoded['description'])
+                && $guzzleResponse->getStatusCode() === 400
                 && $decoded['ok'] === false
                 && $decoded['error_code'] === 400
                 && $decoded['description'] === UnchangedMessageException::REASON
             ) {
-                throw new UnchangedMessageException();
+                !$ignoreExceptionIfUnchanged and throw new UnchangedMessageException();
             }
             throw $e;
         }
@@ -100,13 +111,10 @@ trait EditMessageTextTrait
 
             private Response $response;
 
-            public function __construct(
-                Promise|Response|array $data = []
-            ) {
+            public function __construct(Promise|Response|array $data = [])
+            {
                 $this->response = $data;
-                $this->result = decoded($this->response)['result']
-                    ??
-                    throw new NoResultException();
+                $this->result = decoded($this->response)['result'] ?? throw new NoResultException();
                 parent::__construct($this->result);
             }
         };

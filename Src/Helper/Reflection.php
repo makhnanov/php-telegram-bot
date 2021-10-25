@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Makhnanov\Telegram81\Helper;
 
@@ -11,21 +12,30 @@ use Yiisoft\Arrays\ArrayHelper;
 
 trait Reflection
 {
-    public function viaArray(string $function, $viaArray): array
+    public function viaArray(string $function, ?array $viaArray = [], array $ignored = []): array
     {
-// make to       Arbitrator class
+        // make to Arbitrator class
         $inputParameter = (new ReflectionClass($this))->getMethod($function)->getParameters();
         $inputNames = [];
         $nameValue = [];
         foreach ($inputParameter as $oneParameter) {
             $name = $oneParameter->getName();
+
+            if (in_array($name, $ignored, true)) {
+                continue;
+            }
+
             $inputNames[] = $name;
+
             if (isset($viaArray[$name])) {
+
                 if (!$oneParameter->hasType()) {
                     /** @noinspection PhpUnhandledExceptionInspection */
                     throw new BadCodeException();
                 }
+
                 $reflectionType = $oneParameter->getType();
+
                 if (
                     $reflectionType instanceof ReflectionNamedType
                     && !$this->isTypeSame($reflectionType->getName(), $viaArray, $name)
@@ -41,10 +51,13 @@ trait Reflection
                     }
                     $throw and throw new TypeError();
                 }
+
                 $nameValue[$name] = $viaArray[$name];
             }
         }
+
         ArrayHelper::removeValue($inputNames, 'viaArray');
+
         return [$inputNames, $nameValue];
     }
 

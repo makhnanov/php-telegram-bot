@@ -49,6 +49,8 @@ trait SendMessageTrait
      *
      * @property ?array $viaArray
      *
+     * @return Message&ResponsiveResultative
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpUnusedLocalVariableInspection
      */

@@ -79,17 +79,17 @@ function formatCallbackButton(string $text, string $data): array
     return ['text' => $text, 'callback_data' => $data];
 }
 
-#[Pure] function isPrivate(string|Chat $mixed): bool
+#[Pure] function isPrivate(null|string|Chat $mixed): bool
 {
     return getChatType($mixed) === 'private';
 }
 
-#[Pure] function isChannel(string|Chat $mixed): bool
+#[Pure] function isChannel(null|string|Chat $mixed): bool
 {
     return getChatType($mixed) === 'channel';
 }
 
-function getChatType(string|Chat $mixed): string
+function getChatType(null|string|Chat $mixed): string
 {
     return $mixed instanceof Chat ? $mixed->type : $mixed;
 }

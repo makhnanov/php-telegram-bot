@@ -3,39 +3,23 @@ declare(strict_types=1);
 
 namespace Makhnanov\Telegram81\Api\Enumeration;
 
-class AllowedUpdates
+use Makhnanov\PhpEnum81\EnumUpgrade;
+
+enum AllowedUpdates
 {
-    # ToDo to reflection
-    public const ALL = [
-        self::MESSAGE,
-        self::EDITED_MESSAGE,
-        self::CHANNEL_POST,
-        self::EDITED_CHANNEL_POST,
-        self::INLINE_QUERY,
-        self::CHOSEN_INLINE_RESULT,
-        self::CALLBACK_QUERY,
-        self::SHIPPING_QUERY,
-        self::PRE_CHECKOUT_QUERY,
-        self::POLL,
-        self::POLL_ANSWER,
-        self::MY_CHAT_MEMBER,
-        self::CHAT_MEMBER,
-    ];
+    use EnumUpgrade;
 
-    #ToDo only for bot
-    #ToDo only for channel
-
-    public const MESSAGE = 'message';
-    public const EDITED_MESSAGE = 'edited_message';
-    public const CHANNEL_POST = 'channel_post';
-    public const EDITED_CHANNEL_POST = 'edited_channel_post';
-    public const INLINE_QUERY = 'inline_query';
-    public const CHOSEN_INLINE_RESULT = 'chosen_inline_result';
-    public const CALLBACK_QUERY = 'callback_query';
-    public const SHIPPING_QUERY = 'shipping_query';
-    public const PRE_CHECKOUT_QUERY = 'pre_checkout_query';
-    public const POLL = 'poll';
-    public const POLL_ANSWER = 'poll_answer';
-    public const MY_CHAT_MEMBER = 'my_chat_member';
-    public const CHAT_MEMBER = 'chat_member';
+    case message;
+    case edited_message;
+    case channel_post;
+    case edited_channel_post;
+    case inline_query;
+    case chosen_inline_result;
+    case callback_query;
+    case shipping_query;
+    case pre_checkout_query;
+    case poll;
+    case poll_answer;
+    case my_chat_member;
+    case chat_member;
 }

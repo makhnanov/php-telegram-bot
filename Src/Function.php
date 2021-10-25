@@ -10,7 +10,6 @@ use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
 use Makhnanov\Telegram81\Api\Type\Chat;
 use StringBackedEnum;
-use UnitEnum;
 
 function is_set(mixed $value): bool
 {
@@ -20,22 +19,6 @@ function is_set(mixed $value): bool
 function decoded(Response $response): array
 {
     return Utils::jsonDecode($response->getBody()->getContents(), true);
-}
-
-function name(UnitEnum $enum): string
-{
-    return $enum->name;
-}
-
-function value(UnitEnum $enum): string
-{
-    return $enum->value;
-}
-
-#[Pure]
-function enumToKeyVal(UnitEnum $enum): array
-{
-    return [name($enum) => value($enum)];
 }
 
 /**

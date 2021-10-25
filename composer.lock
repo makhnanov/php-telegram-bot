@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9803c3ad350810b6f3c47fd68b0adb31",
+    "content-hash": "e7b534a7383ea089cb64ac3ba9628262",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "eeac96d112cb0e836749566e82a61126809e8d38"
+                "reference": "868b3571a039f0ebc11ac8f344f4080babe2cb94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/eeac96d112cb0e836749566e82a61126809e8d38",
-                "reference": "eeac96d112cb0e836749566e82a61126809e8d38",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/868b3571a039f0ebc11ac8f344f4080babe2cb94",
+                "reference": "868b3571a039f0ebc11ac8f344f4080babe2cb94",
                 "shasum": ""
             },
             "require": {
@@ -113,7 +113,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/master"
+                "source": "https://github.com/guzzle/guzzle/tree/7.4.0"
             },
             "funding": [
                 {
@@ -129,7 +129,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-13T23:47:22+00:00"
+            "time": "2021-10-18T09:52:00+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -137,12 +137,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "b2e8301545358f39b94576b34b305b89cee04193"
+                "reference": "fe752aedc9fd8fcca3fe7ad05d419d32998a06da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/b2e8301545358f39b94576b34b305b89cee04193",
-                "reference": "b2e8301545358f39b94576b34b305b89cee04193",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/fe752aedc9fd8fcca3fe7ad05d419d32998a06da",
+                "reference": "fe752aedc9fd8fcca3fe7ad05d419d32998a06da",
                 "shasum": ""
             },
             "require": {
@@ -198,7 +198,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/master"
+                "source": "https://github.com/guzzle/promises/tree/1.5.1"
             },
             "funding": [
                 {
@@ -214,7 +214,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-14T23:58:19+00:00"
+            "time": "2021-10-22T20:56:57+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -222,12 +222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "089edd38f5b8abba6cb01567c2a8aaa47cec4c72"
+                "reference": "9e3511bee5efa86e591fb27efb7a894571c7a244"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/089edd38f5b8abba6cb01567c2a8aaa47cec4c72",
-                "reference": "089edd38f5b8abba6cb01567c2a8aaa47cec4c72",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/9e3511bee5efa86e591fb27efb7a894571c7a244",
+                "reference": "9e3511bee5efa86e591fb27efb7a894571c7a244",
                 "shasum": ""
             },
             "require": {
@@ -314,7 +314,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.1.0"
+                "source": "https://github.com/guzzle/psr7/tree/master"
             },
             "funding": [
                 {
@@ -330,7 +330,55 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-06T17:43:30+00:00"
+            "time": "2021-10-21T23:15:39+00:00"
+        },
+        {
+            "name": "makhnanov/php-enum-81",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/makhnanov/php-enum-81.git",
+                "reference": "af545cca6451574ec454545fd5df96147d87a07c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/makhnanov/php-enum-81/zipball/af545cca6451574ec454545fd5df96147d87a07c",
+                "reference": "af545cca6451574ec454545fd5df96147d87a07c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9",
+                "symfony/var-dumper": "6.0.x-dev"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Makhnanov\\PhpEnum81\\": "Src/"
+                },
+                "files": [
+                    "Src/Function.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Romaxa",
+                    "email": "bakirov.important@gmail.com"
+                }
+            ],
+            "description": "Useful things for new PHP 8.1 Enum feature.",
+            "support": {
+                "issues": "https://github.com/makhnanov/php-enum-81/issues",
+                "source": "https://github.com/makhnanov/php-enum-81/tree/master"
+            },
+            "time": "2021-10-25T16:20:11+00:00"
         },
         {
             "name": "psr/http-client",
@@ -612,12 +660,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/arrays.git",
-                "reference": "4877d3cee3109a8b4f55ae76412c31b8b2c78394"
+                "reference": "97123b57601a94563916e7cddf9620e1c769d179"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/arrays/zipball/4877d3cee3109a8b4f55ae76412c31b8b2c78394",
-                "reference": "4877d3cee3109a8b4f55ae76412c31b8b2c78394",
+                "url": "https://api.github.com/repos/yiisoft/arrays/zipball/97123b57601a94563916e7cddf9620e1c769d179",
+                "reference": "97123b57601a94563916e7cddf9620e1c769d179",
                 "shasum": ""
             },
             "require": {
@@ -666,7 +714,7 @@
                     "type": "opencollective"
                 }
             ],
-            "time": "2021-10-21T10:55:56+00:00"
+            "time": "2021-10-23T20:52:55+00:00"
         },
         {
             "name": "yiisoft/strings",
@@ -1139,12 +1187,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "0005eb9eaecc2a3a00b8ee34c06643a316ebb228"
+                "reference": "622548b623e81ca6d78b721c5e029f4ce664f170"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/0005eb9eaecc2a3a00b8ee34c06643a316ebb228",
-                "reference": "0005eb9eaecc2a3a00b8ee34c06643a316ebb228",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/622548b623e81ca6d78b721c5e029f4ce664f170",
+                "reference": "622548b623e81ca6d78b721c5e029f4ce664f170",
                 "shasum": ""
             },
             "require": {
@@ -1187,9 +1235,9 @@
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
             "support": {
                 "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
-                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/master"
+                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/5.3.0"
             },
-            "time": "2021-10-05T20:58:53+00:00"
+            "time": "2021-10-19T17:43:47+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -1634,12 +1682,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "233872f9640164f6220a0e022cd17d538743e906"
+                "reference": "2593ca5deed8c228c4dadce7e1e5bfb9209f908f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/233872f9640164f6220a0e022cd17d538743e906",
-                "reference": "233872f9640164f6220a0e022cd17d538743e906",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2593ca5deed8c228c4dadce7e1e5bfb9209f908f",
+                "reference": "2593ca5deed8c228c4dadce7e1e5bfb9209f908f",
                 "shasum": ""
             },
             "require": {
@@ -1721,7 +1769,7 @@
             },
             "funding": [
                 {
-                    "url": "https://phpunit.de/donate.html",
+                    "url": "https://phpunit.de/sponsors.html",
                     "type": "custom"
                 },
                 {
@@ -1729,7 +1777,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-19T07:42:16+00:00"
+            "time": "2021-10-24T15:01:57+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -2585,7 +2633,6 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
             "time": "2020-09-28T06:45:17+00:00"
         },
         {
@@ -2703,16 +2750,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "f24ae462b1d60c333df104f0b81ec7d0e12f6e9f"
+                "reference": "30885182c981ab175d4d034db0f6f469898070ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/f24ae462b1d60c333df104f0b81ec7d0e12f6e9f",
-                "reference": "f24ae462b1d60c333df104f0b81ec7d0e12f6e9f",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/30885182c981ab175d4d034db0f6f469898070ab",
+                "reference": "30885182c981ab175d4d034db0f6f469898070ab",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
+            },
+            "provide": {
+                "ext-ctype": "*"
             },
             "suggest": {
                 "ext-ctype": "For best performance"
@@ -2775,7 +2825,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-14T14:02:44+00:00"
+            "time": "2021-10-20T20:35:02+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2783,16 +2833,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "344e456152e22a1bce3048c6c311059ea14bde47"
+                "reference": "11b9acb5e8619aef6455735debf77dde8825795c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/344e456152e22a1bce3048c6c311059ea14bde47",
-                "reference": "344e456152e22a1bce3048c6c311059ea14bde47",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/11b9acb5e8619aef6455735debf77dde8825795c",
+                "reference": "11b9acb5e8619aef6455735debf77dde8825795c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
+            },
+            "provide": {
+                "ext-mbstring": "*"
             },
             "suggest": {
                 "ext-mbstring": "For best performance"
@@ -2856,7 +2909,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-13T13:54:24+00:00"
+            "time": "2021-10-20T20:35:02+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -2864,12 +2917,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "6e01f85389725bff9e19b8c323ad82aea44b3f0e"
+                "reference": "1b303bd250738e9603d36c464b26464057a948bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/6e01f85389725bff9e19b8c323ad82aea44b3f0e",
-                "reference": "6e01f85389725bff9e19b8c323ad82aea44b3f0e",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/1b303bd250738e9603d36c464b26464057a948bc",
+                "reference": "1b303bd250738e9603d36c464b26464057a948bc",
                 "shasum": ""
             },
             "require": {
@@ -2944,7 +2997,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-11T16:08:10+00:00"
+            "time": "2021-10-25T15:10:37+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -3061,6 +3114,7 @@
     "stability-flags": {
         "guzzlehttp/guzzle": 20,
         "yiisoft/arrays": 20,
+        "makhnanov/php-enum-81": 20,
         "symfony/var-dumper": 20
     },
     "prefer-stable": false,

@@ -1,4 +1,4 @@
-run:
+up:
 	docker-compose build && docker-compose up
 entrance:
 	docker-compose exec app sh

@@ -17,6 +17,8 @@ use Makhnanov\Telegram81\Helper\Prepare;
 use Makhnanov\Telegram81\Helper\ResponsiveResultative;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 
+use Stringable;
+
 use function Makhnanov\Telegram81\decoded;
 
 /**
@@ -63,10 +65,10 @@ trait EditMessageTextTrait
      * @noinspection PhpIncompatibleReturnTypeInspection
      */
     public function editMessageText(
-        string                          $text,
-        null|int|string                 $chat_id = null,
+        string|Stringable               $text,
+        null|int|string|Stringable      $chat_id = null,
         ?int                            $message_id = null,
-        ?string                         $inline_message_id = null,
+        null|string|Stringable          $inline_message_id = null,
         ?ParseMode                      $parse_mode = null,
         ?MessageEntityCollection        $entities = null,
         ?bool                           $disable_web_page_preview = null,
@@ -82,6 +84,10 @@ trait EditMessageTextTrait
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
         }
+
+        $text instanceof Stringable and $text = (string)$chat_id;
+        $chat_id and $chat_id instanceof Stringable and $chat_id = (string)$chat_id;
+        $inline_message_id and $inline_message_id instanceof Stringable and $inline_message_id = (string)$chat_id;
 
         /** @noinspection PhpUnusedLocalVariableInspection */
         isset($reply_markup) and $reply_markup = Prepare::replyMarkup($reply_markup);

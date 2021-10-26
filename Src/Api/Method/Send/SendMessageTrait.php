@@ -13,6 +13,7 @@ use Makhnanov\Telegram81\Api\Type\ReplyMarkup;
 use Makhnanov\Telegram81\Helper\Prepare;
 use Makhnanov\Telegram81\Helper\ResponsiveResultative;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
+use Stringable;
 use Yiisoft\Arrays\ArrayHelper;
 
 use function Makhnanov\Telegram81\decoded;
@@ -53,6 +54,7 @@ trait SendMessageTrait
      *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpUnusedLocalVariableInspection
+     * @noinspection PhpIncompatibleReturnTypeInspection
      */
     public function sendMessage(
         int|string                  $chat_id,
@@ -70,6 +72,8 @@ trait SendMessageTrait
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
         }
+
+        $text instanceof Stringable and $text = (string)$text;
 
         if ($parse_mode) {
             if ($parse_mode === ParseMode::MarkdownV2) {

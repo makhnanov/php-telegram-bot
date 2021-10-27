@@ -338,12 +338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/makhnanov/php-enum-81.git",
-                "reference": "af545cca6451574ec454545fd5df96147d87a07c"
+                "reference": "a49fa408a179180a71dd6ec75f9ddea3f62b8ecf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/makhnanov/php-enum-81/zipball/af545cca6451574ec454545fd5df96147d87a07c",
-                "reference": "af545cca6451574ec454545fd5df96147d87a07c",
+                "url": "https://api.github.com/repos/makhnanov/php-enum-81/zipball/a49fa408a179180a71dd6ec75f9ddea3f62b8ecf",
+                "reference": "a49fa408a179180a71dd6ec75f9ddea3f62b8ecf",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
                 "issues": "https://github.com/makhnanov/php-enum-81/issues",
                 "source": "https://github.com/makhnanov/php-enum-81/tree/master"
             },
-            "time": "2021-10-25T16:20:11+00:00"
+            "time": "2021-10-27T12:00:34+00:00"
         },
         {
             "name": "psr/http-client",
@@ -1245,12 +1245,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae"
+                "reference": "9dc4bb058ffd1f194059f6b099bd6ca9c726aed4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/a12f7e301eb7258bb68acd89d4aefa05c2906cae",
-                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9dc4bb058ffd1f194059f6b099bd6ca9c726aed4",
+                "reference": "9dc4bb058ffd1f194059f6b099bd6ca9c726aed4",
                 "shasum": ""
             },
             "require": {
@@ -1286,9 +1286,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.1"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.x"
             },
-            "time": "2021-10-02T14:08:47+00:00"
+            "time": "2021-10-26T18:53:16+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -2917,12 +2917,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "1b303bd250738e9603d36c464b26464057a948bc"
+                "reference": "1817d621509852701fcbd0f03edc892a7047f04f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/1b303bd250738e9603d36c464b26464057a948bc",
-                "reference": "1b303bd250738e9603d36c464b26464057a948bc",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/1817d621509852701fcbd0f03edc892a7047f04f",
+                "reference": "1817d621509852701fcbd0f03edc892a7047f04f",
                 "shasum": ""
             },
             "require": {
@@ -2997,7 +2997,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-25T15:10:37+00:00"
+            "time": "2021-10-26T16:02:09+00:00"
         },
         {
             "name": "theseer/tokenizer",

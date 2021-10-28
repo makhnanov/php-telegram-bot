@@ -45,7 +45,12 @@ class Message extends SelfFilling
 //    public ?Animation animation;                                             # @Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set
 //    public ?Audio audio;                                                     # @Optional. Message is an audio file, information about the file
 //    public ?Document document;                                               # @Optional. Message is a general file, information about the file
-//    public ?PhotoSize[] photo;                                               # @Optional. Message is a photo, available sizes of the photo
+
+    /**
+     * @Optional. Message is a photo, available sizes of the photo
+     */
+    public PhotoSizeCollection $photo;
+
 //    public ?Sticker sticker;                                                 # @Optional. Message is a sticker, information about the sticker
 //    public ?Video video;                                                     # @Optional. Message is a video, information about the video
 //    public ?Videonote video_note;                                            # @Optional. Message is a video note, information about the video message

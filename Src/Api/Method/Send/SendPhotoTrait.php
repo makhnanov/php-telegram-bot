@@ -1,0 +1,67 @@
+<?php
+
+namespace Makhnanov\Telegram81\Api\Method\Send;
+
+use GuzzleHttp\Promise\Promise;
+use GuzzleHttp\Psr7\Response;
+use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
+use Makhnanov\Telegram81\Api\Exception\NoResultException;
+use Makhnanov\Telegram81\Api\Type\InputFile;
+use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
+use Makhnanov\Telegram81\Api\Type\Message;
+use Makhnanov\Telegram81\Api\Type\MessageEntityCollection;
+use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
+use Stringable;
+
+use function Makhnanov\Telegram81\decoded;
+
+trait SendPhotoTrait
+{
+//    /**
+//     * @param  Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+//     * @param  or String	Yes	Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More info on Sending Files »
+//     * @param  Optional	Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
+//     * @param  Optional	Mode for parsing entities in the photo caption. See formatting options for more details.
+//     * @param  of MessageEntity	Optional	A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+//     * @param  Optional	Sends the message silently. Users will receive a notification with no sound.
+//     * @param  Optional	If the message is a reply, ID of the original message
+//     * @param  Optional	Pass True, if the message should be sent even if the specified replied-to message is not found
+//     * @param  or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply	Optional	Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+//     */
+    public function sendPhoto(
+        int|string|Stringable $chat_id,
+        string|InputFile $photo,
+        ?string $caption = null,
+        null|string|ParseMode $parse_mode = null,
+        null|array|MessageEntityCollection $caption_entities = null,
+        ?bool $disable_notification = null,
+        ?int $reply_to_message_id = null,
+        ?bool $allow_sending_without_reply = null,
+        null|array|InlineKeyboardMarkup $reply_markup = null,
+        ?array $viaArray = null,
+    ) {
+        list($usefulNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray,);
+        foreach ($parameterValues as $name => $value) {
+            $$name = $value;
+        }
+
+        return new class($this->getResponse(__FUNCTION__, compact(...$usefulNames)))
+            extends Message
+            implements ResponsiveResultative
+        {
+            use ResponsiveResultativeTrait;
+
+            private array $result;
+
+            private Response $response;
+
+            public function __construct(Promise|Response|array $data = [])
+            {
+                $this->response = $data;
+                $this->result = decoded($this->response)['result'] ?? throw new NoResultException();
+                parent::__construct($this->result);
+            }
+        };
+    }
+}

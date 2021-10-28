@@ -28,14 +28,7 @@ trait Reflection
             $inputNames[] = $name;
 
             if (isset($viaArray[$name])) {
-
-                if (!$oneParameter->hasType()) {
-                    /** @noinspection PhpUnhandledExceptionInspection */
-                    throw new BadCodeException();
-                }
-
                 $reflectionType = $oneParameter->getType();
-
                 if (
                     $reflectionType instanceof ReflectionNamedType
                     && !$this->isTypeSame($reflectionType->getName(), $viaArray, $name)

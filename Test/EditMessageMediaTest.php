@@ -8,12 +8,8 @@ class EditMessageMediaTest extends ParentTestCase
     {
         $cheese = 'AgACAgIAAxkBAAIBHWF6ovBmYI2Q4HOJAnQoBuqKZCg6AAKqtzEb8JzZS4u0kETHTM5tAQADAgADcwADIQQ';
         $twitter = 'AgACAgIAAxkBAAIBH2F6pDfWCf_TWGIT_FXoMgfJDQHVAAKttzEb8JzZS8_LbFFHWFJ1AQADAgADeQADIQQ';
-        $r = $this->bot->sendPhoto(
-            $this->getPrivateTestUserId(),
-            $cheese
-        );
-//        dd($r->getResult());
-        sleep(2);
+        $r = $this->bot->sendPhoto($this->getPrivateTestUserId(), $cheese);
+        sleep(5);
         $this->bot->editMessageMedia(
             [
                 'type' => 'photo',

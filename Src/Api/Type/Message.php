@@ -49,7 +49,7 @@ class Message extends SelfFilling
     /**
      * @Optional. Message is a photo, available sizes of the photo
      */
-    public PhotoSizeCollection $photo;
+    public null|array|PhotoSizeCollection $photo;
 
 //    public ?Sticker sticker;                                                 # @Optional. Message is a sticker, information about the sticker
 //    public ?Video video;                                                     # @Optional. Message is a video, information about the video

@@ -36,7 +36,12 @@ class Message extends SelfFilling
     public ?int $forward_date;                                               # @Optional. For forwarded messages, date the original message was sent in Unix time
     public ?Message $reply_to_message;                                       # @Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
     public ?User $via_bot;                                                   # @Optional. Bot through which the message was sent
-    public ?int $edit_date;                                                  # @Optional. Date the message was last edited in Unix time
+
+    /**
+     * @Optional. Date the message was last edited in Unix time
+     */
+    public ?int $edit_date;
+
     public ?string $media_group_id;                                          # @Optional. The unique identifier of a media message group this message belongs to
     public ?string $author_signature;                                        # @Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator
     public ?string $text;                                                    # @Optional. For text messages, the actual UTF-8 text of the message, 0-4096 characters
@@ -49,7 +54,7 @@ class Message extends SelfFilling
     /**
      * @Optional. Message is a photo, available sizes of the photo
      */
-    public null|array|PhotoSizeCollection $photo;
+    public ?PhotoSizeCollection $photo;
 
 //    public ?Sticker sticker;                                                 # @Optional. Message is a sticker, information about the sticker
 //    public ?Video video;                                                     # @Optional. Message is a video, information about the video

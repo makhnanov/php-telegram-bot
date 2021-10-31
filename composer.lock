@@ -338,12 +338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/makhnanov/php-enum-81.git",
-                "reference": "a49fa408a179180a71dd6ec75f9ddea3f62b8ecf"
+                "reference": "7563ffa88e0131c4d63c18cb32b3ba426ff5f9b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/makhnanov/php-enum-81/zipball/a49fa408a179180a71dd6ec75f9ddea3f62b8ecf",
-                "reference": "a49fa408a179180a71dd6ec75f9ddea3f62b8ecf",
+                "url": "https://api.github.com/repos/makhnanov/php-enum-81/zipball/7563ffa88e0131c4d63c18cb32b3ba426ff5f9b6",
+                "reference": "7563ffa88e0131c4d63c18cb32b3ba426ff5f9b6",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
                 "issues": "https://github.com/makhnanov/php-enum-81/issues",
                 "source": "https://github.com/makhnanov/php-enum-81/tree/master"
             },
-            "time": "2021-10-27T12:00:34+00:00"
+            "time": "2021-10-31T11:13:00+00:00"
         },
         {
             "name": "psr/http-client",
@@ -1245,12 +1245,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "9dc4bb058ffd1f194059f6b099bd6ca9c726aed4"
+                "reference": "2c26b0e4a925d571d1ca2757a65c14c6dc00898f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9dc4bb058ffd1f194059f6b099bd6ca9c726aed4",
-                "reference": "9dc4bb058ffd1f194059f6b099bd6ca9c726aed4",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/2c26b0e4a925d571d1ca2757a65c14c6dc00898f",
+                "reference": "2c26b0e4a925d571d1ca2757a65c14c6dc00898f",
                 "shasum": ""
             },
             "require": {
@@ -1288,7 +1288,7 @@
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.x"
             },
-            "time": "2021-10-26T18:53:16+00:00"
+            "time": "2021-10-30T18:36:17+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -1364,12 +1364,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "3ca2f862e11bb02cb7a97185afed902522e2edbb"
+                "reference": "cf04e88a2e3c56fc1a65488afd493325b4c1bc3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/3ca2f862e11bb02cb7a97185afed902522e2edbb",
-                "reference": "3ca2f862e11bb02cb7a97185afed902522e2edbb",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/cf04e88a2e3c56fc1a65488afd493325b4c1bc3e",
+                "reference": "cf04e88a2e3c56fc1a65488afd493325b4c1bc3e",
                 "shasum": ""
             },
             "require": {
@@ -1425,7 +1425,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.8"
             },
             "funding": [
                 {
@@ -1433,7 +1433,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-25T04:46:46+00:00"
+            "time": "2021-10-30T08:01:38+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1682,12 +1682,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2593ca5deed8c228c4dadce7e1e5bfb9209f908f"
+                "reference": "723de3effbd9b0ca5896c298d8fca41e3470d3d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2593ca5deed8c228c4dadce7e1e5bfb9209f908f",
-                "reference": "2593ca5deed8c228c4dadce7e1e5bfb9209f908f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/723de3effbd9b0ca5896c298d8fca41e3470d3d5",
+                "reference": "723de3effbd9b0ca5896c298d8fca41e3470d3d5",
                 "shasum": ""
             },
             "require": {
@@ -1777,7 +1777,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-24T15:01:57+00:00"
+            "time": "2021-10-28T05:33:07+00:00"
         },
         {
             "name": "sebastian/cli-parser",

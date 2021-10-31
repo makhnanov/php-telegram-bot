@@ -10,7 +10,7 @@ class EditMessageMediaTest extends ParentTestCase
         $twitter = 'AgACAgIAAxkBAAIBH2F6pDfWCf_TWGIT_FXoMgfJDQHVAAKttzEb8JzZS8_LbFFHWFJ1AQADAgADeQADIQQ';
         $r = $this->bot->sendPhoto($this->getPrivateTestUserId(), $cheese);
         sleep(5);
-        $this->bot->editMessageMedia(
+        $r = $this->bot->editMessageMedia(
             [
                 'type' => 'photo',
                 'media' => $twitter,
@@ -21,5 +21,6 @@ class EditMessageMediaTest extends ParentTestCase
             $r->chat->id,
             $r->message_id
         );
+        $this->aboveZero($r->edit_date);
     }
 }

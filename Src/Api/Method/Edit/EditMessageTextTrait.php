@@ -7,7 +7,6 @@ use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
-use Makhnanov\Telegram81\Api\Exception\BadCodeException;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Exception\UnchangedMessageException;
 use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
@@ -108,6 +107,7 @@ trait EditMessageTextTrait
             throw $e;
         }
 
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return new class($response) extends Message implements ResponsiveResultative
         {
             use ResponsiveResultativeTrait;

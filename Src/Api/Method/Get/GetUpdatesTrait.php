@@ -6,7 +6,6 @@ use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Api\Enumeration\Offset;
-use Makhnanov\Telegram81\Api\Exception\BadCodeException;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\Update;
 use Makhnanov\Telegram81\Api\Type\UpdateCollection;
@@ -43,7 +42,6 @@ trait GetUpdatesTrait
      *                                                  before the call to the getUpdates, so unwanted updates may be received for
      *                                                  a short period of time.
      *
-     * @throws BadCodeException
      * @property ?array $viaArray
      *
      * @noinspection PhpUnusedLocalVariableInspection
@@ -94,6 +92,7 @@ trait GetUpdatesTrait
             $lastReceivedUpdateId and $this->getUpdatesOffset = (int)($lastReceivedUpdateId + 1);
         }
 
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $collection;
     }
 

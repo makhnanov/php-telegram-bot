@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Makhnanov\Telegram81\Helper;
 
-use Makhnanov\Telegram81\Api\Exception\BadCodeException;
 use Makhnanov\Telegram81\Api\Exception\TypeError;
 use ReflectionClass;
 use ReflectionNamedType;

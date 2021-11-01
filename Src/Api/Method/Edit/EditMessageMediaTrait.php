@@ -2,10 +2,12 @@
 
 namespace Makhnanov\Telegram81\Api\Method\Edit;
 
+use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Utils;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
+use Makhnanov\Telegram81\Api\Exception\UnchangedMessageException;
 use Makhnanov\Telegram81\Api\Type\InputMedia;
 use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
 use Makhnanov\Telegram81\Api\Type\Message;
@@ -55,9 +57,15 @@ trait EditMessageMediaTrait
         /** @noinspection PhpUnusedLocalVariableInspection */
         is_array($reply_markup) and $reply_markup and $reply_markup = Utils::jsonEncode($reply_markup);
 
-        return new class($this->getResponse(__FUNCTION__, compact(...$usefulNames)))
-            extends Message
-            implements ResponsiveResultative
+
+        try {
+            $response = $this->getResponse(__FUNCTION__, compact(...$usefulNames));
+        } catch (BadResponseException $e) {
+            UnchangedMessageException::process($e);
+            throw $e;
+        }
+
+        return new class($response) extends Message implements ResponsiveResultative
         {
             use ResponsiveResultativeTrait;
 

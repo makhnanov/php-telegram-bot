@@ -42,5 +42,7 @@ class UnchangedMessageException extends Exception
         ) {
             throw new static($decoded['description']);
         }
+        dump('in');
+        dump(in_array($decoded['description'], static::REASONS, true));
     }
 }

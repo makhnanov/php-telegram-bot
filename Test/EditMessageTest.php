@@ -11,7 +11,7 @@ class EditMessageTest extends ParentTestCase
 {
     public function testBasicEditPrivate()
     {
-        $joystick = Snippet::inlneJoystick();
+        $joystick = Snippet::inlineJoystick();
         $send = $this->bot->sendMessage(
             $this->getPrivateTestUserId(),
             'First',

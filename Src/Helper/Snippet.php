@@ -10,7 +10,7 @@ use function Makhnanov\Telegram81\callbackButton;
 class Snippet
 {
     #[ArrayShape(['inline_keyboard' => "array"])]
-    public static function inlneJoystick(array $prepend = [], array $append = [])
+    public static function inlineJoystick(array $prepend = [], array $append = [])
     {
         return [
             'inline_keyboard' => [

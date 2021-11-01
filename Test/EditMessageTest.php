@@ -3,7 +3,7 @@
 namespace Makhnanov\Telegram81\Test;
 
 use Makhnanov\Telegram81\Api\Type\Chat;
-use Makhnanov\Telegram81\Helper\Snippet;
+use Makhnanov\Telegram81\Snippet\KeyboardSnippet;
 
 use function Makhnanov\Telegram81\isPrivate;
 
@@ -11,7 +11,7 @@ class EditMessageTest extends ParentTestCase
 {
     public function testBasicEditPrivate()
     {
-        $joystick = Snippet::inlineJoystick();
+        $joystick = KeyboardSnippet::inlineJoystick();
         $send = $this->bot->sendMessage(
             $this->getPrivateTestUserId(),
             'First',

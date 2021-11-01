@@ -1,8 +1,8 @@
 <?php
 
-namespace Makhnanov\Telegram81\Helper\Smile;
+namespace Makhnanov\Telegram81\Emoji\Constant;
 
-class SmileFlag
+class EmojiFlag
 {
     public const USA = '🇺🇸';
     public const RUSSIA = '🇷🇺';

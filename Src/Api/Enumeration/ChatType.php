@@ -2,11 +2,12 @@
 
 namespace Makhnanov\Telegram81\Api\Enumeration;
 
-use Makhnanov\PhpEnum81\EnumUpgrade;
+use Makhnanov\PhpEnum81\UpgradedEnumInterface;
+use Makhnanov\PhpEnum81\UpgradeEnum;
 
-enum ChatType
+enum ChatType implements UpgradedEnumInterface
 {
-    use EnumUpgrade;
+    use UpgradeEnum;
 
     case private;
     case group;

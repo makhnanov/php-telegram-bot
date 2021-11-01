@@ -55,8 +55,6 @@ trait EditMessageTextTrait
      *
      * @param null|array $viaArray
      *
-     * @param null|bool $ignoreExceptionIfUnchanged
-     *
      * @return Message&ResponsiveResultative
      *
      * @throws UnchangedMessageException
@@ -72,7 +70,6 @@ trait EditMessageTextTrait
         ?bool                           $disable_web_page_preview = null,
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array                          $viaArray = null,
-        ?bool                           $ignoreExceptionIfUnchanged = false
     ): Message & ResponsiveResultative {
         list($usefulNames, $parameterValues) = $this->viaArray(
             __FUNCTION__,
@@ -93,17 +90,7 @@ trait EditMessageTextTrait
         try {
             $response = $this->getResponse(__FUNCTION__, compact(...$usefulNames));
         } catch (BadResponseException $e) {
-            $guzzleResponse = $e->getResponse();
-            $decoded = decoded($guzzleResponse);
-            if (
-                isset($decoded['ok'], $decoded['error_code'], $decoded['description'])
-                && $guzzleResponse->getStatusCode() === 400
-                && $decoded['ok'] === false
-                && $decoded['error_code'] === 400
-                && $decoded['description'] === UnchangedMessageException::REASON
-            ) {
-                !$ignoreExceptionIfUnchanged and throw new UnchangedMessageException();
-            }
+            UnchangedMessageException::process($e);
             throw $e;
         }
 

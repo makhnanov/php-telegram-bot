@@ -44,7 +44,7 @@ trait EditMessageMediaTrait
         ?string                         $inline_message_id = null,
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array                          $viaArray = null,
-    ) {
+    ): ResponsiveResultative|Message {
         list($usefulNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray,);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;

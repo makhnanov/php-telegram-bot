@@ -52,6 +52,8 @@ trait EditMessageMediaTrait
 
         /** @noinspection PhpUnusedLocalVariableInspection */
         is_array($media) and $media = Utils::jsonEncode($media);
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        is_array($reply_markup) and $reply_markup and $reply_markup = Utils::jsonEncode($reply_markup);
 
         return new class($this->getResponse(__FUNCTION__, compact(...$usefulNames)))
             extends Message

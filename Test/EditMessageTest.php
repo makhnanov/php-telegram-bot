@@ -37,8 +37,9 @@ class EditMessageTest extends ParentTestCase
         $this->aboveZero($e->edit_date);
         $this->assertSame('Second', $e->text);
         $this->assertSame($joystick, $e->reply_markup);
+
         /**
-         * todo assert fields
+         * ToDo: assert fields
          */
     }
 }

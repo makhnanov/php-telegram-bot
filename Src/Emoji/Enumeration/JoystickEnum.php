@@ -2,8 +2,13 @@
 
 namespace Makhnanov\Telegram81\Emoji\Enumeration;
 
-enum JoystickEnum: string
+use Makhnanov\PhpEnum81\UpgradedEnumInterface;
+use Makhnanov\PhpEnum81\UpgradeEnum;
+
+enum JoystickEnum: string implements UpgradedEnumInterface
 {
+    use UpgradeEnum;
+
     case UP_LEFT = '↖️';
     case UP = '⬆️';
     case UP_RIGHT = '↗️';

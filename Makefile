@@ -1,6 +1,6 @@
 up:
 	docker-compose build && docker-compose up
-entrance:
+shell:
 	docker-compose exec app sh
 test:
 	docker-compose exec app php vendor/bin/phpunit --colors=always --testdox Test \

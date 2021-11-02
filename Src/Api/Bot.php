@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use JetBrains\PhpStorm\Immutable;
 use Makhnanov\Telegram81\Api\Enumeration\HttpMethod;
+use Makhnanov\Telegram81\Api\Method\Edit\EditMessageCaptionTrait;
 use Makhnanov\Telegram81\Api\Method\Edit\EditMessageMediaTrait;
 use Makhnanov\Telegram81\Api\Method\Edit\EditMessageTextTrait;
 use Makhnanov\Telegram81\Api\Method\Get\GetMeTrait;
@@ -30,7 +31,8 @@ class Bot
         GetUpdatesTrait,
         EditMessageTextTrait,
         SendPhotoTrait,
-        EditMessageMediaTrait;
+        EditMessageMediaTrait,
+        EditMessageCaptionTrait;
 
     public bool $async = false;
 

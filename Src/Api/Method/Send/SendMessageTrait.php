@@ -58,6 +58,7 @@ trait SendMessageTrait
      *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpUnusedLocalVariableInspection
+     * @noinspection PhpIncompatibleReturnTypeInspection
      */
     public function sendMessage(
         int|string                  $chat_id,

@@ -8,7 +8,7 @@ use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\User;
 use Makhnanov\Telegram81\Helper\Responsive;
-use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
 use Makhnanov\Telegram81\Helper\Resultative;
 
 use function Makhnanov\Telegram81\decoded;
@@ -21,9 +21,10 @@ trait GetMeTrait
      * A simple method for testing your bot's auth token. Requires no parameters.
      * Returns basic information about the bot in form of a User object.
      */
-    public function getMe(): User & ResponsiveResultative
+    public function getMe(): User & ResponsiveResultativeInterface
     {
-        return new class($this->getResponse(__FUNCTION__)) extends User implements ResponsiveResultative
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return new class($this->getResponse(__FUNCTION__)) extends User implements ResponsiveResultativeInterface
         {
 
             use Responsive, Resultative;

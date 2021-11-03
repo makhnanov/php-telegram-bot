@@ -7,7 +7,7 @@ use Makhnanov\Telegram81\Api\Type\ReplyMarkup;
 
 class Prepare
 {
-    public static function replyMarkup(array $reply_markup): string
+    public static function replyMarkup(null|array|ReplyMarkup $reply_markup): ?string
     {
         if ($reply_markup) {
             if (is_array($reply_markup)) {
@@ -16,6 +16,6 @@ class Prepare
                 # todo
             }
         }
-        return '';
+        return null;
     }
 }

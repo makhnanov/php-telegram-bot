@@ -12,7 +12,7 @@ use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
 use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Api\Type\MessageEntityCollection;
 use Makhnanov\Telegram81\Helper\Prepare;
-use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 
 use function Makhnanov\Telegram81\decoded;
@@ -47,7 +47,7 @@ trait EditMessageCaptionTrait
      *
      * @param null|array $viaArray
      *
-     * @return Message&ResponsiveResultative
+     * @return Message&ResponsiveResultativeInterface
      * @throws UnchangedMessageException
      * @noinspection PhpIncompatibleReturnTypeInspection
      */
@@ -60,13 +60,14 @@ trait EditMessageCaptionTrait
         null|array|MessageEntityCollection $caption_entities = null,
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array $viaArray = null,
-    ): Message&ResponsiveResultative {
+    ): Message&ResponsiveResultativeInterface {
         list($usefulNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray,);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
         }
+
         /** @noinspection PhpUnusedLocalVariableInspection */
-        is_array($reply_markup) and $reply_markup and $reply_markup = Utils::jsonEncode($reply_markup);
+        $reply_markup = Prepare::replyMarkup($reply_markup);
 
         try {
             $response = $this->getResponse(__FUNCTION__, compact(...$usefulNames));
@@ -75,7 +76,7 @@ trait EditMessageCaptionTrait
             throw $e;
         }
 
-        return new class($response) extends Message implements ResponsiveResultative
+        return new class($response) extends Message implements ResponsiveResultativeInterface
         {
             use ResponsiveResultativeTrait;
 

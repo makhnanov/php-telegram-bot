@@ -9,6 +9,7 @@ use JetBrains\PhpStorm\Immutable;
 use Makhnanov\Telegram81\Api\Enumeration\HttpMethod;
 use Makhnanov\Telegram81\Api\Method\Edit\EditMessageCaptionTrait;
 use Makhnanov\Telegram81\Api\Method\Edit\EditMessageMediaTrait;
+use Makhnanov\Telegram81\Api\Method\Edit\EditMessageReplyMarkupTrait;
 use Makhnanov\Telegram81\Api\Method\Edit\EditMessageTextTrait;
 use Makhnanov\Telegram81\Api\Method\Get\GetMeTrait;
 use Makhnanov\Telegram81\Api\Method\Get\GetUpdatesTrait;
@@ -32,7 +33,8 @@ class Bot
         EditMessageTextTrait,
         SendPhotoTrait,
         EditMessageMediaTrait,
-        EditMessageCaptionTrait;
+        EditMessageCaptionTrait,
+        EditMessageReplyMarkupTrait;
 
     public bool $async = false;
 

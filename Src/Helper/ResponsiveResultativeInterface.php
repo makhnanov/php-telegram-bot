@@ -2,7 +2,7 @@
 
 namespace Makhnanov\Telegram81\Helper;
 
-interface ResponsiveResultative extends ResponsiveInterface, ResultativeInterface
+interface ResponsiveResultativeInterface extends ResponsiveInterface, ResultativeInterface
 {
 
 }

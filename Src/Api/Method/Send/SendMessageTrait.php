@@ -12,7 +12,7 @@ use Makhnanov\Telegram81\Api\Type\EntityCollection;
 use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Api\Type\ReplyMarkup;
 use Makhnanov\Telegram81\Helper\Prepare;
-use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Stringable;
 use Yiisoft\Arrays\ArrayHelper;
@@ -54,7 +54,7 @@ trait SendMessageTrait
      * @param null|array $viaArray keys overwrite vars
      * @see SendMessage for get array keys
      *
-     * @return Message&ResponsiveResultative
+     * @return Message&ResponsiveResultativeInterface
      *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpUnusedLocalVariableInspection
@@ -71,7 +71,7 @@ trait SendMessageTrait
         ?bool                       $allow_sending_without_reply = null,
         null|array|ReplyMarkup      $reply_markup = null,
         ?array                      $viaArray = null,
-    ): Message & ResponsiveResultative {
+    ): Message & ResponsiveResultativeInterface {
         list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
@@ -87,11 +87,12 @@ trait SendMessageTrait
             ArrayHelper::removeValue($parameterNames, 'entities');
         }
 
-        isset($reply_markup) and $reply_markup = Prepare::replyMarkup($reply_markup);
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        $reply_markup = Prepare::replyMarkup($reply_markup);
 
         return new class($this->getResponse(__FUNCTION__, compact(...$parameterNames)))
             extends Message
-            implements ResponsiveResultative
+            implements ResponsiveResultativeInterface
         {
             use ResponsiveResultativeTrait;
 

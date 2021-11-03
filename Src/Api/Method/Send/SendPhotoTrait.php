@@ -11,7 +11,8 @@ use Makhnanov\Telegram81\Api\Type\InputFile;
 use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
 use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Api\Type\MessageEntityCollection;
-use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\Prepare;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Stringable;
 
@@ -48,11 +49,11 @@ trait SendPhotoTrait
         }
 
         /** @noinspection PhpUnusedLocalVariableInspection */
-        is_array($reply_markup) and $reply_markup and $reply_markup = Utils::jsonEncode($reply_markup);
+        $reply_markup = Prepare::replyMarkup($reply_markup);
 
         return new class($this->getResponse(__FUNCTION__, compact(...$usefulNames)))
             extends Message
-            implements ResponsiveResultative
+            implements ResponsiveResultativeInterface
         {
             use ResponsiveResultativeTrait;
 

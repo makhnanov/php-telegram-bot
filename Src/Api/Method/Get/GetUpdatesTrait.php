@@ -9,7 +9,7 @@ use Makhnanov\Telegram81\Api\Enumeration\Offset;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\Update;
 use Makhnanov\Telegram81\Api\Type\UpdateCollection;
-use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 
 use function Makhnanov\Telegram81\decoded;
@@ -54,7 +54,7 @@ trait GetUpdatesTrait
         int        $timeout = Bot::STD_LONG_POOLING_TIMEOUT,
         array      $allowed_updates = null,
         ?array  $viaArray = null,
-    ): UpdateCollection & ResponsiveResultative {
+    ): UpdateCollection & ResponsiveResultativeInterface {
         list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
@@ -71,7 +71,7 @@ trait GetUpdatesTrait
 
         $collection = new class($this->getResponse(__FUNCTION__, compact(...$parameterNames)))
             extends UpdateCollection
-            implements ResponsiveResultative
+            implements ResponsiveResultativeInterface
         {
             use ResponsiveResultativeTrait;
 

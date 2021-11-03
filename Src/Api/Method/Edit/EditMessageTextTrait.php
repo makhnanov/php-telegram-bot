@@ -13,7 +13,7 @@ use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
 use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Api\Type\MessageEntityCollection;
 use Makhnanov\Telegram81\Helper\Prepare;
-use Makhnanov\Telegram81\Helper\ResponsiveResultative;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 
 use Stringable;
@@ -55,7 +55,7 @@ trait EditMessageTextTrait
      *
      * @param null|array $viaArray
      *
-     * @return Message&ResponsiveResultative
+     * @return Message&ResponsiveResultativeInterface
      *
      * @throws UnchangedMessageException
      * @noinspection PhpUnusedParameterInspection
@@ -70,7 +70,7 @@ trait EditMessageTextTrait
         ?bool                           $disable_web_page_preview = null,
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array                          $viaArray = null,
-    ): Message & ResponsiveResultative {
+    ): Message & ResponsiveResultativeInterface {
         list($usefulNames, $parameterValues) = $this->viaArray(
             __FUNCTION__,
             $viaArray,
@@ -85,7 +85,7 @@ trait EditMessageTextTrait
         $inline_message_id and $inline_message_id instanceof Stringable and $inline_message_id = (string)$chat_id;
 
         /** @noinspection PhpUnusedLocalVariableInspection */
-        isset($reply_markup) and $reply_markup = Prepare::replyMarkup($reply_markup);
+        $reply_markup = Prepare::replyMarkup($reply_markup);
 
         try {
             $response = $this->getResponse(__FUNCTION__, compact(...$usefulNames));
@@ -95,7 +95,7 @@ trait EditMessageTextTrait
         }
 
         /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return new class($response) extends Message implements ResponsiveResultative
+        return new class($response) extends Message implements ResponsiveResultativeInterface
         {
             use ResponsiveResultativeTrait;
 

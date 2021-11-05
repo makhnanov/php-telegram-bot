@@ -42,4 +42,9 @@ class EditMessageTest extends ParentTestCase
          * ToDo: assert fields
          */
     }
+
+    public function testMessageNotFoundException()
+    {
+
+    }
 }

@@ -39,6 +39,8 @@ trait EditMessageMediaTrait
      * @param null|array $viaArray
      *
      * @return Message|ResponsiveResultativeInterface
+     *
+     * @throws UnchangedMessageException
      */
     public function editMessageMedia(
         array|InputMedia                $media,

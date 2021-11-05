@@ -170,4 +170,9 @@ class SendMessageTest extends ParentTestCase
 
         $this->assertApproveManual();
     }
+
+    public function testMessageTextIsEmptyException()
+    {
+
+    }
 }

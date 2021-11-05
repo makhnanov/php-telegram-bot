@@ -24,4 +24,9 @@ class EditMessageReplyMarkupTest extends ParentTestCase
         );
         $this->assertSame(KeyboardSnippet::inlineJoystick(), $er->reply_markup);
     }
+
+    public function testMessageNotFoundException()
+    {
+
+    }
 }

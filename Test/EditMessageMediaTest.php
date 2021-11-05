@@ -23,4 +23,9 @@ class EditMessageMediaTest extends ParentTestCase
         );
         $this->aboveZero($r->edit_date);
     }
+
+    public function testMessageNotFoundException()
+    {
+
+    }
 }

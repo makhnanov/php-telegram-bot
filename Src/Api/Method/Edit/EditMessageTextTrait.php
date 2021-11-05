@@ -94,7 +94,6 @@ trait EditMessageTextTrait
             throw $e;
         }
 
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return new class($response) extends Message implements ResponsiveResultativeInterface
         {
             use ResponsiveResultativeTrait;

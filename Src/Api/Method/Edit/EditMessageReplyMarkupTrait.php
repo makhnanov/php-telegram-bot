@@ -5,7 +5,6 @@ namespace Makhnanov\Telegram81\Api\Method\Edit;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Utils;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Exception\UnchangedMessageException;
 use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
@@ -36,8 +35,6 @@ trait EditMessageReplyMarkupTrait
      * @param null|array|InlineKeyboardMarkup $reply_markup @Optional A JSON-serialized object for an inline keyboard.
      *
      * @throws UnchangedMessageException
-     *
-     * @noinspection PhpIncompatibleReturnTypeInspection
      */
     public function editMessageReplyMarkup(
         null|int|string                 $chat_id = null,

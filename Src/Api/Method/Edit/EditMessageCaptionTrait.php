@@ -49,7 +49,6 @@ trait EditMessageCaptionTrait
      *
      * @return Message&ResponsiveResultativeInterface
      * @throws UnchangedMessageException
-     * @noinspection PhpIncompatibleReturnTypeInspection
      */
     public function editMessageCaption(
         null|int|string $chat_id = null,

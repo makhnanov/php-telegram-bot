@@ -4,6 +4,7 @@ shell:
 	docker-compose exec app sh
 test:
 	docker-compose exec app php vendor/bin/phpunit --colors=always --testdox Test \
+	# --filter testErrorTooLate Makhnanov\Telegram81\Test\DeleteMessageTest
 	# --filter testBasicEditReplyMarkup Makhnanov\Telegram81\Test\EditMessageReplyMarkupTest
 	# --filter testBasicEditCaption Makhnanov\Telegram81\Test\EditMessageCaptionTest
 	# --filter testViaId Makhnanov\Telegram81\Test\EditMessageMediaTest

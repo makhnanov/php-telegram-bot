@@ -35,4 +35,9 @@ class EditMessageCaptionTest extends ParentTestCase
         );
         $this->assertSame($er->caption, 'Caption after edit.');
     }
+
+    public function testMessageNotFoundException()
+    {
+
+    }
 }

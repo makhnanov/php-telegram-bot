@@ -9,7 +9,7 @@ use InvalidArgumentException;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
 use Makhnanov\Telegram81\Api\Type\Chat;
-use StringBackedEnum;
+use Stringable;
 
 function is_set(mixed $value): bool
 {
@@ -22,17 +22,26 @@ function decoded(Response $response): array
 }
 
 /**
- * @param string|array|StringBackedEnum $text
+ * Alias for callbackButton
+ */
+function callback_button(string|array|BackedEnum|Stringable $text, string|BackedEnum|Stringable $data = null)
+{
+    return callbackButton($text, $data);
+}
+
+/**
+ * @param string|array|BackedEnum|Stringable $text
  * Be care if you give Enum.
  * Enum->name will be callback_data and Enum->value will be text.
  *
- * @param ?string $data
+ * @param null|string|BackedEnum|Stringable $data
+ * @return array
  */
 #[ArrayShape([
     'text' => "string",
     'callback_data' => "string"
 ])]
-function callbackButton(string|array|BackedEnum $text, string|BackedEnum $data = null): array
+function callbackButton(string|array|BackedEnum|Stringable $text, string|BackedEnum|Stringable $data = null): array
 {
     if (!$data) {
         if (is_string($text)) {
@@ -57,9 +66,10 @@ function callbackButton(string|array|BackedEnum $text, string|BackedEnum $data =
     return formatCallbackButton($text, $data);
 }
 
-function formatCallbackButton(string $text, string $data): array
+#[ArrayShape(['text' => "string", 'callback_data' => "string"])]
+function formatCallbackButton(string|Stringable $text, string|Stringable $data): array
 {
-    return ['text' => $text, 'callback_data' => $data];
+    return ['text' => (string)$text, 'callback_data' => (string)$data];
 }
 
 #[Pure] function isPrivate(null|string|Chat $mixed): bool

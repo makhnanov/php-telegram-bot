@@ -338,12 +338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/makhnanov/php-enum-81.git",
-                "reference": "f9ec76440f4caeb21a9e99a80459089522c3ea4e"
+                "reference": "23af225d1fcb24dc183d9a3240e6e8c7646db407"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/makhnanov/php-enum-81/zipball/f9ec76440f4caeb21a9e99a80459089522c3ea4e",
-                "reference": "f9ec76440f4caeb21a9e99a80459089522c3ea4e",
+                "url": "https://api.github.com/repos/makhnanov/php-enum-81/zipball/23af225d1fcb24dc183d9a3240e6e8c7646db407",
+                "reference": "23af225d1fcb24dc183d9a3240e6e8c7646db407",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
                 "issues": "https://github.com/makhnanov/php-enum-81/issues",
                 "source": "https://github.com/makhnanov/php-enum-81/tree/master"
             },
-            "time": "2021-12-06T00:54:08+00:00"
+            "time": "2021-12-06T01:16:24+00:00"
         },
         {
             "name": "psr/http-client",

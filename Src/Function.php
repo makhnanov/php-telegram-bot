@@ -24,9 +24,10 @@ function decoded(Response $response): array
 /**
  * Alias for callbackButton
  */
-function callback_button(string|array|BackedEnum|Stringable $text, string|BackedEnum|Stringable $data = null)
+#[ArrayShape(['text' => "string", 'callback_data' => "string"])]
+function callback_button(string|array|BackedEnum|Stringable $text, string|BackedEnum|Stringable $data = null): array
 {
-    return callbackButton($text, $data);
+    return callbackButton(...func_get_args());
 }
 
 /**

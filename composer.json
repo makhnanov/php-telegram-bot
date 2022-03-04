@@ -1,6 +1,6 @@
 {
-    "name": "makhnanov/php-telegram-bot-81",
-    "description": "PHP 8.1 Telegram Bot API Library.",
+    "name": "makhnanov/php-telegram-bot",
+    "description": "PHP 8.1+ Telegram Bot API Library.",
     "type": "library",
     "license": "MIT",
     "autoload": {

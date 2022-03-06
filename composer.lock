@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "163420d4856f55f1d4368e25a3df982d",
+    "content-hash": "24d0ed166fd2db07565b4fd6d07ae656",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
-            "version": "dev-master",
+            "version": "7.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "c1fd316f0a0f3325ed1e7cdbe61030418b868f9f"
+                "reference": "ee0a041b1760e6a53d2a39c8c34115adc2af2c79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/c1fd316f0a0f3325ed1e7cdbe61030418b868f9f",
-                "reference": "c1fd316f0a0f3325ed1e7cdbe61030418b868f9f",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ee0a041b1760e6a53d2a39c8c34115adc2af2c79",
+                "reference": "ee0a041b1760e6a53d2a39c8c34115adc2af2c79",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,6 @@
                 "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -113,7 +112,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/master"
+                "source": "https://github.com/guzzle/guzzle/tree/7.4.1"
             },
             "funding": [
                 {
@@ -129,7 +128,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-13T16:13:08+00:00"
+            "time": "2021-12-06T18:43:05+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -3119,7 +3118,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "guzzlehttp/guzzle": 20,
         "yiisoft/arrays": 20,
         "makhnanov/php-enum": 20,
         "symfony/var-dumper": 20

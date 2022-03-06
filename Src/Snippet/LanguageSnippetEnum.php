@@ -2,8 +2,8 @@
 
 namespace Makhnanov\Telegram81\Snippet;
 
-use Makhnanov\PhpEnum81\UpgradedEnumInterface;
-use Makhnanov\PhpEnum81\UpgradeEnum;
+use Makhnanov\PhpEnum\UpgradedEnumInterface;
+use Makhnanov\PhpEnum\EnumExtension;
 
 enum LanguageSnippetEnum: string implements UpgradedEnumInterface
 {

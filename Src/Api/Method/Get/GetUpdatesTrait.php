@@ -25,7 +25,7 @@ trait GetUpdatesTrait
      *                                      offset higher than its update_id.
      *                                      The negative offset can be specified to retrieve updates starting from
      *                                      -offset update from the end of the updates queue.
-     *                                      All previous updates will forgotten.
+     *                                      All previous updates will be forgotten.
      *
      * @param null|int $limit @Optional. Limits the number of updates to be retrieved.
      *                                   Values between 1-100 are accepted. Defaults to 100.
@@ -42,7 +42,7 @@ trait GetUpdatesTrait
      *                                                  before the call to the getUpdates, so unwanted updates may be received for
      *                                                  a short period of time.
      *
-     * @property ?array $viaArray
+     * @property null|array $viaArray
      *
      * @noinspection PhpUnusedLocalVariableInspection
      *
@@ -53,7 +53,7 @@ trait GetUpdatesTrait
         int        $limit = null,
         int        $timeout = Bot::STD_LONG_POOLING_TIMEOUT,
         array      $allowed_updates = null,
-        ?array  $viaArray = null,
+        ?array     $viaArray = null,
     ): UpdateCollection & ResponsiveResultativeInterface {
         list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {

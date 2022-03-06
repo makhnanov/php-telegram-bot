@@ -25,7 +25,7 @@
         "php": "^8.1",
         "guzzlehttp/guzzle": "7.4.x-dev",
         "yiisoft/arrays": "dev-master",
-        "makhnanov/php-enum-81": "dev-master"
+        "makhnanov/php-enum": "dev-main"
     },
     "require-dev": {
         "symfony/var-dumper": "6.0.x-dev",

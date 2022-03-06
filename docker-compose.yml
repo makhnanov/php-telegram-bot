@@ -4,7 +4,7 @@ services:
     build:
       dockerfile: ./Docker/PhpFpm81Dockerfile
       context: .
-    ports:
-      - "81:80"
+#    ports:
+#      - "81:80"
     volumes:
       - .:/var/www/html

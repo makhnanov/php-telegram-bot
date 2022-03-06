@@ -1,5 +1,5 @@
 up:
-	docker-compose build && docker-compose up
+	docker-compose build && docker-compose up -d
 shell:
 	docker-compose exec app sh
 test:

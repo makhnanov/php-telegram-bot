@@ -7,7 +7,7 @@ use Makhnanov\PhpEnum\EnumExtension;
 
 enum LanguageSnippetEnum: string implements UpgradedEnumInterface
 {
-    use UpgradeEnum;
+    use EnumExtension;
 
     case RUSSIAN = 'Русский 🇷🇺';
     case ENGLISH = 'English 🇺🇸';

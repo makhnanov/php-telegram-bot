@@ -8,7 +8,7 @@ use Makhnanov\PhpEnum\EnumExtension;
 
 enum HttpMethod implements UpgradedEnumInterface
 {
-    use UpgradeEnum;
+    use EnumExtension;
 
     case Get;
     case Post;

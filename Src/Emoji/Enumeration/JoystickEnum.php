@@ -7,7 +7,7 @@ use Makhnanov\PhpEnum\EnumExtension;
 
 enum JoystickEnum: string implements UpgradedEnumInterface
 {
-    use UpgradeEnum;
+    use EnumExtension;
 
     case UP_LEFT = '↖️';
     case UP = '⬆️';

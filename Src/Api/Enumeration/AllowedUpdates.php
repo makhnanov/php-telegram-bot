@@ -8,7 +8,7 @@ use Makhnanov\PhpEnum\EnumExtension;
 
 enum AllowedUpdates implements UpgradedEnumInterface
 {
-    use UpgradeEnum;
+    use EnumExtension;
 
     case message;
     case edited_message;

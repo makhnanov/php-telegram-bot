@@ -7,7 +7,7 @@ use Makhnanov\PhpEnum\EnumExtension;
 
 enum ChatType implements UpgradedEnumInterface
 {
-    use UpgradeEnum;
+    use EnumExtension;
 
     case private;
     case group;

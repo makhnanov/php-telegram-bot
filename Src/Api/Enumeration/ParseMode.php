@@ -8,7 +8,7 @@ use Makhnanov\PhpEnum\EnumExtension;
 
 enum ParseMode implements UpgradedEnumInterface
 {
-    use UpgradeEnum;
+    use EnumExtension;
 
     case HTML;
     case Markdown;

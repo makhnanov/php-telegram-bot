@@ -7,7 +7,7 @@ use Makhnanov\PhpEnum\EnumExtension;
 
 enum Offset implements UpgradedEnumInterface
 {
-    use UpgradeEnum;
+    use EnumExtension;
 
     case Auto;
 }

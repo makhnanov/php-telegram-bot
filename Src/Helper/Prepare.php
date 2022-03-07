@@ -3,7 +3,7 @@
 namespace Makhnanov\Telegram81\Helper;
 
 use GuzzleHttp\Utils;
-use Makhnanov\Telegram81\Api\Type\ReplyMarkup;
+use Makhnanov\Telegram81\Api\Type\Keyboard\ReplyMarkup;
 
 class Prepare
 {

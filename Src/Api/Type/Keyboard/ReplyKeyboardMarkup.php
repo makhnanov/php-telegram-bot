@@ -2,8 +2,6 @@
 
 namespace Makhnanov\Telegram81\Api\Type\Keyboard;
 
-use Makhnanov\Telegram81\Api\Type\ReplyKeyboard;
-
 class ReplyKeyboardMarkup extends ReplyMarkup
 {
     public function __construct(

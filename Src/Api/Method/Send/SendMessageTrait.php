@@ -9,8 +9,8 @@ use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\EntityCollection;
+use Makhnanov\Telegram81\Api\Type\Keyboard\ReplyMarkup;
 use Makhnanov\Telegram81\Api\Type\Message;
-use Makhnanov\Telegram81\Api\Type\ReplyMarkup;
 use Makhnanov\Telegram81\Helper\Prepare;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
@@ -72,7 +72,7 @@ trait SendMessageTrait
         null|array|ReplyMarkup      $reply_markup = null,
         ?array                      $viaArray = null,
     ): Message & ResponsiveResultativeInterface {
-        list($parameterNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray);
+        [$parameterNames, $parameterValues] = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
         }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type\keyboard\inline;
+namespace Makhnanov\Telegram81\Api\Type\Keyboard;
 
 use JetBrains\PhpStorm\ArrayShape;
 use Makhnanov\Telegram81\Api\Type\SelfFilling;

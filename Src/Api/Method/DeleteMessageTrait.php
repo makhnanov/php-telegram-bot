@@ -26,7 +26,7 @@ trait DeleteMessageTrait
      * @param int|string|Stringable $chat_id Unique identifier for the target chat or username of the target channel
      * in the format @channelusername
      *
-     * @param int $message_id Identifier of the message to delete
+     * @param int|string|Stringable $message_id Identifier of the message to delete
      *
      * @return bool only True
      *
@@ -36,7 +36,7 @@ trait DeleteMessageTrait
      */
     public function deleteMessage(
         int|string|Stringable $chat_id,
-        int                   $message_id
+        int|string|Stringable $message_id
     ) {
         list($usefulNames, $parameterValues) = $this->viaArray(__FUNCTION__);
         foreach ($parameterValues as $name => $value) {

@@ -63,7 +63,7 @@ trait EditMessageTextTrait
     public function editMessageText(
         string|Stringable               $text,
         null|int|string|Stringable      $chat_id = null,
-        ?int                            $message_id = null,
+        null|int|string|Stringable      $message_id = null,
         null|string|Stringable          $inline_message_id = null,
         ?ParseMode                      $parse_mode = null,
         ?MessageEntityCollection        $entities = null,

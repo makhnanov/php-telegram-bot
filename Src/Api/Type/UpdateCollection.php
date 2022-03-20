@@ -2,11 +2,13 @@
 
 namespace Makhnanov\Telegram81\Api\Type;
 
+use Closure;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use Iterator;
 use Makhnanov\Telegram81\Helper\Resultative;
 use Makhnanov\Telegram81\Helper\ResultativeInterface;
+use Throwable;
 
 /**
  * @template Update
@@ -78,5 +80,26 @@ class UpdateCollection implements Iterator
     public function getLastReceivedUpdateId(): int
     {
         return $this->lastUpdateId;
+    }
+
+    public function each(array|Closure $closure, ...$params): void
+    {
+        foreach ($this->updates as $update) {
+            $closure($update, ...$params);
+        }
+    }
+
+    public function eachSafe(array|Closure $closure, array $params, array|Closure $errorHandler, mixed $sleep = 1): void
+    {
+        foreach ($this->updates as $update) {
+            try {
+                is_array($closure)
+                    ? call_user_func_array($closure, $params)
+                    : $closure($update, ...$params);
+            } catch (Throwable $e) {
+                $errorHandler($e);
+                is_int($sleep) and sleep($sleep);
+            }
+        }
     }
 }

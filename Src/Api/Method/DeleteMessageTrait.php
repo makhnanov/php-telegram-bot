@@ -5,7 +5,7 @@ namespace Makhnanov\Telegram81\Api\Method;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Stringable;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\Telegram81\jDecode;
 
 trait DeleteMessageTrait
 {
@@ -38,12 +38,12 @@ trait DeleteMessageTrait
         int|string|Stringable $chat_id,
         int|string|Stringable $message_id
     ) {
-        list($usefulNames, $parameterValues) = $this->viaArray(__FUNCTION__);
+        [$usefulNames, $parameterValues] = $this->viaArray(__FUNCTION__);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
         }
         $response = $this->getResponse(__FUNCTION__, compact(...$usefulNames));
-        $decoded = decoded($response)['result'] ?? throw new NoResultException();
+        $decoded = jDecode($response)['result'] ?? throw new NoResultException();
         return $decoded === true ?: throw new NoResultException();
     }
 }

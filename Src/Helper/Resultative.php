@@ -1,18 +1,18 @@
 <?php /** @noinspection SpellCheckingInspection */
 
+declare(strict_types=1);
+
 namespace Makhnanov\Telegram81\Helper;
 
 trait Resultative
 {
     function getResult(): array
     {
-        /** @noinspection PhpUndefinedFieldInspection */
         return $this->result;
     }
 
     function toArray(): array
     {
-        /** @noinspection PhpUndefinedFieldInspection */
         return $this->result;
     }
 }

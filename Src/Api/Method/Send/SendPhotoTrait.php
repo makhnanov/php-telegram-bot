@@ -16,7 +16,7 @@ use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Stringable;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\Telegram81\jDecode;
 
 trait SendPhotoTrait
 {
@@ -43,7 +43,7 @@ trait SendPhotoTrait
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array $viaArray = null,
     ) {
-        list($usefulNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray,);
+        [$usefulNames, $parameterValues] = $this->viaArray(__FUNCTION__, $viaArray,);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
         }
@@ -64,7 +64,7 @@ trait SendPhotoTrait
             public function __construct(Promise|Response|array $data = [])
             {
                 $this->response = $data;
-                $this->result = decoded($this->response)['result'] ?? throw new NoResultException();
+                $this->result = jDecode($this->response)['result'] ?? throw new NoResultException();
                 parent::__construct($this->result);
             }
         };

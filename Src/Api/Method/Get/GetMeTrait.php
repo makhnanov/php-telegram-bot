@@ -11,7 +11,7 @@ use Makhnanov\Telegram81\Helper\Responsive;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
 use Makhnanov\Telegram81\Helper\Resultative;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\Telegram81\jDecode;
 
 trait GetMeTrait
 {
@@ -36,7 +36,7 @@ trait GetMeTrait
             public function __construct(Promise|Response|array $data = [])
             {
                 $this->response = $data;
-                $this->result = decoded($this->response)['result'] ?? throw new NoResultException();
+                $this->result = jDecode($this->response)['result'] ?? throw new NoResultException();
                 parent::__construct($this->result);
             }
         };

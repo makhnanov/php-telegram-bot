@@ -6,7 +6,7 @@ use Exception;
 use GuzzleHttp\Exception\BadResponseException;
 use Throwable;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\Telegram81\jDecode;
 
 class UnchangedMessageException extends Exception
 {
@@ -32,7 +32,7 @@ class UnchangedMessageException extends Exception
     public static function process(BadResponseException $e): void
     {
         $guzzleResponse = $e->getResponse();
-        $decoded = decoded($guzzleResponse);
+        $decoded = jDecode($guzzleResponse);
         if (
             isset($decoded['ok'], $decoded['error_code'], $decoded['description'])
             && $guzzleResponse->getStatusCode() === 400

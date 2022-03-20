@@ -25,8 +25,6 @@ use Stringable;
 #[Immutable(Immutable::PROTECTED_WRITE_SCOPE)]
 class Bot
 {
-    public const STD_LONG_POOLING_TIMEOUT = 6;
-
     use Reflection,
         GetMeTrait,
         SendMessageTrait,
@@ -47,13 +45,13 @@ class Bot
     private int $getUpdatesOffset;
 
     public function __construct(
-        private string|Stringable $token,
-        private string|Stringable $baseUri = 'https://api.telegram.org',
-        private ?int              $timeout = null,
+        public readonly string|Stringable $token,
+        public readonly string|Stringable $baseUri = 'https://api.telegram.org',
+        public readonly ?int              $timeout = 60,
     ) {
         $this->client = new Client([
             'base_uri' => "$this->baseUri/bot$this->token/",
-            'timeout' => $this->timeout ?? self::STD_LONG_POOLING_TIMEOUT + 5
+            'timeout' => $this->timeout
         ]);
         $this->getUpdatesOffset = $this->getOffset();
     }
@@ -82,6 +80,7 @@ class Bot
          * @see Client::post()
          * @see Client::postAsync()
          */
+        /** @noinspection SpellCheckingInspection */
         $parameters = array_filter($parameters, 'Makhnanov\Telegram81\is_set');
         if ($this->defaultHttpMethod === HttpMethod::Get) {
             $method = 'get';

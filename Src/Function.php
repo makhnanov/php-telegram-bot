@@ -16,7 +16,7 @@ function is_set(mixed $value): bool
     return isset($value);
 }
 
-function decoded(Response $response): array
+function jDecode(Response $response): array
 {
     return Utils::jsonDecode($response->getBody()->getContents(), true);
 }

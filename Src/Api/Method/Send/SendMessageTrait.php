@@ -17,7 +17,7 @@ use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Stringable;
 use Yiisoft\Arrays\ArrayHelper;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\Telegram81\jDecode;
 
 trait SendMessageTrait
 {
@@ -103,7 +103,7 @@ trait SendMessageTrait
             public function __construct(Promise|Response|array $data = [])
             {
                 $this->response = $data;
-                $this->result = decoded($this->response)['result'] ?? throw new NoResultException();
+                $this->result = jDecode($this->response)['result'] ?? throw new NoResultException();
                 parent::__construct($this->result);
             }
         };

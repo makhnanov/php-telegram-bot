@@ -18,7 +18,7 @@ use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 
 use Stringable;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\Telegram81\jDecode;
 
 /**
  * @see EditMessageText
@@ -71,7 +71,7 @@ trait EditMessageTextTrait
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array                          $viaArray = null,
     ): Message & ResponsiveResultativeInterface {
-        list($usefulNames, $parameterValues) = $this->viaArray(
+        [$usefulNames, $parameterValues] = $this->viaArray(
             __FUNCTION__,
             $viaArray,
             ['ignoreExceptionIfUnchanged']
@@ -105,7 +105,7 @@ trait EditMessageTextTrait
             public function __construct(Promise|Response|array $data = [])
             {
                 $this->response = $data;
-                $this->result = decoded($this->response)['result'] ?? throw new NoResultException();
+                $this->result = jDecode($this->response)['result'] ?? throw new NoResultException();
                 parent::__construct($this->result);
             }
         };

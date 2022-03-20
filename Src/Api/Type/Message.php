@@ -22,9 +22,9 @@ class Message implements ResponsiveResultativeInterface
 {
     use ResponsiveResultativeTrait;
 
-    private array $result;
+    private array|Response|Promise $response;
 
-    private Response $response;
+    private array $result;
 
     /**
      * Unique message identifier inside this chat.

@@ -113,7 +113,11 @@ class Message implements ResponsiveResultativeInterface
     public function __construct(array|Response|Promise $data = [])
     {
         $this->response = $data;
-        $this->result = jDecode($this->response)['result'] ?? throw new NoResultException();
+        $this->result = match (true) {
+            is_array($this->response) => $this->response,
+            $this->response instanceof Response
+            => jDecode($this->response)['result'] ?? throw new NoResultException()
+        };
         if (is_array($data)) {
             foreach ((new ReflectionClass($this))->getProperties(ReflectionProperty::IS_PUBLIC) as $property) {
                 $propName = $property->getName();

@@ -140,4 +140,32 @@ class Update
             $viaArray,
         );
     }
+
+    /**
+     * @throws NoResultException
+     */
+    public function sendToSender(
+        string                      $text,
+        null|string|ParseMode       $parse_mode = null,
+        null|array|EntityCollection $entities = null,
+        ?bool                       $disable_web_page_preview = null,
+        ?bool                       $disable_notification = null,
+        ?int                        $reply_to_message_id = null,
+        ?bool                       $allow_sending_without_reply = null,
+        null|array|ReplyMarkup      $reply_markup = null,
+        ?array                      $viaArray = null,
+    ): Message {
+        return $this->bot->sendMessage(
+            ($this->message ?? $this->edited_message)->from->id,
+            $text,
+            $parse_mode,
+            $entities,
+            $disable_web_page_preview,
+            $disable_notification,
+            $reply_to_message_id,
+            $allow_sending_without_reply,
+            $reply_markup,
+            $viaArray,
+        );
+    }
 }

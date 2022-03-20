@@ -9,6 +9,7 @@ use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Api\Enumeration\ChatType;
 use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
+use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\Keyboard\ReplyMarkup;
 use Makhnanov\Telegram81\Helper\Informative;
 use ReflectionClass;
@@ -112,7 +113,10 @@ class Update
         }
     }
 
-    public function reply(
+    /**
+     * @throws NoResultException
+     */
+    public function sendToChat(
         string                      $text,
         null|string|ParseMode       $parse_mode = null,
         null|array|EntityCollection $entities = null,
@@ -122,9 +126,9 @@ class Update
         ?bool                       $allow_sending_without_reply = null,
         null|array|ReplyMarkup      $reply_markup = null,
         ?array                      $viaArray = null,
-    ) {
+    ): Message {
         return $this->bot->sendMessage(
-            ($this->message ?? $this->edited_message)->from->id,
+            ($this->message ?? $this->edited_message)->chat->id,
             $text,
             $parse_mode,
             $entities,

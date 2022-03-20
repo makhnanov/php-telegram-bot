@@ -18,6 +18,9 @@ class UpdateCollection implements Iterator
 {
     private int $position = 0;
 
+    /**
+     * @var Update[]
+     */
     private array $updates = [];
 
     private int $lastUpdateId;
@@ -90,16 +93,20 @@ class UpdateCollection implements Iterator
         }
     }
 
-    public function eachSafe(array|Closure $closure, array $params, array|Closure $errorHandler, mixed $sleep = 1): void
-    {
+    public function eachSafe(
+        array|Closure $closure,
+        array         $params,
+        array|Closure $errHandler,
+        array|Closure $errDelay
+    ): void {
         foreach ($this->updates as $update) {
             try {
                 is_array($closure)
-                    ? call_user_func_array($closure, $params)
+                    ? call_user_func_array($closure, [$this->bot, $update, ...$params])
                     : $closure($this->bot, $update, ...$params);
             } catch (Throwable $e) {
-                $errorHandler($e);
-                is_int($sleep) and sleep($sleep);
+                $errHandler($e);
+                $errDelay and $errDelay();
             }
         }
     }

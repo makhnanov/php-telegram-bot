@@ -1,23 +1,17 @@
 <?php
-/** @noinspection GrazieInspection */
+
 declare(strict_types=1);
 
 namespace Makhnanov\Telegram81\Api\Method\Send;
 
-use GuzzleHttp\Promise\Promise;
-use GuzzleHttp\Psr7\Response;
 use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\EntityCollection;
 use Makhnanov\Telegram81\Api\Type\Keyboard\ReplyMarkup;
 use Makhnanov\Telegram81\Api\Type\Message;
 use Makhnanov\Telegram81\Helper\Prepare;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 use Stringable;
 use Yiisoft\Arrays\ArrayHelper;
-
-use function Makhnanov\Telegram81\jDecode;
 
 trait SendMessageTrait
 {
@@ -35,7 +29,8 @@ trait SendMessageTrait
      *                                                     See formatting options for more details.
      *
      * @param null|array|EntityCollection $entities @Optional. A JSON-serialized list of special entities that appear
-     *                                                         in message text, which can be specified instead of parse_mode
+     *                                                         in message text, which can be specified instead of
+     *     parse_mode
      *
      * @param null|bool $disable_web_page_preview @Optional. Disables link previews for links in this message
      *
@@ -48,17 +43,17 @@ trait SendMessageTrait
      *                                                          the specified replied-to message is not found
      *
      * @param null|array|ReplyMarkup $reply_markup @Optional. Additional interface options.
-     *                                                        A JSON-serialized object for an inline keyboard, custom reply keyboard,
-     *                                                        instructions to remove reply keyboard or to force a reply from the user.
+     *                                                        A JSON-serialized object for an inline keyboard, custom
+     *     reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
      *
      * @param null|array $viaArray keys overwrite vars
      * @see SendMessage for get array keys
      *
-     * @return Message&ResponsiveResultativeInterface
+     * @return Message
      *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpUnusedLocalVariableInspection
-     * @noinspection PhpIncompatibleReturnTypeInspection
+     * @throws NoResultException
      */
     public function sendMessage(
         int|string                  $chat_id,
@@ -71,7 +66,7 @@ trait SendMessageTrait
         ?bool                       $allow_sending_without_reply = null,
         null|array|ReplyMarkup      $reply_markup = null,
         ?array                      $viaArray = null,
-    ): Message & ResponsiveResultativeInterface {
+    ): Message {
         [$parameterNames, $parameterValues] = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;
@@ -90,22 +85,6 @@ trait SendMessageTrait
         /** @noinspection PhpUnusedLocalVariableInspection */
         $reply_markup = Prepare::replyMarkup($reply_markup);
 
-        return new class($this->getResponse(__FUNCTION__, compact(...$parameterNames)))
-            extends Message
-            implements ResponsiveResultativeInterface
-        {
-            use ResponsiveResultativeTrait;
-
-            private array $result;
-
-            private Response $response;
-
-            public function __construct(Promise|Response|array $data = [])
-            {
-                $this->response = $data;
-                $this->result = jDecode($this->response)['result'] ?? throw new NoResultException();
-                parent::__construct($this->result);
-            }
-        };
+        return new Message($this->getResponse(__FUNCTION__, compact(...$parameterNames)));
     }
 }

@@ -2,15 +2,30 @@
 
 namespace Makhnanov\Telegram81\Api\Type;
 
-use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
+use GuzzleHttp\Promise\Promise;
+use GuzzleHttp\Psr7\Response;
+use Makhnanov\Telegram81\Api\Enumeration\ChatType;
+use Makhnanov\Telegram81\Api\Exception\NoResultException;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
+use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
+use ReflectionClass;
+use ReflectionProperty;
+
+use function Makhnanov\Telegram81\jDecode;
 
 /**
  * @url https://core.telegram.org/bots/api#message
  *
  * @example
  */
-class Message extends SelfFilling
+class Message implements ResponsiveResultativeInterface
 {
+    use ResponsiveResultativeTrait;
+
+    private array $result;
+
+    private Response $response;
+
     /**
      * Unique message identifier inside this chat.
      */
@@ -94,4 +109,27 @@ class Message extends SelfFilling
      * login_url buttons are represented as ordinary url buttons.
      */
     public ?array $reply_markup; // |InlineKeyboardMarkup
+
+    public function __construct(array|Response|Promise $data = [])
+    {
+        $this->response = $data;
+        $this->result = jDecode($this->response)['result'] ?? throw new NoResultException();
+        if (is_array($data)) {
+            foreach ((new ReflectionClass($this))->getProperties(ReflectionProperty::IS_PUBLIC) as $property) {
+                $propName = $property->getName();
+                $propType = $property->getType()->getName();
+                $value = null;
+                if (class_exists($propType)) {
+                    if ($propType === ChatType::class) {
+                        $value = ChatType::tryByName($data[$propName], ChatType::undefined);
+                    } elseif(isset($data[$propName])) {
+                        $value = new $propType($data[$propName]);
+                    }
+                } else {
+                    $value = $data[$propName] ?? null;
+                }
+                $property->setValue($this, $value);
+            }
+        }
+    }
 }

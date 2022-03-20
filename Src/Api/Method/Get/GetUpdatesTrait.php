@@ -67,7 +67,7 @@ trait GetUpdatesTrait
     public function getUpdates(
         int|Offset    $offset = Offset::Auto,
         int           $limit = null,
-        int           $timeout = Bot::STD_LONG_POOLING_TIMEOUT,
+        int           $timeout = 60,
         array         $allowed_updates = null,
         ?array        $viaArray = null,
         array|Closure $responseErrorHandler = null,

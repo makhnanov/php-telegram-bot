@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Makhnanov\Telegram81\Api\Type;
@@ -6,6 +7,7 @@ namespace Makhnanov\Telegram81\Api\Type;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use JetBrains\PhpStorm\Immutable;
+use Makhnanov\Telegram81\Api\Enumeration\ChatType;
 use Makhnanov\Telegram81\Helper\Informative;
 use ReflectionClass;
 use ReflectionProperty;
@@ -20,16 +22,18 @@ abstract class SelfFilling
         if (is_array($data)) {
             foreach ((new ReflectionClass($this))->getProperties(ReflectionProperty::IS_PUBLIC) as $property) {
                 $propName = $property->getName();
-                /**
-                 * todo handle union
-                 */
                 $propType = $property->getType()->getName();
-                $property->setValue(
-                    $this,
-                    class_exists($propType)
-                        ? (isset($data[$propName]) ? new $propType($data[$propName]) : null)
-                        : $data[$propName] ?? null
-                );
+                $value = null;
+                if (class_exists($propType)) {
+                    if ($propType === ChatType::class) {
+                        $value = ChatType::tryByName($data[$propName], ChatType::undefined);
+                    } elseif(isset($data[$propName])) {
+                        $value = new $propType($data[$propName]);
+                    }
+                } else {
+                    $value = $data[$propName] ?? null;
+                }
+                $property->setValue($this, $value);
             }
         }
     }

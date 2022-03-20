@@ -16,10 +16,9 @@ class Chat extends SelfFilling
     public int $id;
 
     /**
-     * @var String Type of chat, can be either “private”, “group”, “supergroup” or “channel”
-     * @see ChatType
+     * Type of chat, can be either “private”, “group”, “supergroup” or “channel”
      */
-    public string $type;
+    public ChatType $type;
 
     /**
      * @var string|null @Optional. Title, for supergroups, channels and group chats

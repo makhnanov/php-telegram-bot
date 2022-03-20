@@ -13,4 +13,5 @@ enum ChatType implements UpgradedEnumInterface
     case group;
     case supergroup;
     case channel;
+    case undefined;
 }

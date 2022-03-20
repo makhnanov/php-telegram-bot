@@ -92,7 +92,7 @@ class Update
     //     */
     //    public ChatMemberUpdated $chat_member;
 
-    public function __construct(private readonly Bot $bot, array|Response|Promise $data = [])
+    public function __construct(public readonly Bot $b, array|Response|Promise $data = [])
     {
         if (is_array($data)) {
             foreach ((new ReflectionClass($this))->getProperties(ReflectionProperty::IS_PUBLIC) as $property) {
@@ -127,7 +127,7 @@ class Update
         null|array|ReplyMarkup      $reply_markup = null,
         ?array                      $viaArray = null,
     ): Message {
-        return $this->bot->sendMessage(
+        return $this->b->sendMessage(
             ($this->message ?? $this->edited_message)->chat->id,
             $text,
             $parse_mode,
@@ -155,7 +155,7 @@ class Update
         null|array|ReplyMarkup      $reply_markup = null,
         ?array                      $viaArray = null,
     ): Message {
-        return $this->bot->sendMessage(
+        return $this->b->sendMessage(
             ($this->message ?? $this->edited_message)->from->id,
             $text,
             $parse_mode,

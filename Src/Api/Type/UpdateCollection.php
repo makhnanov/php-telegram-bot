@@ -6,6 +6,7 @@ use Closure;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use Iterator;
+use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Helper\Resultative;
 use Makhnanov\Telegram81\Helper\ResultativeInterface;
 use Throwable;
@@ -21,7 +22,7 @@ class UpdateCollection implements Iterator
 
     private int $lastUpdateId;
 
-    public function __construct(array $updatesArray = [])
+    public function __construct(private readonly Bot $bot, array $updatesArray = [])
     {
         foreach ($updatesArray as $oneUpdate) {
             $this->updates[] = new class($oneUpdate) extends Update implements ResultativeInterface
@@ -85,7 +86,7 @@ class UpdateCollection implements Iterator
     public function each(array|Closure $closure, ...$params): void
     {
         foreach ($this->updates as $update) {
-            $closure($update, ...$params);
+            $closure($this->bot, $update, ...$params);
         }
     }
 
@@ -95,7 +96,7 @@ class UpdateCollection implements Iterator
             try {
                 is_array($closure)
                     ? call_user_func_array($closure, $params)
-                    : $closure($update, ...$params);
+                    : $closure($this->bot, $update, ...$params);
             } catch (Throwable $e) {
                 $errorHandler($e);
                 is_int($sleep) and sleep($sleep);

@@ -7,6 +7,7 @@ namespace Makhnanov\Telegram81\Api\Response;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use InvalidArgumentException;
+use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Type\UpdateCollection;
 use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
@@ -25,7 +26,7 @@ class GetUpdatesResponse extends UpdateCollection implements ResponsiveResultati
     /**
      * @throws NoResultException
      */
-    public function __construct(array|Response|Promise $data = [])
+    public function __construct(Bot $bot, array|Response|Promise $data = [])
     {
         $this->response = $data;
         $this->result = match (true) {
@@ -35,6 +36,6 @@ class GetUpdatesResponse extends UpdateCollection implements ResponsiveResultati
             $this->response instanceof Promise
                 => throw new InvalidArgumentException('Feature not released. WIP. ToDo.'),
         };
-        parent::__construct($this->result);
+        parent::__construct($bot, $this->result);
     }
 }

@@ -91,7 +91,7 @@ trait GetUpdatesTrait
             sleep(1);
         }
 
-        $collection = new GetUpdatesResponse($response);
+        $collection = new GetUpdatesResponse($this, $response);
 
         if ($autoOffset) {
             $lastReceivedUpdateId = $collection->getLastReceivedUpdateId();

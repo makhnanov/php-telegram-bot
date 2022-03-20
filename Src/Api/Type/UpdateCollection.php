@@ -3,11 +3,8 @@
 namespace Makhnanov\Telegram81\Api\Type;
 
 use Closure;
-use GuzzleHttp\Promise\Promise;
-use GuzzleHttp\Psr7\Response;
 use Iterator;
 use Makhnanov\Telegram81\Api\Bot;
-use Makhnanov\Telegram81\Helper\Resultative;
 use Makhnanov\Telegram81\Helper\ResultativeInterface;
 use Throwable;
 
@@ -25,23 +22,10 @@ class UpdateCollection implements Iterator
 
     private int $lastUpdateId;
 
-    public function __construct(private readonly Bot $bot, array $updatesArray = [])
+    public function __construct(private readonly Bot $bot, array $updates = [])
     {
-        foreach ($updatesArray as $oneUpdate) {
-            $this->updates[] = new class($oneUpdate) extends Update implements ResultativeInterface
-            {
-                use Resultative;
-
-                private array $result;
-
-                public function __construct(Promise|Response|array $data = [])
-                {
-                    if (is_array($data)) {
-                        $this->result = $data;
-                    }
-                    parent::__construct($data);
-                }
-            };
+        foreach ($updates as $update) {
+            $this->updates[] = new Update($bot, $update);
         }
         $this->lastUpdateId = $this->updates[count($this->updates) - 1]?->update_id ?? 0;
     }

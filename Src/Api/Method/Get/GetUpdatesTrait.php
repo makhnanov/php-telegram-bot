@@ -3,20 +3,12 @@
 namespace Makhnanov\Telegram81\Api\Method\Get;
 
 use Closure;
-use GuzzleHttp\Promise\Promise;
-use GuzzleHttp\Psr7\Response;
-use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Api\Enumeration\Offset;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
 use Makhnanov\Telegram81\Api\Response\GetUpdatesResponse;
 use Makhnanov\Telegram81\Api\Type\Update;
-use Makhnanov\Telegram81\Api\Type\UpdateCollection;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
 
 use Throwable;
-
-use function Makhnanov\Telegram81\jDecode;
 
 trait GetUpdatesTrait
 {
@@ -55,14 +47,15 @@ trait GetUpdatesTrait
      *
      * @param null|array $viaArray
      *
-     * @param null|array|Closure $responseErrorHandler
+     * @param null|array|Closure $errHandler
      *
-     * @throws Throwable
+     * @param null|array|Closure $errDelay
+     *
+     * @throws Throwable|NoResultException
      *
      * @noinspection PhpUnusedLocalVariableInspection
      *
      * @return GetUpdatesResponse
-     *
      */
     public function getUpdates(
         int|Offset    $offset = Offset::Auto,
@@ -70,7 +63,8 @@ trait GetUpdatesTrait
         int           $timeout = 60,
         array         $allowed_updates = null,
         ?array        $viaArray = null,
-        array|Closure $responseErrorHandler = null,
+        array|Closure $errHandler = null,
+        array|Closure $errDelay = null,
     ): GetUpdatesResponse {
         [$parameterNames, $parameterValues] = $this->viaArray(__FUNCTION__, $viaArray);
         foreach ($parameterValues as $name => $value) {
@@ -87,22 +81,17 @@ trait GetUpdatesTrait
         try {
             $response = $this->getResponse(__FUNCTION__, compact(...$parameterNames));
         } catch (Throwable $t) {
-            $responseErrorHandler ? $responseErrorHandler($t) : throw $t;
-            sleep(1);
+            $errHandler ? $errHandler($t) : throw $t;
+            $errDelay and $errDelay();
         }
 
         $collection = new GetUpdatesResponse($this, $response);
 
         if ($autoOffset) {
             $lastReceivedUpdateId = $collection->getLastReceivedUpdateId();
-            $lastReceivedUpdateId and $this->getUpdatesOffset = (int)($lastReceivedUpdateId + 1);
+            $lastReceivedUpdateId and $this->getUpdatesOffset = $lastReceivedUpdateId + 1;
         }
 
         return $collection;
-    }
-
-    public function handleSystemSignal(): void
-    {
-        //         ToDo
     }
 }

@@ -95,9 +95,9 @@ class UpdateCollection implements Iterator
 
     public function eachSafe(
         array|Closure $closure,
-        array         $params,
         array|Closure $errHandler,
-        array|Closure $errDelay
+        array         $params = [],
+        int|array|Closure $errDelay = 1,
     ): void {
         foreach ($this->updates as $update) {
             try {
@@ -106,7 +106,7 @@ class UpdateCollection implements Iterator
                     : $closure($this->bot, $update, ...$params);
             } catch (Throwable $e) {
                 $errHandler($e);
-                $errDelay and $errDelay();
+                $errDelay and (is_int($errDelay) ? sleep($errDelay) : $errDelay());
             }
         }
     }

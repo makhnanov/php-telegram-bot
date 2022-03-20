@@ -22,7 +22,7 @@ class UpdateCollection implements Iterator
 
     private int $lastUpdateId;
 
-    public function __construct(private readonly Bot $bot, array $updates = [])
+    public function __construct(Bot $bot, array $updates = [])
     {
         foreach ($updates as $update) {
             $this->updates[] = new Update($bot, $update);
@@ -73,7 +73,7 @@ class UpdateCollection implements Iterator
     public function each(array|Closure $closure, ...$params): void
     {
         foreach ($this->updates as $update) {
-            $closure($this->bot, $update, ...$params);
+            $closure($update, ...$params);
         }
     }
 
@@ -86,8 +86,8 @@ class UpdateCollection implements Iterator
         foreach ($this->updates as $update) {
             try {
                 is_array($closure)
-                    ? call_user_func_array($closure, [$this->bot, $update, ...$params])
-                    : $closure($this->bot, $update, ...$params);
+                    ? call_user_func_array($closure, [$update, ...$params])
+                    : $closure($update, ...$params);
             } catch (Throwable $e) {
                 $errHandler($e);
                 $errDelay and (is_int($errDelay) ? sleep($errDelay) : $errDelay());

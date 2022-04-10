@@ -108,7 +108,7 @@ class Update
                 } else {
                     $value = $data[$propName] ?? null;
                 }
-                $property->setValue($this, $value);
+                $this->$propName = $value;
             }
         }
     }

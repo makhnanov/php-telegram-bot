@@ -1,8 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Makhnanov\Telegram81\Api;
 
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use JetBrains\PhpStorm\Immutable;
@@ -42,28 +44,32 @@ class Bot
 
     protected Client $client;
 
-    private int $getUpdatesOffset;
+    private int $getUpdatesOffset = 0;
 
+    /**
+     * @throws Exception
+     */
     public function __construct(
-        public readonly string|Stringable $token,
+        public readonly string|Stringable $token = '',
         public readonly string|Stringable $baseUri = 'https://api.telegram.org',
-        public readonly ?int              $timeout = 60,
+        public readonly int $timeout = 60,
     ) {
-        $this->client = new Client([
-            'base_uri' => "$this->baseUri/bot$this->token/",
-            'timeout' => $this->timeout
-        ]);
-        $this->getUpdatesOffset = $this->getOffset();
     }
 
-    public function getOffset(): int
-    {
-        return 0;
-    }
-
+    /**
+     * @throws Exception
+     */
     public function getClient(): Client
     {
-        return $this->client;
+        return $this->client
+            ?? $this->client = new Client([
+                'base_uri' => sprintf(
+                    '%s/bot%s/',
+                    $this->baseUri,
+                    $this->token ?? throw new Exception('Bot Token Is Empty!')
+                ),
+                'timeout' => $this->timeout,
+            ]);
     }
 
     public function setClient(Client $client): self
@@ -94,6 +100,6 @@ class Bot
         if ($this->async) {
             $method .= 'Async';
         }
-        return call_user_func_array([$this->client, $method], [$uri, $options ?? []]);
+        return call_user_func_array([$this->getClient(), $method], [$uri, $options ?? []]);
     }
 }

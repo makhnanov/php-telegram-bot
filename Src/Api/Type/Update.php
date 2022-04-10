@@ -92,7 +92,9 @@ class Update
     //     */
     //    public ChatMemberUpdated $chat_member;
 
-    public function __construct(public readonly Bot $b, array|Response|Promise $data = [])
+    public readonly Bot $b;
+
+    public function __construct(Bot $b, array|Response|Promise $data = [])
     {
         if (is_array($data)) {
             foreach ((new ReflectionClass($this))->getProperties(ReflectionProperty::IS_PUBLIC) as $property) {

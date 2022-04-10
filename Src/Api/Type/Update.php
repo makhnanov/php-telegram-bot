@@ -97,7 +97,9 @@ class Update
     public function __construct(Bot $b, array|Response|Promise $data = [])
     {
         if (is_array($data)) {
-            foreach ((new ReflectionClass($this))->getProperties(ReflectionProperty::IS_PUBLIC) as $property) {
+            foreach ((new ReflectionClass($this))->getProperties(
+                ReflectionProperty::IS_PUBLIC | ~ReflectionProperty::IS_READONLY
+            ) as $property) {
                 $propName = $property->getName();
                 $propType = $property->getType()->getName();
                 $value = null;

@@ -26,7 +26,6 @@ trait GetMeTrait
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return new class($this->getResponse(__FUNCTION__)) extends User implements ResponsiveResultativeInterface
         {
-
             use Responsive, Resultative;
 
             private array $result;

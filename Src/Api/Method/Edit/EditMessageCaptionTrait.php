@@ -59,7 +59,7 @@ trait EditMessageCaptionTrait
         null|array|MessageEntityCollection $caption_entities = null,
         null|array|InlineKeyboardMarkup $reply_markup = null,
         ?array $viaArray = null,
-    ): Message&ResponsiveResultativeInterface {
+    ): Message & ResponsiveResultativeInterface {
         list($usefulNames, $parameterValues) = $this->viaArray(__FUNCTION__, $viaArray,);
         foreach ($parameterValues as $name => $value) {
             $$name = $value;

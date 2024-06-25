@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Makhnanov\Telegram81\Api;
@@ -44,7 +45,7 @@ class Bot
 
     protected Client $client;
 
-    private int $getUpdatesOffset;
+    private int $getUpdatesOffset = 0;
 
     public function __construct(
         private string|Stringable $token,
@@ -55,12 +56,6 @@ class Bot
             'base_uri' => "$this->baseUri/bot$this->token/",
             'timeout' => $this->timeout ?? self::STD_LONG_POOLING_TIMEOUT + 5
         ]);
-        $this->getUpdatesOffset = $this->getOffset();
-    }
-
-    public function getOffset(): int
-    {
-        return 0;
     }
 
     public function getClient(): Client

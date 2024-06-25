@@ -15,4 +15,9 @@ ___
 ![unstable](https://img.shields.io/badge/unstable-dev--master-yellow.svg)
 ![packagist](https://img.shields.io/badge/packagist-no-red.svg)
 ___
-| ✩ Star  +1 |
+
+# Installation
+
+```shell
+composer require makhnanov/php-telegram-bot
+```

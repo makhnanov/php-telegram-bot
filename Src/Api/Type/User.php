@@ -52,4 +52,10 @@ class User extends SelfFilling
      * @Optional. True, if the bot supports inline queries. Returned only in getMe.
      */
     public ?bool $supports_inline_queries;
+
+    /**
+     * @Optional. Optional. True, if the bot can be connected to a Telegram Business account to receive its messages.
+     * Returned only in getMe.
+     */
+    public ?bool $can_connect_to_business;
 }

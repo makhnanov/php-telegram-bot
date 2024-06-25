@@ -25,5 +25,6 @@ class GetMeTest extends ParentTestCase
         $this->assertIsBool($r->can_join_groups);
         $this->assertIsBool($r->can_read_all_group_messages);
         $this->assertIsBool($r->supports_inline_queries);
+        $this->assertIsBool($r->can_connect_to_business);
     }
 }

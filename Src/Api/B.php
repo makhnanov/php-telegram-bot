@@ -23,7 +23,7 @@ final class B extends Bot
         );
     }
 
-    public function api(
+    public static function api(
         null|string|Stringable $token = null,
         null|string|Stringable $baseUri = 'https://api.telegram.org',
         ?int                   $timeout = null,

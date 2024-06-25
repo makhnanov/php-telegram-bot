@@ -52,11 +52,15 @@ class Bot
         private null|string|Stringable $baseUri = 'https://api.telegram.org',
         private ?int                   $timeout = null,
     ) {
-        if ($token) {
-            $this->setClient(new Client([
-                'timeout' => $this->timeout ?? self::STD_LONG_POOLING_TIMEOUT + 5
-            ]));
-        }
+        $this->setClient(new Client([
+            'timeout' => $this->timeout ?? self::STD_LONG_POOLING_TIMEOUT + 5
+        ]));
+    }
+
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
+        return $this;
     }
 
     public function getClient(): Client

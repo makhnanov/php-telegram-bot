@@ -22,7 +22,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "guzzlehttp/guzzle": "7.4.1",
         "yiisoft/arrays": "dev-master",
         "makhnanov/php-enum": "dev-main"

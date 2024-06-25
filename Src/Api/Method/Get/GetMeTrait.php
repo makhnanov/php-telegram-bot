@@ -21,9 +21,9 @@ trait GetMeTrait
      * A simple method for testing your bot's auth token. Requires no parameters.
      * Returns basic information about the bot in form of a User object.
      */
-    public function getMe(): User & ResponsiveResultativeInterface
+    public function getMe(): User|ResponsiveResultativeInterface
     {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
+
         return new class($this->getResponse(__FUNCTION__)) extends User implements ResponsiveResultativeInterface
         {
             use Responsive, Resultative;

@@ -48,14 +48,15 @@ class Bot
     private int $getUpdatesOffset = 0;
 
     public function __construct(
-        private string|Stringable $token,
-        private string|Stringable $baseUri = 'https://api.telegram.org',
-        private ?int              $timeout = null,
+        private null|string|Stringable $token = null,
+        private null|string|Stringable $baseUri = 'https://api.telegram.org',
+        private ?int                   $timeout = null,
     ) {
-        $this->client = new Client([
-            'base_uri' => "$this->baseUri/bot$this->token/",
-            'timeout' => $this->timeout ?? self::STD_LONG_POOLING_TIMEOUT + 5
-        ]);
+        if ($token) {
+            $this->setClient(new Client([
+                'timeout' => $this->timeout ?? self::STD_LONG_POOLING_TIMEOUT + 5
+            ]));
+        }
     }
 
     public function getClient(): Client
@@ -67,6 +68,17 @@ class Bot
     {
         $this->client = $client;
         return $this;
+    }
+
+    public function setBaseUri(string $baseUri): self
+    {
+        $this->baseUri = $baseUri;
+        return $this;
+    }
+
+    public function getBaseUri(): string
+    {
+        return $this->baseUri;
     }
 
     public function getResponse($uri, array $parameters = []): Response
@@ -90,6 +102,9 @@ class Bot
         if ($this->async) {
             $method .= 'Async';
         }
-        return call_user_func_array([$this->client, $method], [$uri, $options ?? []]);
+
+        return call_user_func_array([$this->client, $method], [
+            $this->getBaseUri() . '/bot' . $this->token . '/' . $uri, $options ?? []
+        ]);
     }
 }

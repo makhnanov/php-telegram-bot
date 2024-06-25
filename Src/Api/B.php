@@ -9,12 +9,12 @@ use Stringable;
  */
 final class B extends Bot
 {
-    private static self $instance;
+    private static self $single;
 
     protected function __construct(
-        private null|string|Stringable $token = null,
-        private null|string|Stringable $baseUri = 'https://api.telegram.org',
-        private ?int                   $timeout = null,
+        null|string|Stringable $token = null,
+        null|string|Stringable $baseUri = 'https://api.telegram.org',
+        ?int                   $timeout = null,
     ) {
         parent::__construct(
             $token,
@@ -23,11 +23,11 @@ final class B extends Bot
         );
     }
 
-    public function instance(
+    public function api(
         null|string|Stringable $token = null,
         null|string|Stringable $baseUri = 'https://api.telegram.org',
         ?int                   $timeout = null,
     ): self {
-        return self::$instance ?? self::$instance = new self(...func_get_args());
+        return self::$single ?? self::$single = new self(...func_get_args());
     }
 }

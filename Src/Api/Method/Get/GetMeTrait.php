@@ -30,6 +30,8 @@ trait GetMeTrait
 
             private array $result;
 
+            // ToDo: get undecoded
+
             private Response $response;
 
             public function __construct(Promise|Response|array $data = [])

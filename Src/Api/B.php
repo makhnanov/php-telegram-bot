@@ -19,7 +19,7 @@ final class B extends Bot
 
     }
 
-    protected function instance(
+    public function instance(
         null|string|Stringable $token = null,
         null|string|Stringable $baseUri = 'https://api.telegram.org',
         ?int                   $timeout = null,

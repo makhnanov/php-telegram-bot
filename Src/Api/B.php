@@ -16,7 +16,11 @@ final class B extends Bot
         private null|string|Stringable $baseUri = 'https://api.telegram.org',
         private ?int                   $timeout = null,
     ) {
-
+        parent::__construct(
+            $token,
+            $baseUri,
+            $timeout,
+        );
     }
 
     public function instance(

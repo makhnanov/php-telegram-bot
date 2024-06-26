@@ -4,6 +4,7 @@ namespace Makhnanov\Telegram81\Api\Method\Get;
 
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\RequestOptions;
 use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Api\Enumeration\Offset;
 use Makhnanov\Telegram81\Api\Exception\NoResultException;
@@ -69,10 +70,15 @@ trait GetUpdatesTrait
             $offset = $this->getUpdatesOffset;
         }
 
-        $collection = new class($this, $this->getResponse(__FUNCTION__, compact(...$parameterNames)))
-            extends UpdateCollection
-            implements ResponsiveResultativeInterface
-        {
+        $collection = new class(
+            $this,
+            $this->getResponse(
+                __FUNCTION__,
+                compact(...$parameterNames),
+                [RequestOptions::TIMEOUT => $timeout]
+            )
+        ) extends UpdateCollection implements ResponsiveResultativeInterface {
+
             use ResponsiveResultativeTrait;
 
             private array $result;

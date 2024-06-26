@@ -6,6 +6,7 @@ namespace Makhnanov\Telegram81\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\RequestOptions;
 use JetBrains\PhpStorm\Immutable;
 use Makhnanov\Telegram81\Api\Enumeration\HttpMethod;
 use Makhnanov\Telegram81\Api\Method\DeleteMessageTrait;
@@ -53,7 +54,7 @@ class Bot
         private ?int                   $timeout = null,
     ) {
         $this->setClient(new Client([
-            'timeout' => $this->timeout ?? self::STD_LONG_POOLING_TIMEOUT + 5
+            RequestOptions::TIMEOUT => $this->timeout ?? self::STD_LONG_POOLING_TIMEOUT + 5
         ]));
     }
 
@@ -85,7 +86,7 @@ class Bot
         return $this->baseUri;
     }
 
-    public function getResponse($uri, array $parameters = []): Response
+    public function getResponse($uri, array $parameters = [], $options = []): Response
     {
         /**
          * @see Client::get()
@@ -101,14 +102,14 @@ class Bot
             }
         } else {
             $method = 'post';
-            $options = ['form_params' => $parameters];
+            $options = ['form_params' => $parameters, ...$options];
         }
         if ($this->async) {
             $method .= 'Async';
         }
 
         return call_user_func_array([$this->client, $method], [
-            $this->getBaseUri() . '/bot' . $this->token . '/' . $uri, $options ?? []
+            $this->getBaseUri() . '/bot' . $this->token . '/' . $uri, $options
         ]);
     }
 }

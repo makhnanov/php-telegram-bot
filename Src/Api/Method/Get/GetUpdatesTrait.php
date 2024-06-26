@@ -75,7 +75,7 @@ trait GetUpdatesTrait
             $this->getResponse(
                 __FUNCTION__,
                 compact(...$parameterNames),
-                [RequestOptions::TIMEOUT => $timeout]
+                [RequestOptions::TIMEOUT => $timeout + 1]
             )
         ) extends UpdateCollection implements ResponsiveResultativeInterface {
 

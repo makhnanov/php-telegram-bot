@@ -2,6 +2,7 @@
 
 namespace Makhnanov\Telegram81\Api\Type;
 
+use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Api\Type\Helpers\UpdateSugar;
 
 /**
@@ -119,6 +120,8 @@ use Makhnanov\Telegram81\Api\Type\Helpers\UpdateSugar;
  */
 class Update extends SelfFilling
 {
+    readonly public Bot $bot;
+
     use UpdateSugar;
 
     /**

@@ -6,6 +6,7 @@ namespace Makhnanov\Telegram81\Api\Type;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use JetBrains\PhpStorm\Immutable;
+use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Helper\Informative;
 use ReflectionClass;
 use ReflectionProperty;

@@ -69,7 +69,7 @@ trait GetUpdatesTrait
             $offset = $this->getUpdatesOffset;
         }
 
-        $collection = new class($this->getResponse(__FUNCTION__, compact(...$parameterNames)))
+        $collection = new class($this, $this->getResponse(__FUNCTION__, compact(...$parameterNames)))
             extends UpdateCollection
             implements ResponsiveResultativeInterface
         {
@@ -79,11 +79,11 @@ trait GetUpdatesTrait
 
             private Response $response;
 
-            public function __construct(array|Response|Promise $data = [])
+            public function __construct(Bot $bot, array|Response|Promise $data = [])
             {
                 $this->response = $data;
                 $this->result = decoded($this->response)['result'] ?? throw new NoResultException();
-                parent::__construct($this->result);
+                parent::__construct($bot, $this->result);
             }
         };
 

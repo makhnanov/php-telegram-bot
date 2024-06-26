@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Makhnanov\Telegram81\Api\Type;
@@ -6,7 +7,6 @@ namespace Makhnanov\Telegram81\Api\Type;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use JetBrains\PhpStorm\Immutable;
-use Makhnanov\Telegram81\Api\Bot;
 use Makhnanov\Telegram81\Helper\Informative;
 use ReflectionClass;
 use ReflectionProperty;
@@ -25,7 +25,7 @@ abstract class SelfFilling
                  * todo handle union
                  */
                 $propType = $property->getType()->getName();
-                $property->setValue(
+                $propName !== 'bot' and /* Check Update Class */ $property->setValue(
                     $this,
                     class_exists($propType)
                         ? (isset($data[$propName]) ? new $propType($data[$propName]) : null)

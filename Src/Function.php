@@ -1,13 +1,12 @@
 <?php
 
-namespace Makhnanov\TelegramBot;
-
 use BackedEnum;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Utils;
 use InvalidArgumentException;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
+use Makhnanov\TelegramBot\Api\Bot;
 use Makhnanov\TelegramBot\Api\Type\Chat;
 use Stringable;
 
@@ -86,4 +85,27 @@ function formatCallbackButton(string|Stringable $text, string|Stringable $data):
 function getChatType(null|string|Chat $mixed): string
 {
     return $mixed instanceof Chat ? $mixed->type : $mixed;
+}
+
+
+
+$bot = null;
+
+function bot(): Bot
+{
+    global $bot;
+    if (is_null($bot)) {
+        $bot = new Bot();
+    }
+    return $bot;
+}
+
+function t(): Bot
+{
+    return bot();
+}
+
+function b(): Bot
+{
+    return bot();
 }

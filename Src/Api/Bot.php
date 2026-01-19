@@ -27,7 +27,9 @@ use Stringable;
 #[Immutable(Immutable::PROTECTED_WRITE_SCOPE)]
 class Bot
 {
-    public const STD_LONG_POOLING_TIMEOUT = 6;
+    public const PROD_LONG_POOLING_TIMEOUT = 60;
+    public const DEV_LONG_POOLING_TIMEOUT = 5;
+    public const STD_LONG_POOLING_TIMEOUT = self::PROD_LONG_POOLING_TIMEOUT;
 
     use Reflection,
         GetMeTrait,

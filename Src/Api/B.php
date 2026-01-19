@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api;
+namespace Makhnanov\TelegramBot\Api;
 
 use Stringable;
 

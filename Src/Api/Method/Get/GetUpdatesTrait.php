@@ -1,19 +1,19 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Method\Get;
+namespace Makhnanov\TelegramBot\Api\Method\Get;
 
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
-use Makhnanov\Telegram81\Api\Bot;
-use Makhnanov\Telegram81\Api\Enumeration\Offset;
-use Makhnanov\Telegram81\Api\Exception\NoResultException;
-use Makhnanov\Telegram81\Api\Type\Update;
-use Makhnanov\Telegram81\Api\Type\UpdateCollection;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
+use Makhnanov\TelegramBot\Api\Bot;
+use Makhnanov\TelegramBot\Api\Enumeration\Offset;
+use Makhnanov\TelegramBot\Api\Exception\NoResultException;
+use Makhnanov\TelegramBot\Api\Type\Update;
+use Makhnanov\TelegramBot\Api\Type\UpdateCollection;
+use Makhnanov\TelegramBot\Helper\ResponsiveResultativeInterface;
+use Makhnanov\TelegramBot\Helper\ResponsiveResultativeTrait;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\TelegramBot\decoded;
 
 trait GetUpdatesTrait
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type;
+namespace Makhnanov\TelegramBot\Api\Type;
 
-use Makhnanov\Telegram81\Api\Bot;
-use Makhnanov\Telegram81\Api\Type\Helpers\UpdateSugar;
+use Makhnanov\TelegramBot\Api\Bot;
+use Makhnanov\TelegramBot\Api\Type\Helpers\UpdateSugar;
 
 /**
  * @example Click by inline button in channel [

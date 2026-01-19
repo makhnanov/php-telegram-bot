@@ -2,22 +2,22 @@
 /** @noinspection GrazieInspection */
 declare(strict_types=1);
 
-namespace Makhnanov\Telegram81\Api\Method\Send;
+namespace Makhnanov\TelegramBot\Api\Method\Send;
 
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
-use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
-use Makhnanov\Telegram81\Api\Exception\NoResultException;
-use Makhnanov\Telegram81\Api\Type\EntityCollection;
-use Makhnanov\Telegram81\Api\Type\Keyboard\ReplyMarkup;
-use Makhnanov\Telegram81\Api\Type\Message;
-use Makhnanov\Telegram81\Helper\Prepare;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
+use Makhnanov\TelegramBot\Api\Enumeration\ParseMode;
+use Makhnanov\TelegramBot\Api\Exception\NoResultException;
+use Makhnanov\TelegramBot\Api\Type\EntityCollection;
+use Makhnanov\TelegramBot\Api\Type\Keyboard\ReplyMarkup;
+use Makhnanov\TelegramBot\Api\Type\Message;
+use Makhnanov\TelegramBot\Helper\Prepare;
+use Makhnanov\TelegramBot\Helper\ResponsiveResultativeInterface;
+use Makhnanov\TelegramBot\Helper\ResponsiveResultativeTrait;
 use Stringable;
 use Yiisoft\Arrays\ArrayHelper;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\TelegramBot\decoded;
 
 trait SendMessageTrait
 {

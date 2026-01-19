@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Snippet;
+namespace Makhnanov\TelegramBot\Snippet;
 
 use Makhnanov\PhpEnum\UpgradedEnumInterface;
 use Makhnanov\PhpEnum\EnumExtension;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type;
+namespace Makhnanov\TelegramBot\Api\Type;
 
-use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
+use Makhnanov\TelegramBot\Api\Type\keyboard\inline\InlineKeyboardMarkup;
 
 /**
  * @url https://core.telegram.org/bots/api#message

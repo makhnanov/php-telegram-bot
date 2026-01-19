@@ -1,36 +1,22 @@
 {
     "name": "makhnanov/php-telegram-bot",
-    "description": "PHP 8.3 Telegram Bot API Library.",
+    "description": "PHP 8.5 Telegram Bot API Library.",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Makhnanov\\Telegram81\\": "Src/"
+            "Makhnanov\\TelegramBot\\": "Src/"
         },
         "files": ["Src/Function.php"]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Makhnanov\\Telegram81\\Test\\": "Test/"
-        }
-    },
     "authors": [
         {
-            "name": "Romaxa",
+            "name": "RomaxaCoder",
             "email": "bakirov.important@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "php": "^8.3",
-        "guzzlehttp/guzzle": "7.4.1",
-        "yiisoft/arrays": "dev-master",
-        "makhnanov/php-enum": "dev-main"
-    },
-    "require-dev": {
-        "symfony/var-dumper": "6.0.x-dev",
-        "phpunit/phpunit": "^9",
-        "ezyang/htmlpurifier": "4.13"
+        "php": "^8.5"
     },
     "scripts": {
         "test": "php vendor/bin/phpunit --colors=always --testdox Test"

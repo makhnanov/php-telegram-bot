@@ -1,13 +1,13 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type;
+namespace Makhnanov\TelegramBot\Api\Type;
 
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use Iterator;
-use Makhnanov\Telegram81\Api\Bot;
-use Makhnanov\Telegram81\Helper\Resultative;
-use Makhnanov\Telegram81\Helper\ResultativeInterface;
+use Makhnanov\TelegramBot\Api\Bot;
+use Makhnanov\TelegramBot\Helper\Resultative;
+use Makhnanov\TelegramBot\Helper\ResultativeInterface;
 
 /**
  * @template Update

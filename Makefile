@@ -4,10 +4,10 @@ shell:
 	docker-compose exec app sh
 test:
 	docker-compose exec app php vendor/bin/phpunit --colors=always --testdox Test \
-	# --filter testErrorTooLate Makhnanov\Telegram81\Test\DeleteMessageTest
-	# --filter testBasicEditReplyMarkup Makhnanov\Telegram81\Test\EditMessageReplyMarkupTest
-	# --filter testBasicEditCaption Makhnanov\Telegram81\Test\EditMessageCaptionTest
-	# --filter testViaId Makhnanov\Telegram81\Test\EditMessageMediaTest
-	# --filter testUnchangedMessage Makhnanov\Telegram81\Test\UnchangedMessageExceptionTest
-	# --filter testSimplePrivateToUser Makhnanov\Telegram81\Test\SendMessageTest
-	# --filter testBasicEditPrivate Makhnanov\Telegram81\Test\EditMessage
+	# --filter testErrorTooLate Makhnanov\TelegramBot\Test\DeleteMessageTest
+	# --filter testBasicEditReplyMarkup Makhnanov\TelegramBot\Test\EditMessageReplyMarkupTest
+	# --filter testBasicEditCaption Makhnanov\TelegramBot\Test\EditMessageCaptionTest
+	# --filter testViaId Makhnanov\TelegramBot\Test\EditMessageMediaTest
+	# --filter testUnchangedMessage Makhnanov\TelegramBot\Test\UnchangedMessageExceptionTest
+	# --filter testSimplePrivateToUser Makhnanov\TelegramBot\Test\SendMessageTest
+	# --filter testBasicEditPrivate Makhnanov\TelegramBot\Test\EditMessage

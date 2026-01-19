@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type\Keyboard;
+namespace Makhnanov\TelegramBot\Api\Type\Keyboard;
 
 abstract class ReplyMarkup
 {

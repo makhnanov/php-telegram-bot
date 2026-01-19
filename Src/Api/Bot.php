@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Makhnanov\Telegram81\Api;
+namespace Makhnanov\TelegramBot\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
 use JetBrains\PhpStorm\Immutable;
-use Makhnanov\Telegram81\Api\Enumeration\HttpMethod;
-use Makhnanov\Telegram81\Api\Method\DeleteMessageTrait;
-use Makhnanov\Telegram81\Api\Method\Edit\EditMessageCaptionTrait;
-use Makhnanov\Telegram81\Api\Method\Edit\EditMessageMediaTrait;
-use Makhnanov\Telegram81\Api\Method\Edit\EditMessageReplyMarkupTrait;
-use Makhnanov\Telegram81\Api\Method\Edit\EditMessageTextTrait;
-use Makhnanov\Telegram81\Api\Method\Get\GetMeTrait;
-use Makhnanov\Telegram81\Api\Method\Get\GetUpdatesTrait;
-use Makhnanov\Telegram81\Api\Method\Send\SendMessageTrait;
-use Makhnanov\Telegram81\Api\Method\Send\SendPhotoTrait;
-use Makhnanov\Telegram81\Helper\Reflection;
+use Makhnanov\TelegramBot\Api\Enumeration\HttpMethod;
+use Makhnanov\TelegramBot\Api\Method\DeleteMessageTrait;
+use Makhnanov\TelegramBot\Api\Method\Edit\EditMessageCaptionTrait;
+use Makhnanov\TelegramBot\Api\Method\Edit\EditMessageMediaTrait;
+use Makhnanov\TelegramBot\Api\Method\Edit\EditMessageReplyMarkupTrait;
+use Makhnanov\TelegramBot\Api\Method\Edit\EditMessageTextTrait;
+use Makhnanov\TelegramBot\Api\Method\Get\GetMeTrait;
+use Makhnanov\TelegramBot\Api\Method\Get\GetUpdatesTrait;
+use Makhnanov\TelegramBot\Api\Method\Send\SendMessageTrait;
+use Makhnanov\TelegramBot\Api\Method\Send\SendPhotoTrait;
+use Makhnanov\TelegramBot\Helper\Reflection;
 use Stringable;
 
 /**
@@ -94,7 +94,7 @@ class Bot
          * @see Client::post()
          * @see Client::postAsync()
          */
-        $parameters = array_filter($parameters, 'Makhnanov\Telegram81\is_set');
+        $parameters = array_filter($parameters, 'Makhnanov\TelegramBot\is_set');
         if ($this->defaultHttpMethod === HttpMethod::Get) {
             $method = 'get';
             if ($parameters) {

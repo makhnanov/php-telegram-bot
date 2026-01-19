@@ -1,12 +1,12 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Exception;
+namespace Makhnanov\TelegramBot\Api\Exception;
 
 use Exception;
 use GuzzleHttp\Exception\BadResponseException;
 use Throwable;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\TelegramBot\decoded;
 
 class UnchangedMessageException extends Exception
 {

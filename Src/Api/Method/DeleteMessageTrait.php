@@ -1,11 +1,11 @@
 <?php /** @noinspection GrazieInspection */
 
-namespace Makhnanov\Telegram81\Api\Method;
+namespace Makhnanov\TelegramBot\Api\Method;
 
-use Makhnanov\Telegram81\Api\Exception\NoResultException;
+use Makhnanov\TelegramBot\Api\Exception\NoResultException;
 use Stringable;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\TelegramBot\decoded;
 
 trait DeleteMessageTrait
 {

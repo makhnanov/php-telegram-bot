@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace Makhnanov\Telegram81\Api\Method\Get;
+namespace Makhnanov\TelegramBot\Api\Method\Get;
 
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
-use Makhnanov\Telegram81\Api\Exception\NoResultException;
-use Makhnanov\Telegram81\Api\Type\User;
-use Makhnanov\Telegram81\Helper\Responsive;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
-use Makhnanov\Telegram81\Helper\Resultative;
+use Makhnanov\TelegramBot\Api\Exception\NoResultException;
+use Makhnanov\TelegramBot\Api\Type\User;
+use Makhnanov\TelegramBot\Helper\Responsive;
+use Makhnanov\TelegramBot\Helper\ResponsiveResultativeInterface;
+use Makhnanov\TelegramBot\Helper\Resultative;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\TelegramBot\decoded;
 
 trait GetMeTrait
 {

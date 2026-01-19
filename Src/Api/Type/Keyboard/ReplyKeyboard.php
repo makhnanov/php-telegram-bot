@@ -1,8 +1,8 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type\Keyboard;
+namespace Makhnanov\TelegramBot\Api\Type\Keyboard;
 
-use Makhnanov\Telegram81\Helper\Informative;
+use Makhnanov\TelegramBot\Helper\Informative;
 
 class ReplyKeyboard
 {

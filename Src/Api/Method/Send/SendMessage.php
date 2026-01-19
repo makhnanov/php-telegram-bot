@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Method\Send;
+namespace Makhnanov\TelegramBot\Api\Method\Send;
 
 class SendMessage
 {

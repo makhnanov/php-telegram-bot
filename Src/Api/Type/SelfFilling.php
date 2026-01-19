@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Makhnanov\Telegram81\Api\Type;
+namespace Makhnanov\TelegramBot\Api\Type;
 
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
 use JetBrains\PhpStorm\Immutable;
-use Makhnanov\Telegram81\Helper\Informative;
+use Makhnanov\TelegramBot\Helper\Informative;
 use ReflectionClass;
 use ReflectionProperty;
 

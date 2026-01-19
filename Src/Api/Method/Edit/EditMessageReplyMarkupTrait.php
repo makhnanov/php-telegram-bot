@@ -1,19 +1,19 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Method\Edit;
+namespace Makhnanov\TelegramBot\Api\Method\Edit;
 
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
-use Makhnanov\Telegram81\Api\Exception\NoResultException;
-use Makhnanov\Telegram81\Api\Exception\UnchangedMessageException;
-use Makhnanov\Telegram81\Api\Type\keyboard\inline\InlineKeyboardMarkup;
-use Makhnanov\Telegram81\Api\Type\Message;
-use Makhnanov\Telegram81\Helper\Prepare;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeTrait;
+use Makhnanov\TelegramBot\Api\Exception\NoResultException;
+use Makhnanov\TelegramBot\Api\Exception\UnchangedMessageException;
+use Makhnanov\TelegramBot\Api\Type\keyboard\inline\InlineKeyboardMarkup;
+use Makhnanov\TelegramBot\Api\Type\Message;
+use Makhnanov\TelegramBot\Helper\Prepare;
+use Makhnanov\TelegramBot\Helper\ResponsiveResultativeInterface;
+use Makhnanov\TelegramBot\Helper\ResponsiveResultativeTrait;
 
-use function Makhnanov\Telegram81\decoded;
+use function Makhnanov\TelegramBot\decoded;
 
 trait EditMessageReplyMarkupTrait
 {

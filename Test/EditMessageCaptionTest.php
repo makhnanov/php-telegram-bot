@@ -1,12 +1,12 @@
 <?php
 
-namespace Makhnanov\Telegram81\Test;
+namespace Makhnanov\TelegramBot\Test;
 
-use Makhnanov\Telegram81\Snippet\KeyboardSnippet;
+use Makhnanov\TelegramBot\Snippet\KeyboardSnippet;
 
-use Makhnanov\Telegram81\Snippet\LanguageSnippetEnum;
+use Makhnanov\TelegramBot\Snippet\LanguageSnippetEnum;
 
-use function Makhnanov\Telegram81\callbackButton;
+use function Makhnanov\TelegramBot\callbackButton;
 
 class EditMessageCaptionTest extends ParentTestCase
 {

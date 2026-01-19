@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Exception;
+namespace Makhnanov\TelegramBot\Api\Exception;
 
 use Exception;
 

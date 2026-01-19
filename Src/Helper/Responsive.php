@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Helper;
+namespace Makhnanov\TelegramBot\Helper;
 
 use GuzzleHttp\Psr7\Response;
 

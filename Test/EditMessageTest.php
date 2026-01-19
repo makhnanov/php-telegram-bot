@@ -1,11 +1,11 @@
 <?php
 
-namespace Makhnanov\Telegram81\Test;
+namespace Makhnanov\TelegramBot\Test;
 
-use Makhnanov\Telegram81\Api\Type\Chat;
-use Makhnanov\Telegram81\Snippet\KeyboardSnippet;
+use Makhnanov\TelegramBot\Api\Type\Chat;
+use Makhnanov\TelegramBot\Snippet\KeyboardSnippet;
 
-use function Makhnanov\Telegram81\isPrivate;
+use function Makhnanov\TelegramBot\isPrivate;
 
 class EditMessageTest extends ParentTestCase
 {

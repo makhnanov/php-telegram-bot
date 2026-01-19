@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Makhnanov\Telegram81\Api\Enumeration;
+namespace Makhnanov\TelegramBot\Api\Enumeration;
 
 use Makhnanov\PhpEnum\UpgradedEnumInterface;
 use Makhnanov\PhpEnum\EnumExtension;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type\Keyboard;
+namespace Makhnanov\TelegramBot\Api\Type\Keyboard;
 
 class ReplyKeyboardRow
 {
@@ -20,7 +20,7 @@ class ReplyKeyboardRow
     ) {
         $this->buttons[] = array_filter(
             compact('text', 'request_contact', 'request_location', 'request_poll'),
-            'Makhnanov\Telegram81\is_set'
+            'Makhnanov\TelegramBot\is_set'
         );
         return $this;
     }

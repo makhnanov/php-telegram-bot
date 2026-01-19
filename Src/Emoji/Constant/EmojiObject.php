@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Emoji\Constant;
+namespace Makhnanov\TelegramBot\Emoji\Constant;
 
 class EmojiObject
 {

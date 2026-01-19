@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Method\Edit;
+namespace Makhnanov\TelegramBot\Api\Method\Edit;
 
 /**
  * @see EditMessageTextTrait

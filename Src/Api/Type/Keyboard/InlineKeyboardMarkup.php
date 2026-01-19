@@ -1,9 +1,9 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type\Keyboard;
+namespace Makhnanov\TelegramBot\Api\Type\Keyboard;
 
 use JetBrains\PhpStorm\ArrayShape;
-use Makhnanov\Telegram81\Api\Type\SelfFilling;
+use Makhnanov\TelegramBot\Api\Type\SelfFilling;
 
 class InlineKeyboardMarkup extends SelfFilling
 {

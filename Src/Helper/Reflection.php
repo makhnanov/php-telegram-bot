@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Makhnanov\Telegram81\Helper;
+namespace Makhnanov\TelegramBot\Helper;
 
-use Makhnanov\Telegram81\Api\Exception\TypeError;
+use Makhnanov\TelegramBot\Api\Exception\TypeError;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Makhnanov\Telegram81\Helper;
+namespace Makhnanov\TelegramBot\Helper;
 
-use Makhnanov\Telegram81\Api\Type\SelfFilling;
+use Makhnanov\TelegramBot\Api\Type\SelfFilling;
 use ReflectionProperty;
 
 trait Informative

@@ -1,9 +1,9 @@
 <?php
 
-namespace Makhnanov\Telegram81\Helper;
+namespace Makhnanov\TelegramBot\Helper;
 
 use GuzzleHttp\Utils;
-use Makhnanov\Telegram81\Api\Type\Keyboard\ReplyMarkup;
+use Makhnanov\TelegramBot\Api\Type\Keyboard\ReplyMarkup;
 
 class Prepare
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Makhnanov\Telegram81\Test;
+namespace Makhnanov\TelegramBot\Test;
 
-use Makhnanov\Telegram81\Api\Method\Send\SendMessage;
-use Makhnanov\Telegram81\Api\Type\Chat;
-use Makhnanov\Telegram81\Api\Type\User;
+use Makhnanov\TelegramBot\Api\Method\Send\SendMessage;
+use Makhnanov\TelegramBot\Api\Type\Chat;
+use Makhnanov\TelegramBot\Api\Type\User;
 
 class SendMessageTest extends ParentTestCase
 {

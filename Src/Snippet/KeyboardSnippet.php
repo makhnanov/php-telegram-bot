@@ -1,11 +1,11 @@
 <?php
 
-namespace Makhnanov\Telegram81\Snippet;
+namespace Makhnanov\TelegramBot\Snippet;
 
 use JetBrains\PhpStorm\ArrayShape;
-use Makhnanov\Telegram81\Emoji\Enumeration\JoystickEnum as J;
+use Makhnanov\TelegramBot\Emoji\Enumeration\JoystickEnum as J;
 
-use function Makhnanov\Telegram81\callbackButton;
+use function Makhnanov\TelegramBot\callbackButton;
 
 class KeyboardSnippet
 {

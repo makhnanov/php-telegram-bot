@@ -1,6 +1,6 @@
 <?php /** @noinspection SpellCheckingInspection */
 
-namespace Makhnanov\Telegram81\Helper;
+namespace Makhnanov\TelegramBot\Helper;
 
 interface ArrayableInterface
 {

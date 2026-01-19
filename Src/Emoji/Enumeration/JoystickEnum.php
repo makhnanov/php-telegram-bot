@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Emoji\Enumeration;
+namespace Makhnanov\TelegramBot\Emoji\Enumeration;
 
 use Makhnanov\PhpEnum\UpgradedEnumInterface;
 use Makhnanov\PhpEnum\EnumExtension;

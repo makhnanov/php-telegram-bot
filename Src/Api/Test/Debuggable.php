@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Test;
+namespace Makhnanov\TelegramBot\Api\Test;
 
 interface Debuggable
 {

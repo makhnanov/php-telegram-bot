@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type;
+namespace Makhnanov\TelegramBot\Api\Type;
 
 class PhotoSizeCollection
 {

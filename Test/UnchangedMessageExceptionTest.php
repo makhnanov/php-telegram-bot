@@ -1,8 +1,8 @@
 <?php
 
-namespace Makhnanov\Telegram81\Test;
+namespace Makhnanov\TelegramBot\Test;
 
-use Makhnanov\Telegram81\Api\Exception\UnchangedMessageException;
+use Makhnanov\TelegramBot\Api\Exception\UnchangedMessageException;
 
 class UnchangedMessageExceptionTest extends ParentTestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Makhnanov\Telegram81;
+namespace Makhnanov\TelegramBot;
 
 use BackedEnum;
 use GuzzleHttp\Psr7\Response;
@@ -8,7 +8,7 @@ use GuzzleHttp\Utils;
 use InvalidArgumentException;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
-use Makhnanov\Telegram81\Api\Type\Chat;
+use Makhnanov\TelegramBot\Api\Type\Chat;
 use Stringable;
 
 function is_set(mixed $value): bool

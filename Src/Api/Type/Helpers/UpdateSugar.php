@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Makhnanov\Telegram81\Api\Type\Helpers;
+namespace Makhnanov\TelegramBot\Api\Type\Helpers;
 
 use Exception;
-use Makhnanov\Telegram81\Api\Enumeration\ParseMode;
-use Makhnanov\Telegram81\Api\Type\EntityCollection;
-use Makhnanov\Telegram81\Api\Type\Keyboard\ReplyMarkup;
-use Makhnanov\Telegram81\Api\Type\Message;
-use Makhnanov\Telegram81\Helper\ResponsiveResultativeInterface;
+use Makhnanov\TelegramBot\Api\Enumeration\ParseMode;
+use Makhnanov\TelegramBot\Api\Type\EntityCollection;
+use Makhnanov\TelegramBot\Api\Type\Keyboard\ReplyMarkup;
+use Makhnanov\TelegramBot\Api\Type\Message;
+use Makhnanov\TelegramBot\Helper\ResponsiveResultativeInterface;
 
 trait UpdateSugar
 {

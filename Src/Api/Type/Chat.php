@@ -1,8 +1,8 @@
 <?php
 
-namespace Makhnanov\Telegram81\Api\Type;
+namespace Makhnanov\TelegramBot\Api\Type;
 
-use Makhnanov\Telegram81\Api\Enumeration\ChatType;
+use Makhnanov\TelegramBot\Api\Enumeration\ChatType;
 
 class Chat extends SelfFilling
 {

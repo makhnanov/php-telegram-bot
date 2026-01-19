@@ -1,8 +1,8 @@
 <?php
 
-namespace Makhnanov\Telegram81\Test;
+namespace Makhnanov\TelegramBot\Test;
 
-use Makhnanov\Telegram81\Snippet\KeyboardSnippet;
+use Makhnanov\TelegramBot\Snippet\KeyboardSnippet;
 
 class EditMessageReplyMarkupTest extends ParentTestCase
 {

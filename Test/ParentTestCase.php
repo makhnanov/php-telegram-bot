@@ -5,7 +5,7 @@ namespace Makhnanov\TelegramBot\Test;
 use Closure;
 use GuzzleHttp\Psr7\Response;
 use Makhnanov\TelegramBot\Api\B;
-use Makhnanov\TelegramBot\Api\Bot;
+use Makhnanov\TelegramBot\Bot;
 use Makhnanov\TelegramBot\Helper\ResponsiveInterface;
 use PHPUnit\Framework\Constraint\IsEqual;
 use PHPUnit\Framework\Constraint\IsType;

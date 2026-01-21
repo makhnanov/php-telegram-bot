@@ -1,6 +1,6 @@
 {
     "name": "makhnanov/php-telegram-bot",
-    "description": "PHP 8.5 Telegram Bot API Library.",
+    "description": "PHP 8.5.2 Telegram Bot API Library.",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -17,8 +17,5 @@
     ],
     "require": {
         "php": "^8.5"
-    },
-    "scripts": {
-        "test": "php vendor/bin/phpunit --colors=always --testdox Test"
     }
 }

@@ -7,7 +7,9 @@
         "psr-4": {
             "Makhnanov\\TelegramBot\\": "Src/"
         },
-        "files": ["Src/Function.php"]
+        "files": [
+            "Src/Functions.php"
+        ]
     },
     "authors": [
         {
@@ -16,6 +18,7 @@
         }
     ],
     "require": {
-        "php": "^8.5"
+        "php": "^8.5",
+        "ext-curl": "*"
     }
 }

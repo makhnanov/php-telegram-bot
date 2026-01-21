@@ -4,13 +4,23 @@ declare(strict_types=1);
 
 use Makhnanov\TelegramBot\Bot;
 
-$bot = null;
+$__bot = null;
 
-function bot(): Bot
+function bot(?string $token = null): Bot
 {
-    global $bot;
-    if (is_null($bot)) {
-        $bot = new Bot();
+    global $__bot;
+
+    if (
+        $token !== null
+        || (defined('TELEGRAM_BOT_TOKEN') && $token = TELEGRAM_BOT_TOKEN)
+        || ($token = getenv('TELEGRAM_BOT_TOKEN'))
+    ) {
+        $__bot = new Bot($token);
     }
-    return $bot;
+
+    if ($__bot === null) {
+        throw new RuntimeException('Bot not initialized. Set token first.');
+    }
+
+    return $__bot;
 }

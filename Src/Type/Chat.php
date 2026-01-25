@@ -13,6 +13,8 @@ readonly class Chat
         public ?string $username = null,
         public ?string $firstName = null,
         public ?string $lastName = null,
+        public ?bool $isForum = null,
+        public ?bool $isDirectMessages = null,
     ) {}
 
     public static function fromArray(array $data): self
@@ -24,6 +26,8 @@ readonly class Chat
             username: $data['username'] ?? null,
             firstName: $data['first_name'] ?? null,
             lastName: $data['last_name'] ?? null,
+            isForum: $data['is_forum'] ?? null,
+            isDirectMessages: $data['is_direct_messages'] ?? null,
         );
     }
 }

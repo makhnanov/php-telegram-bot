@@ -10,9 +10,10 @@ readonly class CallbackQuery
         public string $id,
         public User $from,
         public string $chatInstance,
-        public ?Message $message = null,
+        public ?MaybeInaccessibleMessage $message = null,
         public ?string $inlineMessageId = null,
         public ?string $data = null,
+        public ?string $gameShortName = null,
     ) {}
 
     public static function fromArray(array $data): self
@@ -20,10 +21,11 @@ readonly class CallbackQuery
         return new self(
             id: $data['id'],
             from: User::fromArray($data['from']),
-            chatInstance: $data['chat_instance'],
-            message: isset($data['message']) ? Message::fromArray($data['message']) : null,
+            message: isset($data['message']) ? MaybeInaccessibleMessage::fromArray($data['message']) : null,
             inlineMessageId: $data['inline_message_id'] ?? null,
+            chatInstance: $data['chat_instance'],
             data: $data['data'] ?? null,
+            gameShortName: $data['game_short_name'] ?? null,
         );
     }
 }

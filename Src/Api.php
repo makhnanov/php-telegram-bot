@@ -30,7 +30,6 @@ readonly class Api
 
         $response = curl_exec($ch);
         $error = curl_error($ch);
-        curl_close($ch);
 
         if ($error) {
             throw new RuntimeException("Curl error: $error");

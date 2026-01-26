@@ -14,7 +14,7 @@ readonly class Api
         private string $token,
     ) {}
 
-    public function call(string $method, array $params = []): array
+    public function call(string $method, array $params = []): array|bool
     {
         $url = self::BASE_URL . $this->token . '/' . $method;
 

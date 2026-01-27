@@ -16,31 +16,45 @@ composer require makhnanov/php-telegram-bot
 ```php
 <?php
 
-require 'vendor/autoload.php';
+# require 'vendor/autoload.php';
 
 use Makhnanov\TelegramBot\Bot;
 
-$bot = new Bot($_ENV['TELEGRAM_BOT_TOKEN']);
+$bot = new Bot('ENTER-BOT-TOKEN-HERE');
+# $secondBot = new Bot('BOT_TOKEN'); # For another bot
 
-// Simple send
-$bot->sendMessage(chatId: 123456789, text: 'Hello, World!');
+# $bot = bot(); # Automatically gets TELEGRAM_BOT_TOKEN from env and make single global instance
 
-// With formatting
-$bot->sendMessage(
-    chatId: 123456789,
-    text: '<b>Bold</b> and <i>italic</i>',
-    parseMode: 'HTML',
-);
+# $chatId = 'ENTER_CHAT_ID_HERE_FOR_GET_FIRST_MESSAGES';
 
-// Polling loop
-foreach ($bot->getUpdates() as $update) {
+# $bot->sendMessage(chatId: $chatId, text: 'Hello, World!');
+# $bot->sendMessage(
+#     chatId: $chatId,
+#     text: '<b>Bold</b> and <i>italic</i>',
+#     parseMode: 'HTML',
+# );
+
+# Simple Echo Long Polling
+foreach ($bot->poll() as $update) {
     if ($update->message?->text === '/start') {
         $bot->sendMessage(
             chatId: $update->message->chat->id,
             text: 'Welcome!',
         );
+    } elseif ($update->message?->text) {
+        $bot->sendMessage(
+            chatId: $update->message->chat->id,
+            text: $update->message->text,
+        );
+    } else {
+        $bot->sendMessage(
+            chatId: $update->message->chat->id,
+            text: 'Not simple message!',
+        );
     }
 }
+
+# ToDo: think about catch exceptions & $allowedUpdates
 ```
 
 ## Philosophy

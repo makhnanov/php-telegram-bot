@@ -26,25 +26,39 @@ function bot(?string $token = null): Bot
     return $__bot;
 }
 
-/**
- * Get Update object from webhook POST data.
- *
- * Reads raw POST input and parses JSON to create Update object.
- * Returns null if no valid update data is available.
- */
-function getUpdate(): ?Update
+$telegramPostUpdateData = [];
+
+function getUpdate(): Update
 {
     $input = file_get_contents('php://input');
 
     if (empty($input)) {
-        return null;
+        throw new RuntimeException('Input is empty.');
     }
 
     $data = json_decode($input, true);
 
     if (!is_array($data) || !isset($data['update_id'])) {
-        return null;
+        throw new RuntimeException("Invalid input data.");
     }
 
+    global $telegramPostUpdateData;
+    $telegramPostUpdateData = $data;
+
     return Update::fromArray($data);
+}
+
+function txt(?string $compare = null): string|bool
+{
+    $u = getUpdate();
+    $text = $u->message?->text;
+    if ($compare) {
+        return $text === $compare;
+    }
+    return $text;
+}
+
+function text(?string $compare = null): string|bool
+{
+    return txt($compare);
 }

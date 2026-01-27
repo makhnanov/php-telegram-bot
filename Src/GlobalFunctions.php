@@ -62,3 +62,14 @@ function text(?string $compare = null): string|bool
 {
     return txt($compare);
 }
+
+function verifySecretToken(string $secretToken): void
+{
+    if (
+        !isset($_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'])
+        || !$_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN']
+        || $_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] !== $secretToken
+    ) {
+        throw new RuntimeException('Invalid secret token.');
+    }
+}

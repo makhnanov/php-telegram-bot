@@ -11,7 +11,7 @@
 composer require makhnanov/php-telegram-bot
 ```
 
-## Long Pooling Example
+## Long Polling Example
 
 ```php
 <?php
@@ -22,10 +22,10 @@ use Makhnanov\TelegramBot\Bot;
 
 $bot = new Bot($_ENV['TELEGRAM_BOT_TOKEN']);
 
-// Простая отправка
+// Simple send
 $bot->sendMessage(chatId: 123456789, text: 'Hello, World!');
 
-// С форматированием
+// With formatting
 $bot->sendMessage(
     chatId: 123456789,
     text: '<b>Bold</b> and <i>italic</i>',
@@ -43,26 +43,26 @@ foreach ($bot->getUpdates() as $update) {
 }
 ```
 
-## Философия
+## Philosophy
 
-- **Минимализм**: только необходимое, никакого bloat
-- **Лаконичность**: код пользователя должен быть коротким
-- **Читаемость**: исходники библиотеки понятны без документации
-- **PHP 8.5**: используем все современные возможности языка
+- **Minimalism**: only what's necessary, no bloat
+- **Conciseness**: user code should be short
+- **Readability**: library source code is understandable without documentation
+- **PHP 8.5**: leverage all modern language features
 
-## Структура
+## Structure
 
 ```
 Src/
-├── Bot.php              # Главный класс, точка входа
-├── Functions.php        # Глобальный хелпер bot()
-├── Api.php              # HTTP-клиент для запросов к API
-├── Method/              # Методы API (трейты для Bot)
+├── Bot.php              # Main class, entry point
+├── Functions.php        # Global helper bot()
+├── Api.php              # HTTP client for API requests
+├── Method/              # API methods (traits for Bot)
 │   ├── SendMessage.php
 │   ├── SendPhoto.php
 │   ├── GetUpdates.php
 │   └── ...
-└── Type/                # Типы данных (DTO)
+└── Type/                # Data types (DTO)
     ├── Message.php
     ├── Update.php
     ├── Chat.php
@@ -70,19 +70,19 @@ Src/
     └── ...
 ```
 
-## Принципы дизайна
+## Design Principles
 
-### 1. Один класс Bot - одна точка входа
+### 1. One Bot class - one entry point
 
 ```php
 $bot = new Bot('TOKEN');
 $bot->sendMessage(chatId: 123, text: 'Hello');
 ```
 
-### 2. Named arguments везде
+### 2. Named arguments everywhere
 
 ```php
-// Вместо массивов параметров - именованные аргументы
+// Named arguments instead of parameter arrays
 $bot->sendMessage(
     chatId: $chatId,
     text: 'Hello',
@@ -91,13 +91,13 @@ $bot->sendMessage(
 );
 ```
 
-### 3. Глобальный хелпер для скриптов
+### 3. Global helper for scripts
 
 ```php
 bot()->sendMessage(chatId: 123, text: 'Quick message');
 ```
 
-### 4. Типы - простые readonly классы
+### 4. Types are simple readonly classes
 
 ```php
 readonly class Message {
@@ -112,9 +112,9 @@ readonly class Message {
 }
 ```
 
-### 5. Методы API - трейты
+### 5. API methods as traits
 
-Каждый метод в отдельном трейте, Bot использует их:
+Each method in a separate trait, Bot uses them:
 
 ```php
 class Bot {
@@ -125,7 +125,7 @@ class Bot {
 }
 ```
 
-### 6. Цепочки для удобства
+### 6. Method chaining for convenience
 
 ```php
 bot()
@@ -133,7 +133,7 @@ bot()
     ->sendMessage(chatId: 123, text: 'Second');
 ```
 
-### Антипаттерны
+### Anti-patterns
 
-- использование глобального состояния приложения (переменные, функции, константы)
-- синтаксический сахар (всякие хелперы помогающие писать меньше)
+- Using global application state (variables, functions, constants)
+- Syntactic sugar (various helpers that help write less code)

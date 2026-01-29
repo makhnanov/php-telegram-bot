@@ -21,7 +21,7 @@ trait SendMessage
         ?bool $allowPaidBroadcast = null,
         ?string $messageEffectId = null,
         ?array $replyParameters = null,
-        ?array $replyMarkup = null,
+        InlineKeyboardMarkup|array|null $replyMarkup = null,
     ): Message {
         $params = [
             'chat_id' => $chatId,

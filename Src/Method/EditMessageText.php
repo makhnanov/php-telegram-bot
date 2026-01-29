@@ -17,7 +17,7 @@ trait EditMessageText
         ?string $parseMode = null,
         ?array $entities = null,
         ?LinkPreviewOptions $linkPreviewOptions = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
+        InlineKeyboardMarkup|array|null $replyMarkup = null,
     ): Message
     {
         $params = [];

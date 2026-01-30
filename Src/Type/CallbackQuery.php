@@ -21,7 +21,7 @@ readonly class CallbackQuery
         return new self(
             id: $data['id'],
             from: User::fromArray($data['from']),
-            message: isset($data['message']) ? MaybeInaccessibleMessage::fromArray($data['message']) : null,
+            message: isset($data['message']) ? Message::createFromArray($data['message']) : null,
             inlineMessageId: $data['inline_message_id'] ?? null,
             chatInstance: $data['chat_instance'],
             data: $data['data'] ?? null,

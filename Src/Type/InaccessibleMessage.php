@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Makhnanov\TelegramBot\Type;
 
-readonly class InaccessibleMessage
+readonly class InaccessibleMessage implements MaybeInaccessibleMessage
 {
+    use MaybeInaccessibleMessageTrait;
+
     public function __construct(
         public Chat $chat,
         public int $messageId,

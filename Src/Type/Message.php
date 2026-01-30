@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Makhnanov\TelegramBot\Type;
 
-readonly class Message
+readonly class Message implements MaybeInaccessibleMessage
 {
+    use MaybeInaccessibleMessageTrait;
+
     public function __construct(
         public int $messageId,
         public int $date,
@@ -178,7 +180,7 @@ readonly class Message
             messageAutoDeleteTimerChanged: isset($data['message_auto_delete_timer_changed']) ? MessageAutoDeleteTimerChanged::fromArray($data['message_auto_delete_timer_changed']) : null,
             migrateToChatId: $data['migrate_to_chat_id'] ?? null,
             migrateFromChatId: $data['migrate_from_chat_id'] ?? null,
-            pinnedMessage: isset($data['pinned_message']) ? MaybeInaccessibleMessage::fromArray($data['pinned_message']) : null,
+            pinnedMessage: isset($data['pinned_message']) ? Message::createFromArray($data['pinned_message']) : null,
             invoice: isset($data['invoice']) ? Invoice::fromArray($data['invoice']) : null,
             successfulPayment: isset($data['successful_payment']) ? SuccessfulPayment::fromArray($data['successful_payment']) : null,
             refundedPayment: isset($data['refunded_payment']) ? RefundedPayment::fromArray($data['refunded_payment']) : null,

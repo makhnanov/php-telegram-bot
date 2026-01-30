@@ -4,23 +4,24 @@ declare(strict_types=1);
 
 namespace Makhnanov\TelegramBot\Method;
 
+use CURLFile;
 use Makhnanov\TelegramBot\Type\Message;
 
 trait SendDocument
 {
     public function sendDocument(
-        int|string $chatId,
-        string $document,
-        ?string $businessConnectionId = null,
-        ?int $messageThreadId = null,
-        ?int $directMessagesTopicId = null,
-        ?string $thumbnail = null,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?bool $disableContentTypeDetection = null,
-        ?bool $disableNotification = null,
-        ?bool $protectContent = null,
+        int|string      $chatId,
+        string|CURLFile $document,
+        ?string         $businessConnectionId = null,
+        ?int            $messageThreadId = null,
+        ?int            $directMessagesTopicId = null,
+        ?string         $thumbnail = null,
+        ?string         $caption = null,
+        ?string         $parseMode = null,
+        ?array          $captionEntities = null,
+        ?bool           $disableContentTypeDetection = null,
+        ?bool           $disableNotification = null,
+        ?bool           $protectContent = null,
         ?bool $allowPaidBroadcast = null,
         ?string $messageEffectId = null,
         ?SuggestedPostParameters $suggestedPostParameters = null,

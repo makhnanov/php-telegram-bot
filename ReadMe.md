@@ -2,8 +2,9 @@
 ![stability](https://img.shields.io/badge/stability-unstable-red.svg)
 ![packagist](https://img.shields.io/badge/packagist-yes-darkgreen.svg)
 ![dependencies](https://img.shields.io/badge/dependencies-no-darkgreen.svg)
+![vibe](https://img.shields.io/badge/vibe-clauded-da6a46)
 
-# PHP Telegram Vibe Clauded Bot Library
+# PHP Telegram Bot Library
 
 ## Installation
 

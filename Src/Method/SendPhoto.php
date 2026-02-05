@@ -10,7 +10,7 @@ trait SendPhoto
 {
     public function sendPhoto(
         int|string $chatId,
-        string $photo,
+        string|\CURLFile $photo,
         ?string $businessConnectionId = null,
         ?int $messageThreadId = null,
         ?int $directMessagesTopicId = null,

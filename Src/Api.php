@@ -29,6 +29,11 @@ readonly class Api
         $ch = curl_init();
 
         if ($hasFile) {
+            foreach ($params as $key => $value) {
+                if (is_array($value)) {
+                    $params[$key] = json_encode($value);
+                }
+            }
             curl_setopt_array($ch, [
                 CURLOPT_URL => $url,
                 CURLOPT_POST => true,

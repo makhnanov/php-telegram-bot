@@ -25,7 +25,7 @@ trait SendPhoto
         ?string $messageEffectId = null,
         ?SuggestedPostParameters $suggestedPostParameters = null,
         ?ReplyParameters $replyParameters = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
+        InlineKeyboardMarkup|array|null $replyMarkup = null,
     ): Message
     {
         $params = [];

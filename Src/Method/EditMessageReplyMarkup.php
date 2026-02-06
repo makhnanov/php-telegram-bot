@@ -13,7 +13,7 @@ trait EditMessageReplyMarkup
         int|string|null $chatId = null,
         ?int $messageId = null,
         ?string $inlineMessageId = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
+        InlineKeyboardMarkup|array|null $replyMarkup = null,
     ): Message
     {
         $params = [];

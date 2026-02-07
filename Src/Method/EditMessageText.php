@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Makhnanov\TelegramBot\Method;
 
+use Makhnanov\TelegramBot\Type\LinkPreviewOptions;
 use Makhnanov\TelegramBot\Type\Message;
 
 trait EditMessageText
